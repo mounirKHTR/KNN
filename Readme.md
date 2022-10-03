@@ -1,1 +1,2 @@
 Colin Jolivet
+Simon Barbeau
