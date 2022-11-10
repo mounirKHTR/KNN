@@ -12,7 +12,7 @@ public class Column {
 
 
     public String getName(){return this.name;}
-    public DataSet getDataSet(){return this.data;}
+    //public DataSet getDataSet(){return this.data;}
     public boolean isNormalizable(){return this.normalizable;}
 
 }

@@ -5,5 +5,5 @@ public interface IValueNormalizer {
         NUMBER_NORMALIZER, BOOLEAN_NORMALIZER, POKEMON_TYPE_NORMALIZER;
     }
     public double normalize(Object value);
-    public Object denormalize(double value);
+    //public Object denormalize(double value);
 }
