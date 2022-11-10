@@ -12,7 +12,7 @@ public class DistanceEuclidienne implements IDistance{
 		return Math.sqrt(total);
 	}
 	
-	public double distanceBetween(DatasetIris dt ,Iris p1, Iris p2) {
+	public double distanceBetween(Iris p1, Iris p2) {
 		double total = 0;
 		total += (Math.pow((double)p1.getSepalLength() - (double)p2.getSepalLength(),2));
 		total += (Math.pow((double)p1.getSepalWidth() - (double)p2.getSepalWidth(),2));
