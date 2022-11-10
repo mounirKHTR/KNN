@@ -48,7 +48,6 @@ public class DatasetIris implements IDataset{
 	@Override
 	public void setLines(List<IPoint> lines) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -64,14 +63,6 @@ public class DatasetIris implements IDataset{
 	}
 	
 	public void loadFromFile(String datafile) {
-		/*double maxSepLen = 0;
-		double minSepLen = Double.MAX_VALUE;
-		double maxSepWid = 0;
-		double minSepWid= Double.MAX_VALUE;
-		double maxPetLen = 0;
-		double minPetLen = Double.MAX_VALUE;
-		double maxPetWid = 0;
-		double minPetWid= Double.MAX_VALUE;*/
 		try {
 			set = new CsvToBeanBuilder<Iris>(Files.newBufferedReader(Paths.get(datafile)))
 			        .withSeparator(',')
@@ -80,9 +71,6 @@ public class DatasetIris implements IDataset{
 		} catch (IllegalStateException | IOException e) {
 			System.out.println("erreur de chargement du fichier");
 		}
-		/*for (Number_Normalizer n : norm) {
-			
-		}*/
 		for (Iris i : set) {
 			if (i.getSepalLength()>norm.get(0).getMax()) {
 				norm.get(0).setMax(i.getSepalLength());
@@ -107,19 +95,11 @@ public class DatasetIris implements IDataset{
 		}
 	}
 	
-	
-	
-	
 	public static void main(String[] args) {
 		DistanceEuclidienne dE = new DistanceEuclidienne() ;
 		List<IColumn> colI = new ArrayList<IColumn>();
 		DatasetIris dt = new DatasetIris(dE, colI);
 		dt.loadFromFile("iris.csv");
-		System.out.println(dt.getNorm().get(0).getMax()+ "|" + dt.getNorm().get(0).getMin());
-		System.out.println(dt.getNorm().get(1).getMax()+ "|" + dt.getNorm().get(1).getMin());
-		System.out.println(dt.getNorm().get(2).getMax()+ "|" + dt.getNorm().get(2).getMin());
-		System.out.println(dt.getNorm().get(3).getMax()+ "|" + dt.getNorm().get(3).getMin());
-
 		
 	}
 
@@ -137,7 +117,6 @@ public class DatasetIris implements IDataset{
 		return d;
 	}
 
-
 	/**
 	 * @return the col
 	 */
@@ -151,9 +130,5 @@ public class DatasetIris implements IDataset{
 	public List<Number_Normalizer> getNorm() {
 		return norm;
 	}
-	
-	
-	
-	
 
 }

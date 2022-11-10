@@ -15,7 +15,7 @@ public class DistanceManhattan implements IDistance{
 	}
 
 	@Override
-	public double distanceBetween( Iris p1, Iris p2) {
+	public double distanceBetween(DatasetIris dt, Iris p1, Iris p2) {
 		double total = 0;
 		total += (double)p1.getSepalLength() - (double)p2.getSepalLength();
 		total += (double)p1.getSepalWidth() - (double)p2.getSepalWidth();

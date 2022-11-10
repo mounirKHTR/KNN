@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class testDistance {
+class TestIris {
 	
 	DistanceEuclidienne dE;
 	DistanceManhattan dM;
@@ -29,13 +29,14 @@ class testDistance {
 
 	@Test
 	void testDistanceEuclIris() {
-		assertEquals(Math.ceil(dE.distanceBetween(dtI.getSet().get(0),dtI.getSet().get(1))*1000)/1000,0.539);
+		assertEquals(Math.ceil(dE.distanceBetween(dtI,dtI.getSet().get(0),dtI.getSet().get(1))*1000)/1000,0.539);
+		
+		assertEquals(Math.ceil(dE.distanceBetween(dtI,dtI.getSet().get(0),dtI.getSet().get(1))*1000)/1000,0.539);
 	}
 	
 	@Test
-	void testDistanceManhIris() {
-		
-		assertEquals(Math.ceil(dM.distanceBetween(dtI.getSet().get(0),dtI.getSet().get(1))*100)/100,0.7);
+	void testDistanceManhIris() {	
+		assertEquals(Math.ceil(dM.distanceBetween(dtI,dtI.getSet().get(0),dtI.getSet().get(1))*100)/100,0.7);
 	}
 	
 	@Test
