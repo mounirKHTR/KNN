@@ -37,5 +37,13 @@ class testDistance {
 		
 		assertEquals(Math.ceil(dM.distanceBetween(dtI.getSet().get(0),dtI.getSet().get(1))*100)/100,0.7);
 	}
+	
+	@Test
+	void testgetNormalizingValue() {
+		assertEquals(dtI.getNorm().get(0).getMax()+ "|" + dtI.getNorm().get(0).getMin(),"7.9|4.3");
+		assertEquals(dtI.getNorm().get(1).getMax()+ "|" + dtI.getNorm().get(1).getMin(),"4.4|2.0");
+		assertEquals(dtI.getNorm().get(2).getMax()+ "|" + dtI.getNorm().get(2).getMin(),"6.9|1.0");
+		assertEquals(dtI.getNorm().get(3).getMax()+ "|" + dtI.getNorm().get(3).getMin(),"2.5|0.1");
+	}
 
 }
