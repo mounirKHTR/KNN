@@ -2,13 +2,26 @@
 
 public class DistanceManhattan implements IDistance{
 
+	
+
 	@Override
-	public double distanceBetween(IPoint p1, IPoint p2) {
+	public double distanceBetween(Pokemon p1, Pokemon p2) {
 		double total = 0;
-		total += (p1.getCaptureRate() - p2.getCaptureRate())/MethodeKnn.amplCap;
-		total += ((double)p1.getSpeed() - (double)p2.getSpeed())/MethodeKnn.amplSpd;
-		total += (p1.getBaseEggSteps() - p2.getBaseEggSteps())/MethodeKnn.amplEgg;
-		total += ((double)p1.getExperienceGrowth() - (double)p2.getExperienceGrowth())/MethodeKnn.amplExp;
+		total += (p1.getCaptureRate() - p2.getCaptureRate());
+		total += ((double)p1.getSpeed() - (double)p2.getSpeed());
+		total += (p1.getBaseEggSteps() - p2.getBaseEggSteps());
+		total += ((double)p1.getExperienceGrowth() - (double)p2.getExperienceGrowth());
+		return total;
+	}
+
+	@Override
+	public double distanceBetween(DatasetIris dt, Iris p1, Iris p2) {
+		double total = 0;
+		total += (double)p1.getSepalLength() - (double)p2.getSepalLength();
+		total += (double)p1.getSepalWidth() - (double)p2.getSepalWidth();
+		total += (double)p1.getPetalLength() - (double)p2.getPetalLength();
+		total += (double)p1.getPetalWidth() - (double)p2.getPetalWidth();
+		
 		return total;
 	}
 
