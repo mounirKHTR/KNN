@@ -1,4 +1,9 @@
+package model;
+import java.util.List;
+
 import com.opencsv.bean.CsvBindByName;
+
+import Interface.IPoint;
 
 public class Pokemon extends IPoint {
 	
@@ -49,5 +54,70 @@ public class Pokemon extends IPoint {
 	        this.type = type;
 	        this.type2 = type2;
 	    }
+	    public String getName() {
+	        return name;
+	    }
+
+	    public int getAttack() {
+	        return attack;
+	    }
+
+	    public int getBaseEggSteps() {
+	        return baseEggSteps;
+	    }
+	    
+	    public double getCaptureRate() {
+	        return captureRate;
+	    }
+
+	    public int getDefense() {
+	        return defense;
+	    }
+
+	    public int getExperienceGrowth() {
+	        return experienceGrowth;
+	    }
+
+	    public int getHp() {
+	        return hp;
+	    }
+
+	    public int getSpAttack() {
+	        return spAttack;
+	    }
+
+	    public int getSpDefense() {
+	        return spDefense;
+	    }
+
+	    public String getType() {
+	        return type;
+	    }
+
+	    public String     getType2() {
+	        return type2;
+	    }
+
+	    public double getSpeed() {
+	        return speed;
+	    }
+
+	    public boolean isLegendary() {
+	        return isLegendary;
+	    }
+
+
+
+	  
+
+	    @Override
+	    public String toString() {
+	        return "Pokemon [nom=" + name + ", attack=" + attack + ", baseEggSteps=" + baseEggSteps + ", captureRate="
+	                + captureRate + ", defense=" + defense + ", experienceGrowth=" + experienceGrowth + ", hp=" + hp
+	                + ", spAttack=" + spAttack + ", spDefense=" + spDefense + ", type=" + type + ", type2=" + type2
+	                + ", speed=" + speed + ", isLegendary=" + isLegendary + "]";
+
+	    }
+	
 
 }

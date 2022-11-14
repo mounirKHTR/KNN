@@ -1,3 +1,5 @@
+package Normalizer;
+import Interface.IvalueNormalizer;
 
 public  class Number_Normalizer implements IvalueNormalizer{
 	double min;

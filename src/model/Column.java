@@ -1,13 +1,23 @@
+package model;
 import java.util.ArrayList;
 import java.util.List;
+
+import Interface.IPoint;
+import Interface.IvalueNormalizer;
 
 public  class Column{
 	protected String Name;
 	protected String type;
 	protected IvalueNormalizer Normalizer;
 	protected List<?>ligne;
-	protected boolean isNormalizable;
+	protected boolean isNormalizable ;
 	
+	public boolean isNormalizable() {
+		return isNormalizable;
+	}
+	public String getName() {
+		return Name;
+	}
 	public Column(String name, String type,ArrayList<?> data) {
 		this.Name = name;
 		this.type = type;

@@ -1,7 +1,10 @@
+package Interface;
+import model.Column;
 
 public abstract class IPoint {
 	
-	public Object getValue(Icolumn col) {
+	
+	public Object getValue(Column col) {
 		
 		try {
 			return getClass().getField(col.getName()).get(this);
@@ -12,9 +15,10 @@ public abstract class IPoint {
 	}
 
 	
-	public Double getNormalized(Icolumn colx) {
+	public Double getNormalized(Column colx) {
 		if(colx.isNormalizable()) {
-			return colx.getNormalizedValue(this);
+			return (Double) colx.getNormalizedValue(this);
 		}
-		return null;
+		return 0.0;
+		
 	}}

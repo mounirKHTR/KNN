@@ -1,4 +1,8 @@
+package model;
+
 import com.opencsv.bean.CsvBindByName;
+
+import Interface.IPoint;
 
 public class Iris extends IPoint{
 	

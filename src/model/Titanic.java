@@ -1,6 +1,9 @@
+package model;
 
 
 import com.opencsv.bean.CsvBindByName;
+
+import Interface.IPoint;
 
 
 public class Titanic extends IPoint{
