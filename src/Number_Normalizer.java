@@ -11,7 +11,7 @@ public  class Number_Normalizer implements IValueNormalizer{
 
 	@Override
     public double normalize(Object value) {    
-        return ((double)value-min)/max-min ;
+        return ((double)value-min)/(max-min) ;
     }
 
     @Override

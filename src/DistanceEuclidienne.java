@@ -12,12 +12,12 @@ public class DistanceEuclidienne implements IDistance{
 		return Math.sqrt(total);
 	}
 	
-	public double distanceBetween(DatasetIris dt,Iris p1, Iris p2) {
+	public double distanceBetween(DatasetIris dt,Iris p1, Iris p2,Number_Normalizer norm) {
 		double total = 0;
-		total += (Math.pow((double)p1.getSepalLength() - (double)p2.getSepalLength(),2));
-		total += (Math.pow((double)p1.getSepalWidth() - (double)p2.getSepalWidth(),2));
-		total += (Math.pow((double)p1.getPetalLength() - (double)p2.getPetalLength(),2));
-		total += (Math.pow((double)p1.getPetalWidth() - (double)p2.getPetalWidth(),2));
+		total += (Math.pow((double)norm.normalize(p1.getSepalLength()) - (double)norm.normalize(p2.getSepalLength()),2));
+		total += (Math.pow((double)norm.normalize(p1.getSepalWidth()) - (double)norm.normalize(p2.getSepalWidth()),2));
+		total += (Math.pow((double)norm.normalize(p1.getPetalLength()) - (double)norm.normalize(p2.getPetalLength()),2));
+		total += (Math.pow((double)norm.normalize(p1.getPetalWidth()) - (double)norm.normalize(p2.getPetalWidth()),2));
 		
 		return Math.sqrt(total);
 	}

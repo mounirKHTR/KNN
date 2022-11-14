@@ -15,12 +15,12 @@ public class DistanceManhattan implements IDistance{
 	}
 
 	@Override
-	public double distanceBetween(DatasetIris dt, Iris p1, Iris p2) {
+	public double distanceBetween(DatasetIris dt, Iris p1, Iris p2,Number_Normalizer norm) {
 		double total = 0;
-		total += (double)p1.getSepalLength() - (double)p2.getSepalLength();
-		total += (double)p1.getSepalWidth() - (double)p2.getSepalWidth();
-		total += (double)p1.getPetalLength() - (double)p2.getPetalLength();
-		total += (double)p1.getPetalWidth() - (double)p2.getPetalWidth();
+		total += (double)norm.normalize(p1.getSepalLength()) - (double)norm.normalize(p2.getSepalLength());
+		total += (double)norm.normalize(p1.getSepalWidth()) - (double)norm.normalize(p2.getSepalWidth());
+		total += (double)norm.normalize(p1.getPetalLength()) - (double)norm.normalize(p2.getPetalLength());
+		total += (double)norm.normalize(p1.getPetalWidth()) - (double)norm.normalize(p2.getPetalWidth());
 		
 		return total;
 	}
