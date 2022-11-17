@@ -13,14 +13,14 @@ class TestIris {
 	
 	DistanceEuclidienne dE;
 	DistanceManhattan dM;
-	List<IColumn> colI;
+	List<Column> colI;
 	DatasetIris dtI;
 	
 	@BeforeEach
 	void init() {
 		dE = new DistanceEuclidienne() ;
 		dM = new DistanceManhattan();
-		colI = new ArrayList<IColumn>();
+		colI = new ArrayList<Column>();
 		dtI = new DatasetIris(dE, colI);
 		dtI.loadFromFile("iris.csv");
 	}

@@ -1,6 +1,8 @@
 import com.opencsv.bean.CsvBindByName;
 
-public class Iris implements IPoint {
+import Interface.IPoint;
+
+public class Iris extends IPoint {
 	
 	@CsvBindByName(column = "sepal.length")
 	private double sepalLength;
@@ -13,13 +15,12 @@ public class Iris implements IPoint {
 	@CsvBindByName(column = "variety")
 	private String variety;
 
-	@Override
-	public double getNormalizedValue(IColumn col) {
+	public double getNormalizedValue(Column col) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 	
-	public Object getValue(IColumn col) {
+	public Object getValue(Column col) {
 		return null;
 		
 	}

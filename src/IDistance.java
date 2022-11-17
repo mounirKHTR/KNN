@@ -1,4 +1,4 @@
-
+import model.Iris;
 
 public interface IDistance {
 	

@@ -8,15 +8,20 @@ import java.util.List;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 
+import Interface.IDataSet;
+import Interface.IPoint;
+import model.Iris;
+import utils.Subject;
 
-public class DatasetIris implements IDataset{
+
+public class DatasetIris extends Subject implements IDataSet{
 	private List<Iris> set;
 	private IDistance d;
-	private List<IColumn> col;
+	private List<Column> col;
 	private List<Number_Normalizer> norm;
 	
 	
-	public DatasetIris(IDistance d, List<IColumn> col) {
+	public DatasetIris(IDistance d, List<Column> col) {
 		super();
 		this.d = d;
 		this.col = col;
@@ -27,39 +32,33 @@ public class DatasetIris implements IDataset{
 		norm.add(new Number_Normalizer());
 	}
 
-	@Override
 	public Iterator<IPoint> iterator() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String getTitle() {
 		// TODO Auto-generated method stub
 		return "Iris";
 	}
 
-	@Override
 	public int getNbLines() {
 		// TODO Auto-generated method stub
 		return set.size();
 	}
 
-	@Override
 	public void setLines(List<IPoint> lines) {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
 	public void addLine(IPoint element) {
 		// TODO Auto-generated method stub
 		set.add((Iris) element);
 	}
 
-	@Override
 	public void addAllLine(List<IPoint> element) {
 		// TODO Auto-generated method stub
-		set.addAll((Collection<? extends Iris>) element);
+		set.add((Iris) element);
 	}
 	
 	public void loadFromFile(String datafile) {
@@ -97,7 +96,7 @@ public class DatasetIris implements IDataset{
 	
 	public static void main(String[] args) {
 		DistanceEuclidienne dE = new DistanceEuclidienne() ;
-		List<IColumn> colI = new ArrayList<IColumn>();
+		List<Column> colI = new ArrayList<Column>();
 		DatasetIris dt = new DatasetIris(dE, colI);
 		dt.loadFromFile("iris.csv");
 		
@@ -120,7 +119,7 @@ public class DatasetIris implements IDataset{
 	/**
 	 * @return the col
 	 */
-	public List<IColumn> getCol() {
+	public List<Column> getCol() {
 		return col;
 	}
 

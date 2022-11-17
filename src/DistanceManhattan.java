@@ -1,4 +1,4 @@
-
+import model.Iris;
 
 public class DistanceManhattan implements IDistance{
 

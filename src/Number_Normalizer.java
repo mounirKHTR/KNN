@@ -1,5 +1,6 @@
+import Interface.IvalueNormalizer;
 
-public  class Number_Normalizer implements IValueNormalizer{
+public  class Number_Normalizer implements IvalueNormalizer{
     private double min;
     private double max;
      
@@ -9,12 +10,10 @@ public  class Number_Normalizer implements IValueNormalizer{
 		this.max = 0;
 	}
 
-	@Override
-    public double normalize(Object value) {    
+	public double normalize(Object value) {    
         return ((double)value-min)/(max-min) ;
     }
 
-    @Override
     public Object denormalize(double value) {
         return value*(max-min)+min;
     }
