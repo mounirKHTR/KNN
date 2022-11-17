@@ -26,6 +26,6 @@ public interface IDataSet extends Iterable<IPoint> {
 	/**
 	 * Retourne la liste contenant les données
 	 */
-	List<IPoint> getSet();
+	//List<IPoint> getSet();
 }
 

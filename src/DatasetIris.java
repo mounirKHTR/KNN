@@ -19,6 +19,7 @@ public class DatasetIris extends Subject implements IDataSet{
 	private IDistance d;
 	private List<Column> col;
 	private List<Number_Normalizer> norm;
+	private List<List<Iris>> dtDt = new ArrayList<>();
 	
 	
 	public DatasetIris(IDistance d, List<Column> col) {
@@ -35,6 +36,11 @@ public class DatasetIris extends Subject implements IDataSet{
 	public Iterator<IPoint> iterator() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void addDT(List<Iris> dt) {
+		dtDt.addAll((Collection<? extends List<Iris>>) dt);
+		notifyObservers(dtDt);
 	}
 
 	public String getTitle() {
@@ -92,6 +98,8 @@ public class DatasetIris extends Subject implements IDataSet{
 				norm.get(3).setMin(i.getPetalWidth());
 			}
 		}
+		dtDt.add(set);
+		notifyObservers(set);
 	}
 	
 	public static void main(String[] args) {
@@ -107,6 +115,10 @@ public class DatasetIris extends Subject implements IDataSet{
 	 */
 	public List<Iris> getSet() {
 		return set;
+	}
+	
+	public void setSet(List<Iris> set) {
+		this.set = set;
 	}
 
 	/**

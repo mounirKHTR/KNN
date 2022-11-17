@@ -1,4 +1,5 @@
 import model.Iris;
+import model.Pokemon;
 
 public class DistanceEuclidienne implements IDistance{
 
