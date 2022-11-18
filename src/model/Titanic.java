@@ -148,5 +148,21 @@ public class Titanic extends IPoint{
 			Embarked = embarked;
 		}
 
-		
+	@Override
+	public String toString() {
+		return "Titanic{" +
+				"PassengerId=" + PassengerId +
+				", Survived=" + Survived +
+				", Pclass=" + Pclass +
+				", Name='" + Name + '\'' +
+				", Sex='" + Sex + '\'' +
+				", Age=" + Age +
+				", SibSp=" + SibSp +
+				", Parch=" + Parch +
+				", Ticket='" + Ticket + '\'' +
+				", Fare=" + Fare +
+				", Cabin='" + Cabin + '\'' +
+				", Embarked=" + Embarked +
+				'}';
+	}
 }

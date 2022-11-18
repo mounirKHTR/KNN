@@ -46,16 +46,25 @@ public  class DataSet {
 				.withType(classe).build().parse();
 
 	}
+
+	public Object getValue(int index, Column column) {
+		return this.lines.get(index).getValue(column);
+	}
 	public static void main(String[] args) throws IllegalStateException, IOException {
 		DataSet pk=new DataSet();
-		pk.lines=pk.loadFromfiles("/home/infoetu/mounir.khatri.etu/eclipse-S3/equipe-H2/src/data/pokemon_suspect1.csv", Pokemon.class);
+		pk.lines=pk.loadFromfiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
 		System.out.println(""+pk.getNbLines()+pk.Data);
 		DataSet ir=new DataSet();
-		ir.lines=ir.loadFromfiles("/home/infoetu/mounir.khatri.etu/eclipse-S3/equipe-H2/src/data/iris.csv", Iris.class);
+		ir.lines=ir.loadFromfiles("./src/data/iris.csv", Iris.class);
 		System.out.println(""+ir.getNbLines()+ir.Data);
 		DataSet ti=new DataSet();
-		ti.lines=ti.loadFromfiles("/home/infoetu/mounir.khatri.etu/eclipse-S3/equipe-H2/src/data/titanic.csv", Titanic.class);
+		ti.lines=ti.loadFromfiles("./src/data/titanic.csv", Titanic.class);
 		System.out.println(""+ti.getNbLines()+ti.Data);
+		int n = 0;
+		for(IPoint p: pk.lines) {
+			++n;
+			System.out.println("" + n + p);
+		}
 	}
 }
 
