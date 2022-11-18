@@ -1,4 +1,4 @@
-
+import com.opencsv.bean.CsvBindByName;
 
 public class Pokemon implements Ipoint {
 	

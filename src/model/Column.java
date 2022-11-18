@@ -28,8 +28,8 @@ public  class Column{
 	public void setNormaliser(IvalueNormalizer valueNormalizer) {
 		this.Normalizer=valueNormalizer;
 	}
-	public Object getNormalizedValue(IPoint point) {
-		if(isNormalizable) return Normalizer.normalize(point);
+	public Object getNormalizedValue(IPoint iPoint) {
+		if(isNormalizable) return Normalizer.normalize(iPoint);
 		return null;
 	}
 	public Object getDenormalizedValue(IPoint point) {
