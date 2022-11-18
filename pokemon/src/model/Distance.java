@@ -6,7 +6,6 @@ import Interface.IPoint;
 
 public class Distance implements IDistance {
 
-	@Override
 	public double EuclidianDistanceBetween(IPoint i1, IPoint i2, List<Column> col) {
 		double rsl = 0.0;
 		for(Column icol: col) {
@@ -22,4 +21,5 @@ public class Distance implements IDistance {
 		}
 		return rsl;
 	}
+
 }

@@ -14,7 +14,6 @@ public abstract class IPoint {
 		
 	}
 
-	
 	public Double getNormalized(Column colx) {
 		if(colx.isNormalizable()) {
 			return (Double) colx.getNormalizedValue(this);
