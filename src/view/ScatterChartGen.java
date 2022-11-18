@@ -31,6 +31,10 @@ public class ScatterChartGen extends Application implements Observer{
     NumberAxis yAxis;        
     ScatterChart<Number,Number> sc;
     
+    public ScatterChartGen(DatasetIris dti) {
+		dtI = dti;
+	}
+    
     @Override 
     public void start(Stage stage) {
     	Distance dE = new Distance();
@@ -56,16 +60,6 @@ public class ScatterChartGen extends Application implements Observer{
             	System.out.println("Entrez le nom du fichier");
             	String name= scan.next();
             	dtI.loadFromFile(name);
-            	//update(dtI,dtI);
-	            //sc.setData(FXCollections.<XYChart.Series<Number, Number>>observableArrayList());
-	           //ScatterChart.Series<Number, Number> series = new ScatterChart.Series<Number, Number>();
-	            //dtI = new DatasetIris(dE, colI);
-	            /*dtI.loadFromFile(name);
-	            series.setName("Iris n°"+(sc.getData().size()+1));
-	            for (Iris i : dtI.getSet()) {
-	            	series.getData().add(new ScatterChart.Data<Number, Number>(i.getPetalLength(), i.getPetalWidth()));
-	            }
-	            sc.getData().add(series);*/
             }});
         
         remove.setOnAction(new EventHandler<ActionEvent>() {
@@ -98,7 +92,6 @@ public class ScatterChartGen extends Application implements Observer{
 
 	@Override
 	public void update(Subject subj, Object data) {
-		// TODO Auto-generated method stub
 		ScatterChart.Series<Number, Number> series = new ScatterChart.Series<Number, Number>();
 		series.setName("Iris n°"+(sc.getData().size()+1));
 		System.out.println(series.getName());
@@ -108,9 +101,5 @@ public class ScatterChartGen extends Application implements Observer{
         }
 		System.out.println(series.getData().size());
         sc.getData().add(series);
-		/*sc = new ScatterChart<Number,Number>(xAxis,yAxis);
-		ScatterChart.Series<Number, Number> series = new ScatterChart.Series<Number, Number>();
-    	series.getData().add(new ScatterChart.Data<Number, Number>(2, 2));
-    	sc.getData().add(series);*/
 	}
 }
