@@ -11,7 +11,7 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 import model.Column;
 import model.DatasetIris;
-import model.DistanceEuclidienne;
+import model.Distance;
 import model.Iris;
 import utils.Observer;
 import utils.Subject;
@@ -28,7 +28,7 @@ public class ScatterChartView extends Application implements Observer{
         xAxis.setLabel("Petal Length");                
         yAxis.setLabel("Petal Width");
         sc.setTitle("Iris Petals");
-        DistanceEuclidienne dE = new DistanceEuclidienne();
+        Distance dE = new Distance();
         List<Column> colI = new ArrayList<Column>();
         DatasetIris dtI = new DatasetIris(dE, colI);
         dtI.loadFromFile("iris.csv");

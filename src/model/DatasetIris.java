@@ -10,6 +10,7 @@ import java.util.List;
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import Interface.IDataSet;
+import Interface.IDistance;
 import Interface.IPoint;
 import utils.Subject;
 

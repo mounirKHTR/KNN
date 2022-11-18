@@ -18,7 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Column;
 import model.DatasetIris;
-import model.DistanceEuclidienne;
+import model.Distance;
 import model.Iris;
 import utils.Observer;
 import utils.Subject;
@@ -33,7 +33,7 @@ public class ScatterChartGen extends Application implements Observer{
     
     @Override 
     public void start(Stage stage) {
-    	DistanceEuclidienne dE = new DistanceEuclidienne();
+    	Distance dE = new Distance();
         List<Column> colI = new ArrayList<Column>();
     	dtI = new DatasetIris(dE, colI);
     	dtI.attach(this);
