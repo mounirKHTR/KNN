@@ -1,3 +1,5 @@
+package view;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +9,9 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
+import model.Column;
+import model.DatasetIris;
+import model.DistanceEuclidienne;
 import model.Iris;
 import utils.Observer;
 import utils.Subject;

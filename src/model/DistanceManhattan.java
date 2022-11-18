@@ -1,6 +1,4 @@
-import model.Iris;
-import model.Pokemon;
-
+package model;
 public class DistanceManhattan implements IDistance{
 
 	

@@ -1,3 +1,4 @@
+package model;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -10,7 +11,6 @@ import com.opencsv.bean.CsvToBeanBuilder;
 
 import Interface.IDataSet;
 import Interface.IPoint;
-import model.Iris;
 import utils.Subject;
 
 
@@ -99,16 +99,16 @@ public class DatasetIris extends Subject implements IDataSet{
 			}
 		}
 		dtDt.add(set);
-		notifyObservers(set);
+		this.setSet(set);
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		DistanceEuclidienne dE = new DistanceEuclidienne() ;
 		List<Column> colI = new ArrayList<Column>();
 		DatasetIris dt = new DatasetIris(dE, colI);
 		dt.loadFromFile("iris.csv");
 		
-	}
+	}*/
 
 	/**
 	 * @return the set
@@ -119,6 +119,8 @@ public class DatasetIris extends Subject implements IDataSet{
 	
 	public void setSet(List<Iris> set) {
 		this.set = set;
+		notifyObservers(set);
+
 	}
 
 	/**

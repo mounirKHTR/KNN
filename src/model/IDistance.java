@@ -1,6 +1,4 @@
-import model.Iris;
-import model.Pokemon;
-
+package model;
 public interface IDistance {
 	
 	public double distanceBetween(Pokemon p1, Pokemon p2);

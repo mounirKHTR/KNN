@@ -1,6 +1,4 @@
-import model.Iris;
-import model.Pokemon;
-
+package model;
 public class DistanceEuclidienne implements IDistance{
 
 	@Override

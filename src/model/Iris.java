@@ -60,6 +60,12 @@ public class Iris extends IPoint {
 	public String getVariety() {
 		return variety;
 	}
+
+	@Override
+	public String toString() {
+		return "Iris [sepalLength=" + sepalLength + ", sepalWidth=" + sepalWidth + ", petalLength=" + petalLength
+				+ ", petalWidth=" + petalWidth + ", variety=" + variety + "]";
+	}
 	
 	
 
