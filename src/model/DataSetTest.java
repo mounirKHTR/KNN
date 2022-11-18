@@ -14,7 +14,7 @@ public class DataSetTest {
         pokemon.lines=pokemon.loadFromfiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
         iris.lines=iris.loadFromfiles("./src/data/iris.csv", Iris.class);
         titanic.lines=titanic.loadFromfiles("./src/data/titanic.csv", Titanic.class);
-        Assert.assertEquals(100, pokemon.getNbLines());
+		Assert.assertEquals(100, pokemon.getNbLines());
         Assert.assertEquals(150, iris.getNbLines());
         Assert.assertEquals(891, titanic.getNbLines());
     }
