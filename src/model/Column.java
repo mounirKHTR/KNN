@@ -9,7 +9,7 @@ public  class Column{
 	protected String Name;
 	protected String type;
 	protected IvalueNormalizer Normalizer;
-	protected List<?>ligne;
+	
 	protected boolean isNormalizable ;
 	
 	public boolean isNormalizable() {
@@ -18,12 +18,10 @@ public  class Column{
 	public String getName() {
 		return Name;
 	}
-	public Column(String name, String type,ArrayList<?> data) {
+	public Column(String name, String type) {
 		this.Name = name;
 		this.type = type;
-		this.ligne=data;
-		isNormalizable=type.equals("INTEGER")||type.equals("DOUBLE")||type.equals("ENUM");
-		
+		isNormalizable=type.equals("int")||type.equals("double")||type.equals("ENUM");
 	}
 	public void setNormaliser(IvalueNormalizer valueNormalizer) {
 		this.Normalizer=valueNormalizer;
@@ -35,6 +33,11 @@ public  class Column{
 	public Object getDenormalizedValue(IPoint point) {
 		if(isNormalizable) return Normalizer.denormalize((double)getNormalizedValue(point));
 		return null;
+	}
+	@Override
+	public String toString() {
+		return "Column [Name=" + Name + ", type=" + type + ", Normalizer=" + Normalizer 
+				+ ", isNormalizable=" + isNormalizable + "]";
 	}
 	
 }
