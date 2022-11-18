@@ -17,19 +17,16 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Column;
-import model.DataSet;
 import model.DatasetIris;
 import model.Distance;
 import model.Iris;
-import model.Pokemon;
 import utils.Observer;
 import utils.Subject;
  
  
-public class ScatterChartGen extends Application implements Observer{
+public class ScatterChartIris extends Application implements Observer{
 
 	DatasetIris dtI;
-	DataSet dt;
 	NumberAxis xAxis;
     NumberAxis yAxis;        
     ScatterChart<Number,Number> sc;
@@ -48,35 +45,17 @@ public class ScatterChartGen extends Application implements Observer{
         yAxis.setLabel("Petal Width");
         sc.setTitle("Iris Petals");
        
-        final Button addI = new Button("Add Iris");
-        final Button addP = new Button("Add Pokemon");
-        final Button addT = new Button("Add Titanic");
+        final Button add = new Button("Add Iris");
     	final Button remove = new Button("Remove Last");
         final VBox vbox = new VBox();
         final HBox hbox = new HBox();
           
-        addI.setOnAction(new EventHandler<ActionEvent>() {
+        add.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
             	Scanner scan= new Scanner(System.in);
             	System.out.println("Entrez le nom du fichier");
             	String name= scan.next();
             	dtI.loadFromFile(name);
-            }});
-        
-        addP.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-            	Scanner scan= new Scanner(System.in);
-            	System.out.println("Entrez le nom du fichier");
-            	String name= scan.next();
-            	dt.loadFromFiles(name,Pokemon.class);
-            }});
-        
-        addT.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-            	Scanner scan= new Scanner(System.in);
-            	System.out.println("Entrez le nom du fichier");
-            	String name= scan.next();
-            	dt.loadFromFiles(name,Pokemon.class);
             }});
         
         remove.setOnAction(new EventHandler<ActionEvent>() {
@@ -86,7 +65,7 @@ public class ScatterChartGen extends Application implements Observer{
             	}});
    
         hbox.setSpacing(10);
-        hbox.getChildren().addAll(addI,addP,addT, remove);
+        hbox.getChildren().addAll(add, remove);
         
         vbox.getChildren().addAll(sc, hbox);
         hbox.setPadding(new Insets(10, 10, 10, 50));
@@ -111,12 +90,9 @@ public class ScatterChartGen extends Application implements Observer{
 	public void update(Subject subj, Object data) {
 		ScatterChart.Series<Number, Number> series = new ScatterChart.Series<Number, Number>();
 		series.setName("Iris n°"+(sc.getData().size()+1));
-		System.out.println(series.getName());
 		for (Iris i : dtI.getSet()) {
         	series.getData().add(new ScatterChart.Data<Number, Number>(i.getPetalLength(), i.getPetalWidth()));
-        	System.out.println(i.toString());
         }
-		System.out.println(series.getData().size());
         sc.getData().add(series);
 	}
 }
