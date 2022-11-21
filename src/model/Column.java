@@ -14,7 +14,7 @@ public  class Column{
 	protected String Name;
 	protected String type;
 	protected IvalueNormalizer Normalizer;
-	
+	protected DataSet data;
 	protected boolean isNormalizable ;
 	
 	public boolean isNormalizable() {
@@ -23,14 +23,20 @@ public  class Column{
 	public String getName() {
 		return Name;
 	}
-	public Column(String name, String type) {
+	public Column(String name, String type,DataSet data) {
 		this.Name = name;
 		this.type=type;
 		setNormaliser(type);
+		this.data=data;
 		
 		
 	}
-
+	
+	public double[] amplitude(){
+		return null;
+		
+	}
+	
 	public void setNormaliser(String type) {
 			if(type.equals("int")||type.equals("double")) {
 				this.Normalizer=new Number_Normalizer();

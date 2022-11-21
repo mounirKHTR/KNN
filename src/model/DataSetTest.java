@@ -11,9 +11,9 @@ public class DataSetTest {
         DataSet pokemon = new DataSet();
         DataSet iris = new DataSet();
         DataSet titanic = new DataSet();
-        pokemon.lines=pokemon.loadFromfiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
-        iris.lines=iris.loadFromfiles("./src/data/iris.csv", Iris.class);
-        titanic.lines=titanic.loadFromfiles("./src/data/titanic.csv", Titanic.class);
+        pokemon.loadFromfiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
+        iris.loadFromfiles("./src/data/iris.csv", Iris.class);
+        titanic.loadFromfiles("./src/data/titanic.csv", Titanic.class);
 		Assert.assertEquals(100, pokemon.getNbLines());
         Assert.assertEquals(150, iris.getNbLines());
         Assert.assertEquals(891, titanic.getNbLines());
@@ -22,7 +22,7 @@ public class DataSetTest {
     @Test
     public void testPokemon() throws IOException {
         DataSet pokemon = new DataSet();
-        pokemon.lines = pokemon.loadFromfiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
+        pokemon.loadFromfiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
         Assert.assertTrue(pokemon.getValue(54, pokemon.Data.get(0)).equals("Milotic"));
         Assert.assertTrue(pokemon.getValue(67, pokemon.Data.get(1)).equals(85));
         Assert.assertTrue(pokemon.getValue(59, pokemon.Data.get(2)).equals(3840));
@@ -41,7 +41,7 @@ public class DataSetTest {
     @Test
     public  void testIris() throws IOException {
         DataSet iris = new DataSet();
-        iris.lines = iris.loadFromfiles("./src/data/iris.csv", Iris.class);
+        iris.loadFromfiles("./src/data/iris.csv", Iris.class);
         Assert.assertTrue(iris.getValue(69, iris.Data.get(0)).equals(5.6));
         Assert.assertTrue(iris.getValue(83, iris.Data.get(1)).equals(2.7));
         Assert.assertTrue(iris.getValue(149, iris.Data.get(2)).equals(5.1));
@@ -52,7 +52,7 @@ public class DataSetTest {
     @Test
     public void testTitanic() throws IOException {
         DataSet titanic = new DataSet();
-        titanic.lines = titanic.loadFromfiles("./src/data/titanic.csv", Titanic.class);
+        titanic.loadFromfiles("./src/data/titanic.csv", Titanic.class);
         Assert.assertTrue(titanic.getValue(810, titanic.Data.get(0)).equals(811));
         Assert.assertTrue(titanic.getValue(734, titanic.Data.get(1)).equals(0));
         Assert.assertTrue(titanic.getValue(268, titanic.Data.get(2)).equals(1));

@@ -1,7 +1,7 @@
 package model;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -36,15 +36,26 @@ public  class DataSet {
 			this.lines.add(points);
 		}
 	}
+	
+	public ArrayList<?> getColumnData(Column colx){
+		Object[]rslt;
+		Data.indexOf(colx);
+		for(IPoint ip:lines) {
+		
+		}
+		return null;
+		
+		
+	}
 
 	public void setLines(List<IPoint> lines) {this.lines = lines;}
 
-	public List<IPoint> loadFromfiles(String path, Class <? extends IPoint> classe) throws IllegalStateException, IOException{
+	public void loadFromfiles(String path, Class <? extends IPoint> classe) throws IllegalStateException, IOException{
 			Field [] attribut=classe.getFields();
 			for(Field a:attribut) {
-				Data.add(new Column(a.getName(),a.getType().toString()));
+				Data.add(new Column(a.getName(),a.getType().toString(),this));
 			}
-		return new CsvToBeanBuilder<IPoint>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
+		lines=new CsvToBeanBuilder<IPoint>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
 				.withType(classe).build().parse();
 
 	}
@@ -53,13 +64,13 @@ public  class DataSet {
 	}
 	public static void main(String[] args) throws IllegalStateException, IOException  {
 		DataSet pk=new DataSet();
-		pk.lines=pk.loadFromfiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
+		pk.loadFromfiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
 		System.out.println(""+pk.lines.toString()+pk.Data);
 		DataSet ir=new DataSet();
-		ir.lines=ir.loadFromfiles("./src/data/iris.csv", Iris.class);
+		ir.loadFromfiles("./src/data/iris.csv", Iris.class);
 		System.out.println(""+ir.getNbLines()+ir.Data);
 		DataSet ti=new DataSet();
-		ti.lines=ti.loadFromfiles("./src/data/titanic.csv", Titanic.class);
+		ti.loadFromfiles("./src/data/titanic.csv", Titanic.class);
 		System.out.println(""+ti.getNbLines()+ti.Data);
 		
 		NormalizerTypes tabnormal[]=NormalizerTypes.values();
