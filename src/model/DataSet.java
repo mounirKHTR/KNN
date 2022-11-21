@@ -9,11 +9,12 @@ import java.util.List;
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import Interface.IPoint;
+import utils.Subject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public  class DataSet {
+public  class DataSet extends Subject{
 	protected String name;
 	protected List<Column> data = new ArrayList<>();
 	protected List<IPoint> lines = new ArrayList<>();
@@ -39,35 +40,39 @@ public  class DataSet {
 		return data;
 	}
 
-	public void setLines(List<IPoint> lines) {this.lines = lines;}
+	public void setLines(List<IPoint> lines) {
+		notifyObservers(lines);
+		this.lines = lines;
+		}
 	
 	public List<IPoint> getLines() {
 		return lines;
 	}
 
-	public List<IPoint> loadFromFiles(String path, Class <? extends IPoint> classe){
+	public void loadFromFiles(String path, Class <? extends IPoint> classe){
+		data.clear();
 			Field [] attribut=classe.getFields();
 			for(Field a:attribut) {
 				data.add(new Column(a.getName(),a.getType().toString()));
 			}
 		try {
-			return new CsvToBeanBuilder<IPoint>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
+			lines = new CsvToBeanBuilder<IPoint>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
 					.withType(classe).build().parse();
+			notifyObservers();
 		} catch (IllegalStateException | IOException e) {
 			System.out.println("erreur de chargement du fichier");
-			return null;
 		}
 
 	}
 	public static void main(String[] args){
 		DataSet pk=new DataSet();
-		pk.lines=pk.loadFromFiles("./src/pokemon_suspect12.csv", Pokemon.class);
+		pk.loadFromFiles("pokemon_suspect12.csv", Pokemon.class);
 		System.out.println(""+pk.getNbLines()+pk.data);
 		DataSet ir=new DataSet();
-		ir.lines=ir.loadFromFiles("./src/iris.csv", Iris.class);
+		ir.loadFromFiles("iris.csv", Iris.class);
 		System.out.println(""+ir.getNbLines()+ir.data);
 		DataSet ti=new DataSet();
-		ti.lines=ti.loadFromFiles("./src/titanic.csv", Titanic.class);
+		ti.loadFromFiles("titanic.csv", Titanic.class);
 		System.out.println(""+ti.getNbLines()+ti.data);
 	}
 }
