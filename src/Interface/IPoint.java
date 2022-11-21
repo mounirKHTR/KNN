@@ -1,4 +1,5 @@
 package Interface;
+
 import model.Column;
 
 public abstract class IPoint {

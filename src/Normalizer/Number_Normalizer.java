@@ -5,10 +5,11 @@ public  class Number_Normalizer implements IvalueNormalizer{
 	double min;
 	double max;
 	
-	public Number_Normalizer(double min, double max) {
-		super();
-		this.min = min;
-		this.max = max;
+	
+	public Number_Normalizer() {
+		
+		this.min = 0;
+		this.max = 0;
 	}
 
 	@Override
