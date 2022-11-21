@@ -11,12 +11,28 @@ public class DataSetTest {
         DataSet pokemon = new DataSet();
         DataSet iris = new DataSet();
         DataSet titanic = new DataSet();
+
         pokemon.loadFromfiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
         iris.loadFromfiles("./src/data/iris.csv", Iris.class);
         titanic.loadFromfiles("./src/data/titanic.csv", Titanic.class);
-		Assert.assertEquals(100, pokemon.getNbLines());
+
+        Assert.assertEquals(100, pokemon.getNbLines());
         Assert.assertEquals(150, iris.getNbLines());
         Assert.assertEquals(891, titanic.getNbLines());
+
+
+        pokemon.setName("Pokemon");
+        Assert.assertEquals("Pokemon", pokemon.getTitle());
+
+
+        pokemon.addLine(iris.lines.get(0));
+        Assert.assertEquals(pokemon.lines.get(pokemon.lines.size()-1), iris.lines.get(0));
+
+        pokemon.addAllLine(titanic.lines);
+        Assert.assertEquals(pokemon.lines.get(pokemon.lines.size()-1), titanic.lines.get(titanic.lines.size()-1));
+
+        pokemon.setLines(iris.lines);
+        Assert.assertEquals(pokemon.lines, iris.lines);
     }
 
     @Test

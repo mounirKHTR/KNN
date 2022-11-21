@@ -37,22 +37,7 @@ public class Pokemon extends IPoint {
 	    
 	    public Pokemon() {
 	    }
-	    
-	    /**
-	     * @param name
-	     * @param attack
-	     * @param baseEggSteps
-	     * @param captureRate
-	     * @param defense
-	     * @param experienceGrowth
-	     * @param hp
-	     * @param spAttack
-	     * @param spDefense
-	     * @param type
-	     * @param type2
-	     * @param speed
-	     * @param isLegendary
-	     */
+
 	    /*public Pokemon (String name,int attack, int baseEggSteps,double captureRate,int defense,int experienceGrowth,
 	            int hp,int spAttack, int spDefense, String type, String type2, double speed, boolean isLegendary) {
 	        this.attack = attack;
@@ -109,7 +94,7 @@ public class Pokemon extends IPoint {
 	        return type;
 	    }
 
-	    public String     getType2() {
+	    public String getType2() {
 	        return type2;
 	    }
 

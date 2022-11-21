@@ -20,6 +20,9 @@ public  class DataSet {
 	protected List<Column> Data = new ArrayList<>();
 	protected List<IPoint> lines = new ArrayList<>();
 
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getTitle() {return this.name;}
 
@@ -32,20 +35,11 @@ public  class DataSet {
 	}
 
 	public void addAllLine(List<IPoint> elements) {
-		for(IPoint points: elements) {
-			this.lines.add(points);
-		}
+		this.lines.addAll(elements);
 	}
 	
 	public ArrayList<?> getColumnData(Column colx){
-		Object[]rslt;
-		Data.indexOf(colx);
-		for(IPoint ip:lines) {
-		
-		}
-		return null;
-		
-		
+		return null; //ne pas tester pour le moment
 	}
 
 	public void setLines(List<IPoint> lines) {this.lines = lines;}
