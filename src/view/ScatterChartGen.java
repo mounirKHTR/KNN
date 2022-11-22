@@ -89,7 +89,7 @@ public class ScatterChartGen extends Application implements Observer{
             	if (!sc.getData().isEmpty())
             		sc.getData().remove((int)(sc.getData().size()-1));
             	}});
-   
+        
         hbox.setSpacing(10);
         hbox.getChildren().addAll(addI,addP,addT,cbx,cby,remove);
         
@@ -109,11 +109,10 @@ public class ScatterChartGen extends Application implements Observer{
     
 	@Override
 	public void update(Subject subj) {
-		// TODO Auto-generated method stub
-		dt.getData().clear();
 		for (Column c : dt.getData()) {
     		if (c.isNormalizable()) {
     			cols.add(c);
+    			
     		}
     	}
 		ScatterChart.Series<Number, Number> series = new ScatterChart.Series<Number, Number>();
