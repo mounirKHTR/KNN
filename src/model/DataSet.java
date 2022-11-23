@@ -10,10 +10,6 @@ import java.util.List;
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import Interface.IPoint;
-import Interface.IvalueNormalizer.NormalizerTypes;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public  class DataSet {
 	protected String name;
@@ -37,10 +33,11 @@ public  class DataSet {
 	public void addAllLine(List<IPoint> elements) {
 		this.lines.addAll(elements);
 	}
-	
-	public ArrayList<?> getColumnData(Column colx){
+	/*
+	public List<?> getColumnData(Column colx){
 		return null; //ne pas tester pour le moment
 	}
+	 */
 
 	public void setLines(List<IPoint> lines) {this.lines = lines;}
 
@@ -53,10 +50,17 @@ public  class DataSet {
 				.withType(classe).build().parse();
 
 	}
+
+	public void clear() {
+		this.lines.clear(); this.Data.clear();
+	}
+
 	public Object getValue(int index, Column column) {
 		return this.lines.get(index).getValue(column);
 	}
-	public static void main(String[] args) throws IllegalStateException, IOException  {
+
+
+	/*public static void main(String[] args) throws IllegalStateException, IOException  {
 		DataSet pk=new DataSet();
 		pk.loadFromfiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
 		System.out.println(""+pk.lines.toString()+pk.Data);
@@ -71,8 +75,10 @@ public  class DataSet {
 		for(NormalizerTypes n:tabnormal) {
 			System.out.println(n.getNom());
 	}
+
+	 */
 		
-	}}
+}
 
 
 
