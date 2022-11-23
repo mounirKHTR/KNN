@@ -22,4 +22,5 @@ public abstract class IPoint {
 		}
 		return 0.0;
 		
+		
 	}}
