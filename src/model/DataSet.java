@@ -71,7 +71,7 @@ public  class DataSet {
 		ti.loadFromfiles("./src/data/titanic.csv", Titanic.class);
 		System.out.println(""+ti.getNbLines()+ti.Data);
 		
-		NormalizerTypes tabnormal[]=NormalizerTypes.values();
+		NormalizerTypes[] tabnormal =NormalizerTypes.values();
 		for(NormalizerTypes n:tabnormal) {
 			System.out.println(n.getNom());
 	}
