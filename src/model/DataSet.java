@@ -80,7 +80,9 @@ public  class DataSet {
 		DataSet ti=new DataSet();
 		ti.loadFromfiles("./src/data/titanic.csv", Titanic.class);
 		System.out.println(""+ti.getNbLines()+ti.Data);
+		System.out.println(ir.lines.get(8).getValue(ir.Data.get(0)));
 		System.out.println(ir.Data.get(0).getNormalizedValue(ir.lines.get(8)));
+		System.out.println(ir.Data.get(0).getDenormalizedValue(ir.lines.get(8)));
 		double[] ampli=ir.Data.get(2).amplitude();
 		System.out.println(""+ampli[0]+" "+ampli[1]);
 		System.out.println(ir.lines.get(8).getValue(ir.Data.get(1)).getClass().toString());

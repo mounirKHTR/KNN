@@ -76,6 +76,7 @@ public  class Column{
 		return null;
 	}
 	public Object getDenormalizedValue(IPoint point) {
+		if(point.getValue(this).equals(null))return null;
 		if(isNormalizable) return Normalizer.denormalize((double)getNormalizedValue(point));
 		return null;
 	}
