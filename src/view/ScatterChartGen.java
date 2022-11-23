@@ -2,6 +2,7 @@ package view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import java.util.Scanner;
 
@@ -36,6 +37,8 @@ public class ScatterChartGen extends Application implements Observer{
     NumberAxis yAxis;        
     ScatterChart<Number,Number> sc;
     List<Column> cols;
+    ChoiceBox cbx;
+    ChoiceBox cby;
     
     @Override 
     public void start(Stage stage) {
@@ -44,8 +47,8 @@ public class ScatterChartGen extends Application implements Observer{
     	dt = new DataSet();
     	dt.attach(this);
         stage.setTitle("Scatter Chart Sample");
-        xAxis = new NumberAxis(0, 5200, 520);
-        yAxis = new NumberAxis(0, 300, 30);        
+        xAxis = new NumberAxis(0, 5, 0.5);
+        yAxis = new NumberAxis(0, 7, 0.7);        
         sc = new ScatterChart<Number,Number>(xAxis,yAxis);
         xAxis.setLabel("Petal Length");                
         yAxis.setLabel("Petal Width");
@@ -54,11 +57,14 @@ public class ScatterChartGen extends Application implements Observer{
         final Button addI = new Button("Add Iris");
         final Button addP = new Button("Add Pokemon");
         final Button addT = new Button("Add Titanic");
+        final Button changeX = new Button("Change X");
+        final Button changeY = new Button("Change Y");
     	final Button remove = new Button("Remove Last");
         final VBox vbox = new VBox();
         final HBox hbox = new HBox();
-        ChoiceBox cbx = new ChoiceBox<String>();
-        ChoiceBox cby = new ChoiceBox<String>();
+        
+        cbx = new ChoiceBox<String>();
+        cby = new ChoiceBox<String>();
           
         addI.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
@@ -90,10 +96,12 @@ public class ScatterChartGen extends Application implements Observer{
             		sc.getData().remove((int)(sc.getData().size()-1));
             	}});
         
-        hbox.setSpacing(10);
-        hbox.getChildren().addAll(addI,addP,addT,cbx,cby,remove);
+       // cbx.setOnAction(e -> getChoice(cbx));
         
-        vbox.getChildren().addAll(sc, hbox);
+        hbox.setSpacing(10);
+        hbox.getChildren().addAll(addI,addP,addT,cby,remove);
+        
+        vbox.getChildren().addAll(sc,cbx,hbox);
         hbox.setPadding(new Insets(10, 10, 10, 50));
         
         Scene scene  = new Scene(vbox, 500, 400);
@@ -106,23 +114,48 @@ public class ScatterChartGen extends Application implements Observer{
         launch(args);
     }
     
+//    public  getChoice(ChoiceBox cb) {
+//    	
+//    }
+    
+    public void changeType() {
+    	cbx.getItems().clear();
+		cby.getItems().clear();
+		for (Column c : dt.getData()) {
+    		if (c.isNormalizable()) {
+    			cbx.getItems().add(c.getName());
+    			cbx.getItems().add(c.getName());
+    		}
+    	}
+		sc.getData().clear();
+		xAxis = new NumberAxis(dt.getData().get(1).getNormalizer().getMin(), dt.getData().get(1).getNormalizer().getMax(), 0.5);
+		xAxis.setLabel(dt.getData().get(1).getName());
+		yAxis = new NumberAxis(dt.getData().get(1).getNormalizer().getMin(), dt.getData().get(1).getNormalizer().getMax(), 0.5);
+		yAxis.setLabel(dt.getData().get(2).getName());
+
+		sc = new ScatterChart<Number,Number>(xAxis,yAxis);
+    }
+    
+    public void addData() {
+    	for (String g : dt.getLines().get(0).getAllGroup()) {
+			ScatterChart.Series<Number, Number> series = new ScatterChart.Series<Number, Number>();
+			series.setName(g);
+			for (IPoint i : dt.getLines()) {
+				if (Objects.equals(g, i.getGroup())) {
+					String valeur1 = ""+i.getValue(dt.getData().get(1));
+					String valeur2 = ""+i.getValue(dt.getData().get(2));
+		        	series.getData().add(new ScatterChart.Data<Number, Number>(Double.valueOf(valeur1),Double.valueOf(valeur2)));
+				}
+	        }
+	        sc.getData().add(series);
+		}
+    }
+    
     
 	@Override
 	public void update(Subject subj) {
-		for (Column c : dt.getData()) {
-    		if (c.isNormalizable()) {
-    			cols.add(c);
-    			
-    		}
-    	}
-		ScatterChart.Series<Number, Number> series = new ScatterChart.Series<Number, Number>();
-		series.setName("Groupe n°"+(sc.getData().size()+1));
-		for (IPoint i : dt.getLines()) {
-			String valeur1 = ""+i.getValue(dt.getData().get(2));
-			String valeur2 = ""+i.getValue(dt.getData().get(3));
-        	series.getData().add(new ScatterChart.Data<Number, Number>(Double.valueOf(valeur1),Double.valueOf(valeur2)));
-        }
-        sc.getData().add(series);
+		changeType();
+		addData();
 	}
 
 	@Override

@@ -53,7 +53,7 @@ public  class DataSet extends Subject{
 		data.clear();
 			Field [] attribut=classe.getFields();
 			for(Field a:attribut) {
-				data.add(new Column(a.getName(),a.getType().toString()));
+				data.add(new Column(a.getName(),a.getType().toString(),this));
 			}
 		try {
 			lines = new CsvToBeanBuilder<IPoint>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')

@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.opencsv.bean.CsvBindByName;
 
 import Interface.IPoint;
@@ -75,5 +78,19 @@ public class Iris extends IPoint{
 				", petalWidth=" + petalWidth +
 				", variety='" + variety + '\'' +
 				'}';
+	}
+
+	@Override
+	public String getGroup() {
+		return variety;
+	}
+
+	@Override
+	public List<String> getAllGroup() {
+		List<String> groups = new ArrayList<String>();
+		groups.add("Setosa");
+		groups.add("Virginica");
+		groups.add("Versicolor");
+		return groups;
 	}
 }

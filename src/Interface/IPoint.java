@@ -1,4 +1,6 @@
 package Interface;
+import java.util.List;
+
 import model.Column;
 
 public abstract class IPoint {
@@ -20,4 +22,8 @@ public abstract class IPoint {
 		}
 		return 0.0;
 		
-	}}
+	}
+
+	public abstract String getGroup();
+	public abstract List<String> getAllGroup();
+}

@@ -1,6 +1,9 @@
 package model;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.opencsv.bean.CsvBindByName;
 
 import Interface.IPoint;
@@ -33,24 +36,6 @@ public class Titanic extends IPoint{
 	   public String Cabin;
 	   @CsvBindByName(column = "Embarked")
 	   public char Embarked;
-	    
-	    /*public Titanic(int PassengerId, int Survived, int Pclass, 
-	            String Name, String Sex, int Age, int SibSp, int Parch, 
-	            String Ticket, double Fare, String Cabin, char Embarked) {
-	        
-	        this.PassengerId = PassengerId;
-	        this.Survived = Survived;
-	        this.Pclass = Pclass;
-	        this.Name = Name;
-	        this.Sex= Sex;
-	        this.Age = Age;
-	        this.SibSp = SibSp;
-	        this.Parch = Parch;
-	        this.Ticket = Ticket;
-	        this.Fare = Fare;
-	        this.Cabin = Cabin;
-	        this.Embarked = Embarked; 
-	    }*/
 
 		public int getPassengerId() {
 			return PassengerId;
@@ -164,5 +149,19 @@ public class Titanic extends IPoint{
 				", Cabin='" + Cabin + '\'' +
 				", Embarked=" + Embarked +
 				'}';
+	}
+
+	@Override
+	public String getGroup() {
+		return "Embarked";
+	}
+
+	@Override
+	public List<String> getAllGroup() {
+		List<String> groups = new ArrayList<String>();
+		groups.add("S");
+		groups.add("C");
+		groups.add("Q");
+		return groups;
 	}
 }

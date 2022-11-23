@@ -1,4 +1,5 @@
 package model;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.opencsv.bean.CsvBindByName;
@@ -118,6 +119,22 @@ public class Pokemon extends IPoint {
 	                + ", speed=" + speed + ", isLegendary=" + isLegendary + "]";
 
 	    }
+
+		@Override
+		public String getGroup() {
+			if (isLegendary()) {
+				return "Legendary";
+			}
+			return "Common";
+		}
+
+		@Override
+		public List<String> getAllGroup() {
+			List<String> groups = new ArrayList<String>();
+			groups.add("Legendary");
+			groups.add("Common");
+			return groups;
+		}
 	
 
 }
