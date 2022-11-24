@@ -124,7 +124,7 @@ public class ScatterChartGen extends Application implements Observer{
 		for (Column c : dt.getData()) {
     		if (c.isNormalizable()) {
     			cbx.getItems().add(c.getName());
-    			cbx.getItems().add(c.getName());
+    			cby.getItems().add(c.getName());
     		}
     	}
 		sc.getData().clear();
