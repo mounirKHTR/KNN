@@ -1,5 +1,4 @@
 package model;
-import java.util.List;
 
 import com.opencsv.bean.CsvBindByName;
 
@@ -11,21 +10,21 @@ public class Pokemon extends IPoint {
 	    @CsvBindByName(column = "name") 
 	    public String name;
 	    @CsvBindByName(column = "attack")
-	    public int attack;
+	    public double attack;
 	    @CsvBindByName(column = "base_egg_steps")
-	    public int baseEggSteps;
+	    public double baseEggSteps;
 	    @CsvBindByName(column = "capture_rate")
 	    public double captureRate;
 	    @CsvBindByName(column = "defense")
-	    public int defense;
+	    public double defense;
 	    @CsvBindByName(column = "experience_growth")
-	    public int experienceGrowth;
+	    public double experienceGrowth;
 	    @CsvBindByName(column = "hp")
-	    public int hp;
+	    public double hp;
 	    @CsvBindByName(column = "sp_attack")
-	    public int spAttack;
+	    public double spAttack;
 	    @CsvBindByName(column = "sp_defense") 
-	    public int spDefense;
+	    public double spDefense;
 	    @CsvBindByName(column = "type")
 	    public String type;
 	    @CsvBindByName(column = "type2")
@@ -34,12 +33,12 @@ public class Pokemon extends IPoint {
 	    public double speed;
 	    @CsvBindByName(column = "is_legendary")
 	    public boolean isLegendary;
-	    
+
 	    public Pokemon() {
 	    }
 
-	    /*public Pokemon (String name,int attack, int baseEggSteps,double captureRate,int defense,int experienceGrowth,
-	            int hp,int spAttack, int spDefense, String type, String type2, double speed, boolean isLegendary) {
+	    /*public Pokemon (String name,double attack, double baseEggSteps,double captureRate,double defense,double experienceGrowth,
+	            double hp,double spAttack, double spDefense, String type, String type2, double speed, boolean isLegendary) {
 	        this.attack = attack;
 	        this.baseEggSteps = baseEggSteps;
 	        this.captureRate = captureRate;
@@ -58,11 +57,11 @@ public class Pokemon extends IPoint {
 	        return name;
 	    }
 
-	    public int getAttack() {
+	    public double getAttack() {
 	        return attack;
 	    }
 
-	    public int getBaseEggSteps() {
+	    public double getBaseEggSteps() {
 	        return baseEggSteps;
 	    }
 	    
@@ -70,23 +69,23 @@ public class Pokemon extends IPoint {
 	        return captureRate;
 	    }
 
-	    public int getDefense() {
+	    public double getDefense() {
 	        return defense;
 	    }
 
-	    public int getExperienceGrowth() {
+	    public double getExperienceGrowth() {
 	        return experienceGrowth;
 	    }
 
-	    public int getHp() {
+	    public double getHp() {
 	        return hp;
 	    }
 
-	    public int getSpAttack() {
+	    public double getSpAttack() {
 	        return spAttack;
 	    }
 
-	    public int getSpDefense() {
+	    public double getSpDefense() {
 	        return spDefense;
 	    }
 
