@@ -69,7 +69,7 @@ public  class Column{
 				this.Normalizer=new Boolean_Normalizer();
 				this.isNormalizable=true;
 			}
-		
+
 	}
 	public Object getNormalizedValue(IPoint iPoint) {
 		if(isNormalizable) return Normalizer.normalize(iPoint.getValue(this));

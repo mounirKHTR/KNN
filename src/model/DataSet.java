@@ -87,12 +87,10 @@ public  class DataSet {
 
 	}
 
-		NormalizerTypes tabnormal[]=NormalizerTypes.values();
-		for(NormalizerTypes n:tabnormal) {
-			System.out.println(n.getNom());
+
 	}
 		
-	}}
+
 
 
 
