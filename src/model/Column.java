@@ -21,7 +21,7 @@ public  class Column{
 	public boolean isNormalizable() {
 		return isNormalizable;
 	}
-	public String getName() {
+	public String getNameColumn() {
 		return Name;
 	}
 	public Column(String name, String type,DataSet data) {
