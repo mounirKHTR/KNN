@@ -21,6 +21,9 @@ public  class DataSet {
 	protected List<Column> Data = new ArrayList<>();
 	protected List<IPoint> lines = new ArrayList<>();
 
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getTitle() {return this.name;}
 
@@ -33,9 +36,7 @@ public  class DataSet {
 	}
 
 	public void addAllLine(List<IPoint> elements) {
-		for(IPoint points: elements) {
-			this.lines.add(points);
-		}
+		this.lines.addAll(elements);
 	}
 	
 	public ArrayList<Object> getColumnData(Column colx){
@@ -51,29 +52,26 @@ public  class DataSet {
 	public void setLines(List<IPoint> lines) {this.lines = lines;}
 
 	public void loadFromfiles(String path, Class <? extends IPoint> classe) throws IllegalStateException, IOException{
-		lines=new CsvToBeanBuilder<IPoint>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
-				.withType(classe).build().parse();
-			
-		
-		Field [] attribut=classe.getFields();
+			Field [] attribut=classe.getFields();
 			for(Field a:attribut) {
 				Data.add(new Column(a.getName(),a.getType().toString(),this));
 			}
-		
+		lines=new CsvToBeanBuilder<IPoint>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
+				.withType(classe).build().parse();
 
 	}
+
+	public void clear() {
+		this.lines.clear(); this.Data.clear();
+	}
+
 	public Object getValue(int index, Column column) {
 		return this.lines.get(index).getValue(column);
 	}
-	/**
-	 * @param args
-	 * @throws IllegalStateException
-	 * @throws IOException
-	 */
 	public static void main(String[] args) throws IllegalStateException, IOException  {
 		DataSet pk=new DataSet();
 		pk.loadFromfiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
-		System.out.println(""+pk.getNbLines()+pk.Data);
+		System.out.println(""+pk.lines.toString()+pk.Data);
 		DataSet ir=new DataSet();
 		ir.loadFromfiles("./src/data/iris.csv", Iris.class);
 		System.out.println(""+ir.getNbLines()+ir.Data);
@@ -88,9 +86,13 @@ public  class DataSet {
 		System.out.println(ir.lines.get(8).getValue(ir.Data.get(1)).getClass().toString());
 
 	}
-		
-	}
 
+		NormalizerTypes tabnormal[]=NormalizerTypes.values();
+		for(NormalizerTypes n:tabnormal) {
+			System.out.println(n.getNom());
+	}
+		
+	}}
 
 
 

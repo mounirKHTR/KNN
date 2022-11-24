@@ -8,7 +8,7 @@ public abstract class IPoint {
 	public Object getValue(Column col) {
 		
 		try {
-			return getClass().getField(col.getName()).get(this);
+			return getClass().getField(col.getNameColumn()).get(this);
 		} catch (Exception e) {
 			e.printStackTrace();return null;
 		}
