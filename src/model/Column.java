@@ -37,15 +37,7 @@ public  class Column{
 		double max=0;
 		
 		for(IPoint ip:data.lines) {
-			if(ip.getValue(this).getClass().toString().equals("class java.lang.Integer")) {
-				String s=""+ip.getValue(this);
-				double t= Double.parseDouble(s);
-				if(t>max) {
-					max=t;
-				}if(t<min) {
-					min=t;
-				}
-			} else if (ip.getValue(this).getClass().toString().equals("class java.lang.Double"))  {
+
 					double value=(double) ip.getValue(this);
 					if(value>max) {
 						max=value;
@@ -54,10 +46,10 @@ public  class Column{
 						min=value;
 					}
 				}
-		
-	}
 		return new double[] {min,max};
 	}
+
+
 	
 	
 	public void setNormaliser(String type) {
