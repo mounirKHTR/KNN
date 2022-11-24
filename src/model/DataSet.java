@@ -41,7 +41,7 @@ public  class DataSet extends Subject{
 	}
 
 	public void setLines(List<IPoint> lines) {
-		notifyObservers(lines);
+		notifyObservers();
 		this.lines = lines;
 		}
 	

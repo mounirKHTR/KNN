@@ -21,7 +21,7 @@ public  class Column{
 	public boolean isNormalizable() {
 		return isNormalizable;
 	}
-	public String getName() {
+	public String getNameColumn() {
 		return Name;
 	}
 	public Column(String name, String type,DataSet data) {
@@ -37,15 +37,7 @@ public  class Column{
 		double max=0;
 		
 		for(IPoint ip:data.lines) {
-			if(ip.getValue(this).getClass().toString().equals("class java.lang.Integer")) {
-				String s=""+ip.getValue(this);
-				double t= Double.parseDouble(s);
-				if(t>max) {
-					max=t;
-				}if(t<min) {
-					min=t;
-				}
-			} else if (ip.getValue(this).getClass().toString().equals("class java.lang.Double"))  {
+
 					double value=(double) ip.getValue(this);
 					if(value>max) {
 						max=value;
@@ -54,12 +46,21 @@ public  class Column{
 						min=value;
 					}
 				}
-		
-	}
 		return new double[] {min,max};
+	}	
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return Name;
 	}
-	
-	
+	/**
+	 * @return the normalizer
+	 */
+	public IvalueNormalizer getNormalizer() {
+		return Normalizer;
+	}
 	public void setNormaliser(String type) {
 			if(type.equals("int")||type.equals("double")) {
 				this.Normalizer=new Number_Normalizer(this.amplitude());
@@ -69,13 +70,14 @@ public  class Column{
 				this.Normalizer=new Boolean_Normalizer();
 				this.isNormalizable=true;
 			}
-		
+
 	}
 	public Object getNormalizedValue(IPoint iPoint) {
 		if(isNormalizable) return Normalizer.normalize(iPoint.getValue(this));
 		return null;
 	}
 	public Object getDenormalizedValue(IPoint point) {
+		if(point.getValue(this).equals(null))return null;
 		if(isNormalizable) return Normalizer.denormalize((double)getNormalizedValue(point));
 		return null;
 	}
@@ -84,13 +86,5 @@ public  class Column{
 		return "Column [Name=" + Name + ", type=" + type + ", Normalizer=" + Normalizer 
 				+ ", isNormalizable=" + isNormalizable + "]";
 	}
-	/**
-	 * @return the normalizer
-	 */
-	public IvalueNormalizer getNormalizer() {
-		return Normalizer;
-	}
-	
-	
 	
 }
