@@ -15,4 +15,16 @@ public class Boolean_Normalizer implements IvalueNormalizer {
 		return false;
 	}
 
+	@Override
+	public double getMin() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getMax() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
