@@ -12,12 +12,12 @@ import Interface.IPoint;
 public class Titanic extends IPoint{
 	
 	    
-	    @CsvBindByName(column = "PassengerId")
-	   public int PassengerId;
+	@CsvBindByName(column = "PassengerId")
+	   public double PassengerId;
 	    @CsvBindByName(column = "Survived")
-	   public int Survived;
+	   public double Survived;
 	    @CsvBindByName(column = "Pclass")
-	   public int Pclass;
+	   public double Pclass;
 	   @CsvBindByName(column = "Name")
 	   public String Name;
 	   @CsvBindByName(column = "Sex")
@@ -25,9 +25,9 @@ public class Titanic extends IPoint{
 	   @CsvBindByName(column = "Age")
 	   public double Age;
 	   @CsvBindByName(column = "SibSp")
-	   public int SibSp;
+	   public double SibSp;
 	   @CsvBindByName(column = "Parch")
-	   public int Parch;
+	   public double Parch;
 	   @CsvBindByName(column = "Ticket")
 	   public String Ticket;
 	   @CsvBindByName(column = "Fare")
@@ -36,8 +36,26 @@ public class Titanic extends IPoint{
 	   public String Cabin;
 	   @CsvBindByName(column = "Embarked")
 	   public char Embarked;
+	    
+	    /*public Titanic(int PassengerId, int Survived, int Pclass, 
+	            String Name, String Sex, int Age, int SibSp, int Parch, 
+	            String Ticket, double Fare, String Cabin, char Embarked) {
+	        
+	        this.PassengerId = PassengerId;
+	        this.Survived = Survived;
+	        this.Pclass = Pclass;
+	        this.Name = Name;
+	        this.Sex= Sex;
+	        this.Age = Age;
+	        this.SibSp = SibSp;
+	        this.Parch = Parch;
+	        this.Ticket = Ticket;
+	        this.Fare = Fare;
+	        this.Cabin = Cabin;
+	        this.Embarked = Embarked; 
+	    }*/
 
-		public int getPassengerId() {
+		public double getPassengerId() {
 			return PassengerId;
 		}
 
@@ -45,19 +63,19 @@ public class Titanic extends IPoint{
 			PassengerId = passengerId;
 		}
 
-		public int getSurvived() {
+		public double getSurvived() {
 			return Survived;
 		}
 
-		public void setSurvived(int survived) {
+		public void setSurvived(double survived) {
 			Survived = survived;
 		}
 
-		public int getPclass() {
+		public double getPclass() {
 			return Pclass;
 		}
 
-		public void setPclass(int pclass) {
+		public void setPclass(double pclass) {
 			Pclass = pclass;
 		}
 
@@ -81,23 +99,23 @@ public class Titanic extends IPoint{
 			return Age;
 		}
 
-		public void setAge(int age) {
+		public void setAge(double age) {
 			Age = age;
 		}
 
-		public int getSibSp() {
+		public double getSibSp() {
 			return SibSp;
 		}
 
-		public void setSibSp(int sibSp) {
+		public void setSibSp(double sibSp) {
 			SibSp = sibSp;
 		}
 
-		public int getParch() {
+		public double getParch() {
 			return Parch;
 		}
 
-		public void setParch(int parch) {
+		public void setParch(double parch) {
 			Parch = parch;
 		}
 
@@ -133,6 +151,7 @@ public class Titanic extends IPoint{
 			Embarked = embarked;
 		}
 
+
 	@Override
 	public String toString() {
 		return "Titanic{" +
@@ -163,5 +182,21 @@ public class Titanic extends IPoint{
 		groups.add("C");
 		groups.add("Q");
 		return groups;
+	}
+
+	@Override
+	public IPoint add(List<String> fields) {
+		PassengerId = Double.parseDouble(fields.get(0));
+		Survived = Double.parseDouble(fields.get(1));
+		Pclass = Double.parseDouble(fields.get(2));
+		Name = fields.get(3);
+		Sex = fields.get(4);
+		Age = Double.parseDouble(fields.get(5));
+		SibSp = Double.parseDouble(fields.get(6));
+		Parch = Double.parseDouble(fields.get(7));
+		Ticket = fields.get(8);
+		Fare = Double.parseDouble(fields.get(9));
+		Cabin = fields.get(10);		
+		return this;
 	}
 }

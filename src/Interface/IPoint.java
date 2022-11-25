@@ -26,4 +26,5 @@ public abstract class IPoint {
 
 	public abstract String getGroup();
 	public abstract List<String> getAllGroup();
+	public abstract IPoint add(List<String> fields);
 }

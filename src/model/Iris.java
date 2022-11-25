@@ -93,4 +93,13 @@ public class Iris extends IPoint{
 		groups.add("Versicolor");
 		return groups;
 	}
+
+	@Override
+	public IPoint add(List<String> fields) {
+		sepalLength = Double.parseDouble(fields.get(0));
+		sepalWidth = Double.parseDouble(fields.get(1));
+		petalLength = Double.parseDouble(fields.get(2));
+		petalWidth = Double.parseDouble(fields.get(3));
+		return this;
+	}
 }

@@ -75,4 +75,8 @@ public  class DataSet extends Subject{
 		ti.loadFromFiles("titanic.csv", Titanic.class);
 		System.out.println(""+ti.getNbLines()+ti.data);
 	}
+	
+	public void addPoint(List<String> fields, IPoint point) {
+		lines.add(point.add(fields));
+	}
 }
