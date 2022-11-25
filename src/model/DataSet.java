@@ -20,7 +20,7 @@ public  class DataSet extends Subject {
 	protected String name;
 	protected List<Column> data = new ArrayList<>();
 	protected List<IPoint> lines = new ArrayList<>();
-
+	protected Class<?> category;
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -59,12 +59,16 @@ public  class DataSet extends Subject {
         notifyObservers();
         this.lines = lines;
     }
-    public void loadFromFiles(String path, Class <? extends IPoint> classe){
+	public Class<?> getCategory() {
+		return category;
+	}
+
+	public void loadFromFiles(String path, Class <? extends IPoint> classe){
         data.clear();
 		try {
 			lines = new CsvToBeanBuilder<IPoint>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
 					.withType(classe).build().parse();
-			
+
 		} catch (IllegalStateException | IOException e) {
 			System.out.println("erreur de chargement du fichier");
 		}
@@ -72,9 +76,12 @@ public  class DataSet extends Subject {
         for(Field a:attribut) {
             data.add(new Column(a.getName(),a.getType().toString(),this));
         }
-        notifyObservers();
+		this.category=classe;
+		notifyObservers();
 
-    }
+        }
+
+
 	public void clear() {
 		this.lines.clear(); this.data.clear();
 	}
@@ -87,8 +94,8 @@ public  class DataSet extends Subject {
 	}
 	public static void main(String[] args) throws IllegalStateException, IOException  {
 		DataSet pk=new DataSet();
-		pk.loadFromFiles("pokemon_suspect12.csv", Pokemon.class);
-		System.out.println(""+pk.lines.toString()+pk.data);
+		pk.loadFromFiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
+		System.out.println(""+pk.getLines()+pk.data);
 		DataSet ir=new DataSet();
 		ir.loadFromFiles("./src/data/iris.csv", Iris.class);
 		System.out.println(""+ir.getNbLines()+ir.data);
