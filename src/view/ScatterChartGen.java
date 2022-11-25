@@ -1,5 +1,7 @@
 package view;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -16,8 +18,15 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Path;
+import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Column;
 import model.DataSet;
@@ -43,48 +52,23 @@ public class ScatterChartGen extends Application implements Observer{
     public void start(Stage stage) {
     	dt = new DataSet();
     	dt.attach(this);
-        stage.setTitle("Scatter Chart Sample");
+        stage.setTitle("Classification");
         xAxis = new NumberAxis(0, 1, 0.1);
         yAxis = new NumberAxis(0, 1, 0.1);        
         sc = new ScatterChart<Number,Number>(xAxis,yAxis);
-        xAxis.setLabel("Petal Length");                
-        yAxis.setLabel("Petal Width");
-        sc.setTitle("Iris Petals");
+        xAxis.setLabel("Attribut X");                
+        yAxis.setLabel("Attribut Y");
+        sc.setTitle("Aucun type chargé");
        
-        final Button addI = new Button("Add Iris");
-        final Button addP = new Button("Add Pokemon");
-        final Button addT = new Button("Add Titanic");
         final Button changeAxis = new Button("Change Axis");
     	final Button remove = new Button("Remove Last");
+    	final Button btn = new Button("Load File");
         final VBox vbox = new VBox();
         final HBox hbox = new HBox();
         
         cbx = new ChoiceBox<String>();
         cby = new ChoiceBox<String>();
           
-        addI.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-            	Scanner scan= new Scanner(System.in);
-            	System.out.println("Entrez le nom du fichier");
-            	String name= scan.next();
-            	dt.loadFromFiles(name,Iris.class);
-            }});
-        
-        addP.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-            	Scanner scan= new Scanner(System.in);
-            	System.out.println("Entrez le nom du fichier");
-            	String name= scan.next();
-            	dt.loadFromFiles(name,Pokemon.class);
-            }});
-        
-        addT.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-            	Scanner scan= new Scanner(System.in);
-            	System.out.println("Entrez le nom du fichier");
-            	String name= scan.next();
-            	dt.loadFromFiles(name,Titanic.class);
-            }});
         
         remove.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
@@ -92,10 +76,53 @@ public class ScatterChartGen extends Application implements Observer{
             		sc.getData().remove((int)(sc.getData().size()-1));
             	}});
         
+        
+        btn.setOnAction(
+            new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {                	
+                	FileChooser fileChooser = new FileChooser();
+                	fileChooser.setTitle("Open Resource File");
+                	File file = fileChooser.showOpenDialog(stage);
+                	String path = file.getAbsolutePath();
+                	
+                	final Stage dialog = new Stage();
+                    dialog.initModality(Modality.APPLICATION_MODAL);
+                    dialog.initOwner(stage);
+                	final ToggleGroup group = new ToggleGroup();
+                	RadioButton rb1 = new RadioButton("Iris");
+                	rb1.setToggleGroup(group);
+                	rb1.setSelected(true);
+                	RadioButton rb2 = new RadioButton("Pokemon");
+                	rb2.setToggleGroup(group);                	 
+                	RadioButton rb3 = new RadioButton("Titanic");
+                	rb3.setToggleGroup(group);
+                	
+                	 Button load = new Button();
+                     load.setText("Load");
+                     load.setOnAction(e -> {
+                        if (rb1.isSelected()) {
+                        	dt.loadFromFiles(path,Iris.class);
+                        } else if (rb2.isSelected()) {
+                        	dt.loadFromFiles(path,Pokemon.class);
+                        } else if (rb3.isSelected()) {
+                        	dt.loadFromFiles(path,Titanic.class);
+                        }
+                        dialog.close();
+                     });
+                    
+                    VBox dialogVbox = new VBox(20);
+                    dialogVbox.getChildren().addAll(rb1,rb2,rb3,load);
+                    Scene dialogScene = new Scene(dialogVbox, 300, 200);
+                    dialog.setScene(dialogScene);
+                    dialog.show();
+                }
+             });
+        
         changeAxis.setOnAction(e -> getChoice());
         
         hbox.setSpacing(10);
-        hbox.getChildren().addAll(changeAxis,cby,addI,addP,addT,remove);
+        hbox.getChildren().addAll(changeAxis,cby,remove,btn);
         
         vbox.getChildren().addAll(sc,cbx,hbox);
         hbox.setPadding(new Insets(10, 10, 10, 50));
@@ -131,6 +158,7 @@ public class ScatterChartGen extends Application implements Observer{
     public void changeType() {
     	cbx.getItems().clear();
 		cby.getItems().clear();
+		sc.setTitle(dt.getLines().get(0).getClass().getName());
 		for (Column c : dt.getData()) {
     		if (c.isNormalizable()) {
     			cbx.getItems().add(c.getName());
