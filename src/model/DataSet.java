@@ -64,7 +64,7 @@ public  class DataSet extends Subject {
 		try {
 			lines = new CsvToBeanBuilder<IPoint>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
 					.withType(classe).build().parse();
-			notifyObservers();
+			
 		} catch (IllegalStateException | IOException e) {
 			System.out.println("erreur de chargement du fichier");
 		}
@@ -72,6 +72,7 @@ public  class DataSet extends Subject {
         for(Field a:attribut) {
             data.add(new Column(a.getName(),a.getType().toString(),this));
         }
+        notifyObservers();
 
     }
 	public void clear() {
