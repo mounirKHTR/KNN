@@ -92,8 +92,8 @@ public  class DataSet extends Subject {
 	}
 	public static void main(String[] args) throws IllegalStateException, IOException  {
 		DataSet pk=new DataSet();
-		pk.loadFromFiles("pokemon_suspect12.csv", Pokemon.class);
-		System.out.println(""+pk.lines.toString()+pk.data);
+		pk.loadFromFiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
+		System.out.println(""+pk.getLines()+pk.data);
 		DataSet ir=new DataSet();
 		ir.loadFromFiles("./src/data/iris.csv", Iris.class);
 		System.out.println(""+ir.getNbLines()+ir.data);
