@@ -45,8 +45,8 @@ public class ScatterChartGen extends Application implements Observer{
     NumberAxis yAxis;        
     ScatterChart<Number,Number> sc;
     List<Column> cols;
-    ChoiceBox cbx;
-    ChoiceBox cby;
+    ChoiceBox<String> cbx;
+    ChoiceBox<String> cby;
     
     @Override 
     public void start(Stage stage) {
