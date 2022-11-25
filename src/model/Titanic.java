@@ -140,7 +140,7 @@ public class Titanic extends IPoint{
 
 	@Override
 	public String getGroup() {
-		return "Embarked";
+		return ""+this.Embarked;
 	}
 
 	@Override
