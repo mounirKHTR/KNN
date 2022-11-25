@@ -47,9 +47,10 @@ public class ScatterChartGen extends Application implements Observer{
     List<Column> cols;
     ChoiceBox<String> cbx;
     ChoiceBox<String> cby;
-    
+    Stage stage;
     @Override 
     public void start(Stage stage) {
+    	this.stage = stage;
     	dt = new DataSet();
     	dt.attach(this);
         stage.setTitle("Classification");
@@ -59,70 +60,28 @@ public class ScatterChartGen extends Application implements Observer{
         xAxis.setLabel("Attribut X");                
         yAxis.setLabel("Attribut Y");
         sc.setTitle("Aucun type chargé");
+        cbx = new ChoiceBox<String>();
+        cby = new ChoiceBox<String>();
        
         final Button changeAxis = new Button("Change Axis");
     	final Button remove = new Button("Remove Last");
     	final Button btn = new Button("Load File");
+    	final Button add = new Button("Add Point");
         final VBox vbox = new VBox();
         final HBox hbox = new HBox();
-        
-        cbx = new ChoiceBox<String>();
-        cby = new ChoiceBox<String>();
-          
-        
+                         
         remove.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
             	if (!sc.getData().isEmpty())
             		sc.getData().remove((int)(sc.getData().size()-1));
             	}});
-        
-        
-        btn.setOnAction(
-            new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {                	
-                	FileChooser fileChooser = new FileChooser();
-                	fileChooser.setTitle("Open Resource File");
-                	File file = fileChooser.showOpenDialog(stage);
-                	String path = file.getAbsolutePath();
-                	
-                	final Stage dialog = new Stage();
-                    dialog.initModality(Modality.APPLICATION_MODAL);
-                    dialog.initOwner(stage);
-                	final ToggleGroup group = new ToggleGroup();
-                	RadioButton rb1 = new RadioButton("Iris");
-                	rb1.setToggleGroup(group);
-                	rb1.setSelected(true);
-                	RadioButton rb2 = new RadioButton("Pokemon");
-                	rb2.setToggleGroup(group);                	 
-                	RadioButton rb3 = new RadioButton("Titanic");
-                	rb3.setToggleGroup(group);
-                	
-                	 Button load = new Button();
-                     load.setText("Load");
-                     load.setOnAction(e -> {
-                        if (rb1.isSelected()) {
-                        	dt.loadFromFiles(path,Iris.class);
-                        } else if (rb2.isSelected()) {
-                        	dt.loadFromFiles(path,Pokemon.class);
-                        } else if (rb3.isSelected()) {
-                        	dt.loadFromFiles(path,Titanic.class);
-                        }
-                        dialog.close();
-                     });
-                    
-                    VBox dialogVbox = new VBox(20);
-                    dialogVbox.getChildren().addAll(rb1,rb2,rb3,load);
-                    Scene dialogScene = new Scene(dialogVbox, 300, 200);
-                    dialog.setScene(dialogScene);
-                    dialog.show();
-                }
-             });
+                
+        btn.setOnAction(e -> loadFile());
         
         changeAxis.setOnAction(e -> getChoice());
         
         hbox.setSpacing(10);
-        hbox.getChildren().addAll(changeAxis,cby,remove,btn);
+        hbox.getChildren().addAll(changeAxis,cby,btn,add,remove);
         
         vbox.getChildren().addAll(sc,cbx,hbox);
         hbox.setPadding(new Insets(10, 10, 10, 50));
@@ -131,6 +90,44 @@ public class ScatterChartGen extends Application implements Observer{
         
         stage.setScene(scene);
         stage.show();
+    }
+    
+    public void loadFile() {
+    	FileChooser fileChooser = new FileChooser();
+    	fileChooser.setTitle("Open Resource File");
+    	File file = fileChooser.showOpenDialog(stage);
+    	String path = file.getAbsolutePath();
+    	
+    	final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(stage);
+    	final ToggleGroup group = new ToggleGroup();
+    	RadioButton rb1 = new RadioButton("Iris");
+    	rb1.setToggleGroup(group);
+    	rb1.setSelected(true);
+    	RadioButton rb2 = new RadioButton("Pokemon");
+    	rb2.setToggleGroup(group);                	 
+    	RadioButton rb3 = new RadioButton("Titanic");
+    	rb3.setToggleGroup(group);
+    	
+    	 Button load = new Button();
+         load.setText("Load");
+         load.setOnAction(e -> {
+            if (rb1.isSelected()) {
+            	dt.loadFromFiles(path,Iris.class);
+            } else if (rb2.isSelected()) {
+            	dt.loadFromFiles(path,Pokemon.class);
+            } else if (rb3.isSelected()) {
+            	dt.loadFromFiles(path,Titanic.class);
+            }
+            dialog.close();
+         });
+        
+        VBox dialogVbox = new VBox(20);
+        dialogVbox.getChildren().addAll(rb1,rb2,rb3,load);
+        Scene dialogScene = new Scene(dialogVbox, 300, 200);
+        dialog.setScene(dialogScene);
+        dialog.show();
     }
  
     public static void main(String[] args) {
