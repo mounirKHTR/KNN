@@ -66,6 +66,9 @@ public  class Column{
 			if(type.equals("boolean")) {
 				this.Normalizer=new Boolean_Normalizer();
 				this.isNormalizable=true;
+			}else if (type.equals("class java.lang.String")){
+				this.Normalizer=new Enum_Normalizer(this);
+				this.isNormalizable=true;
 			}
 
 	}

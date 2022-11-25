@@ -15,27 +15,27 @@ public class Titanic extends IPoint{
 	    @CsvBindByName(column = "PassengerId")
 	   public double PassengerId;
 	    @CsvBindByName(column = "Survived")
-	    double Survived;
+	    public double Survived;
 	    @CsvBindByName(column = "Pclass")
-	    double Pclass;
+	    public double Pclass;
 	    @CsvBindByName(column = "Name")
-	    String Name;
+	    public String Name;
 	    @CsvBindByName(column = "Sex")
-	    String Sex;
+	    public String Sex;
 	    @CsvBindByName(column = "Age")
-	    double Age;
+	    public double Age;
 	    @CsvBindByName(column = "SibSp")
-	    double SibSp;
+	    public double SibSp;
 	    @CsvBindByName(column = "Parch")
-	    double Parch;
+	    public double Parch;
 	    @CsvBindByName(column = "Ticket")
-	    String Ticket;
+	    public String Ticket;
 	    @CsvBindByName(column = "Fare")
-	    double Fare;
+	    public double Fare;
 	    @CsvBindByName(column = "Cabin")
-	    String Cabin;
+	    public String Cabin;
 	    @CsvBindByName(column = "Embarked")
-	    char Embarked;
+	    public String Embarked;
 	    
 	    /*public Titanic(int PassengerId, int Survived, int Pclass, 
 	            String Name, String Sex, int Age, int SibSp, int Parch, 
@@ -111,11 +111,11 @@ public class Titanic extends IPoint{
 			Cabin = cabin;
 		}
 
-		public char getEmbarked() {
+		public String getEmbarked() {
 			return Embarked;
 		}
 
-		public void setEmbarked(char embarked) {
+		public void setEmbarked(String embarked) {
 			Embarked = embarked;
 		}
 
