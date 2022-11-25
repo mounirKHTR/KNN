@@ -1,6 +1,9 @@
 package model;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.opencsv.bean.CsvBindByName;
 
 import Interface.IPoint;
@@ -12,19 +15,19 @@ public class Titanic extends IPoint{
 	    @CsvBindByName(column = "PassengerId")
 	   public double PassengerId;
 	    @CsvBindByName(column = "Survived")
-	    int Survived;
+	    double Survived;
 	    @CsvBindByName(column = "Pclass")
-	    int Pclass;
+	    double Pclass;
 	    @CsvBindByName(column = "Name")
 	    String Name;
 	    @CsvBindByName(column = "Sex")
 	    String Sex;
 	    @CsvBindByName(column = "Age")
-	    int Age;
+	    double Age;
 	    @CsvBindByName(column = "SibSp")
-	    int SibSp;
+	    double SibSp;
 	    @CsvBindByName(column = "Parch")
-	    int Parch;
+	    double Parch;
 	    @CsvBindByName(column = "Ticket")
 	    String Ticket;
 	    @CsvBindByName(column = "Fare")
@@ -34,7 +37,7 @@ public class Titanic extends IPoint{
 	    @CsvBindByName(column = "Embarked")
 	    char Embarked;
 	    
-	    public Titanic(int PassengerId, int Survived, int Pclass, 
+	    /*public Titanic(int PassengerId, int Survived, int Pclass, 
 	            String Name, String Sex, int Age, int SibSp, int Parch, 
 	            String Ticket, double Fare, String Cabin, char Embarked) {
 	        

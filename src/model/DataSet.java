@@ -45,10 +45,13 @@ public  class DataSet extends Subject {
 		rslt.add(ip.getValue(colx));
 		}
 		return rslt;
-
-
 	}
-    public List<IPoint> getLines() {
+	
+	public List<Column> getData() {
+		return data;
+	}
+
+	public List<IPoint> getLines() {
         return lines;
     }
 
@@ -69,6 +72,7 @@ public  class DataSet extends Subject {
         } catch (IllegalStateException | IOException e) {
             System.out.println("erreur de chargement du fichier");
         }
+    }
 	public void clear() {
 		this.lines.clear(); this.data.clear();
 	}

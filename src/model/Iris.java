@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.opencsv.bean.CsvBindByName;
 
 import Interface.IPoint;
@@ -17,7 +20,7 @@ public class Iris extends IPoint{
     @CsvBindByName(column = "variety")
     private String variety;
 	
-    public Iris(double sepalLength, double sepalWidth, double petalLength, double petalWidth, String variety) {
+    /*public Iris(double sepalLength, double sepalWidth, double petalLength, double petalWidth, String variety) {
 		super();
 		this.sepalLength = sepalLength;
 		this.sepalWidth = sepalWidth;
@@ -100,22 +103,4 @@ public class Iris extends IPoint{
 		this.petalWidth = petalWidth;
 	}
 
-	public String getVariety() {
-		return variety;
-	}
-
-	public void setVariety(String variety) {
-		this.variety = variety;
-	}
-
-	@Override
-	public String toString() {
-		return "Iris{" +
-				"sepalLength=" + sepalLength +
-				", sepalWidth=" + sepalWidth +
-				", petalLength=" + petalLength +
-				", petalWidth=" + petalWidth +
-				", variety='" + variety + '\'' +
-				'}';
-	}
 }
