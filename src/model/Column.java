@@ -29,8 +29,8 @@ public  class Column{
 	}
 
 	public double[] amplitude() {
-		double min =1000000;
-		double max=0;
+		double min =1000000.0;
+		double max=0.0;
 
 		for(IPoint ip:data.lines) {
 
