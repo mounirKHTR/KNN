@@ -61,17 +61,18 @@ public  class DataSet extends Subject {
     }
     public void loadFromFiles(String path, Class <? extends IPoint> classe){
         data.clear();
+		try {
+			lines = new CsvToBeanBuilder<IPoint>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
+					.withType(classe).build().parse();
+			notifyObservers();
+		} catch (IllegalStateException | IOException e) {
+			System.out.println("erreur de chargement du fichier");
+		}
         Field[] attribut=classe.getFields();
         for(Field a:attribut) {
             data.add(new Column(a.getName(),a.getType().toString(),this));
         }
-        try {
-            lines = new CsvToBeanBuilder<IPoint>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
-                    .withType(classe).build().parse();
-            notifyObservers();
-        } catch (IllegalStateException | IOException e) {
-            System.out.println("erreur de chargement du fichier");
-        }
+
     }
 	public void clear() {
 		this.lines.clear(); this.data.clear();
