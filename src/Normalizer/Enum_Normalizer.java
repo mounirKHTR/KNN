@@ -6,14 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import Interface.IvalueNormalizer;
+import model.Column;
 
 public class Enum_Normalizer implements IvalueNormalizer {
 
-    private Field[] fields;
-    private Map<String, Double> map;
+    protected List<Object> brut=new ArrayList<>();
+    protected Map<String, Double> map;
 
-    public Enum_Normalizer(Class<?> type) {
-        this.fields = type.getFields();
+
+    public Enum_Normalizer(Column colx) {
+        brut=colx.getALLDataCol();
         this.map = new HashMap<String, Double>();
         this.getNormalizedMap();
     }
@@ -23,9 +25,9 @@ public class Enum_Normalizer implements IvalueNormalizer {
     }
 
     public void getNormalizedMap() {
-        for (int i = 0; i< this.fields.length; i++) {
-            if(this.map.containsKey(this.fields[i].getName())) i=i;
-            else this.map.put(this.fields[i].getName(), (double) i / (double) (this.fields.length-1)); // exmple 1 / 3 = 0.33
+        for (int i = 0; i< this.brut.size(); i++) {
+            if(this.map.containsKey((String) this.brut.get(i))) i=i;
+            else this.map.put((String)this.brut.get(i), (double) i / (double) (this.brut.size()-1)); // exmple 1 / 3 = 0.33
         }
     }
 
@@ -39,7 +41,7 @@ public class Enum_Normalizer implements IvalueNormalizer {
 
     @Override
     public Object denormalize(double value) {
-        return this.fields[(int) (value * (double) (this.fields.length-1))];  //on veut recup l'indice (exemple -> 0.33 * 3 = 1)
+        return this.brut.get((int) (value *  (this.brut.size()-1)));  //on veut recup l'indice (exemple -> 0.33 * 3 = 1)
     }
 
     @Override

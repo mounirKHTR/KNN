@@ -6,6 +6,7 @@ import Interface.IPoint;
 import Interface.IvalueNormalizer;
 import Interface.IvalueNormalizer.NormalizerTypes;
 import Normalizer.Boolean_Normalizer;
+import Normalizer.Enum_Normalizer;
 import Normalizer.Number_Normalizer;
 
 
@@ -65,6 +66,9 @@ public  class Column{
 			if(type.equals("boolean")) {
 				this.Normalizer=new Boolean_Normalizer();
 				this.isNormalizable=true;
+			}else{
+				this.Normalizer=new Enum_Normalizer(this);
+				this.isNormalizable=true;
 			}
 
 	}
@@ -76,6 +80,14 @@ public  class Column{
 		if(point.getValue(this).equals(null))return null;
 		if(isNormalizable) return Normalizer.denormalize((double)getNormalizedValue(point));
 		return null;
+	}
+	public List<Object>getALLDataCol(){
+		List<Object>rslt=new ArrayList<>();
+		for(IPoint ip: data.lines){
+			rslt.add(ip.getValue(this));
+
+		}
+		return rslt;
 	}
 	@Override
 	public String toString() {

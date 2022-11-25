@@ -20,7 +20,7 @@ public  class DataSet extends Subject {
 	protected String name;
 	protected List<Column> data = new ArrayList<>();
 	protected List<IPoint> lines = new ArrayList<>();
-
+	protected Class<?> category;
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -59,7 +59,12 @@ public  class DataSet extends Subject {
         notifyObservers();
         this.lines = lines;
     }
-    public void loadFromFiles(String path, Class <? extends IPoint> classe){
+
+	public Class<?> getCategory() {
+		return category;
+	}
+
+	public void loadFromFiles(String path, Class <? extends IPoint> classe){
         data.clear();
 		try {
 			lines = new CsvToBeanBuilder<IPoint>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
@@ -71,8 +76,9 @@ public  class DataSet extends Subject {
         Field[] attribut=classe.getFields();
         for(Field a:attribut) {
             data.add(new Column(a.getName(),a.getType().toString(),this));
-        }
 
+        }
+	this.category=classe;
     }
 	public void clear() {
 		this.lines.clear(); this.data.clear();
