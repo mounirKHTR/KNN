@@ -1,7 +1,9 @@
 package Normalizer;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import Interface.IvalueNormalizer;
 
@@ -22,7 +24,8 @@ public class Enum_Normalizer implements IvalueNormalizer {
 
     public void getNormalizedMap() {
         for (int i = 0; i< this.fields.length; i++) {
-            this.map.put(this.fields[i].getName(), (double) i / (double) (this.fields.length-1)); // exmple 1 / 3 = 0.33
+            if(this.map.containsKey(this.fields[i].getName())) i=i;
+            else this.map.put(this.fields[i].getName(), (double) i / (double) (this.fields.length-1)); // exmple 1 / 3 = 0.33
         }
     }
 
