@@ -1,8 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.opencsv.bean.CsvBindByName;
 
 import Interface.IPoint;
@@ -10,17 +7,17 @@ import Interface.IPoint;
 public class Iris extends IPoint{
 	
 	@CsvBindByName(column = "sepal.length")
-    public double sepalLength;
+    private double sepalLength;
     @CsvBindByName(column = "sepal.width")
-    public double sepalWidth;
+    private double sepalWidth;
     @CsvBindByName(column = "petal.length")
-    public double petalLength;
+    private double petalLength;
     @CsvBindByName(column = "petal.width")
-    public double petalWidth;
+    private double petalWidth;
     @CsvBindByName(column = "variety")
-    public String variety;
+    private String variety;
 	
-    /*public Iris(double sepalLength, double sepalWidth, double petalLength, double petalWidth, String variety) {
+    public Iris(double sepalLength, double sepalWidth, double petalLength, double petalWidth, String variety) {
 		super();
 		this.sepalLength = sepalLength;
 		this.sepalWidth = sepalWidth;
@@ -57,9 +54,6 @@ public class Iris extends IPoint{
 		return petalWidth;
 	}
 
-	public void setPetalWidth(double petalWidth) {
-		this.petalWidth = petalWidth;
-	}
 
 	public String getVariety() {
 		return variety;
@@ -101,5 +95,27 @@ public class Iris extends IPoint{
 		petalLength = Double.parseDouble(fields.get(2));
 		petalWidth = Double.parseDouble(fields.get(3));
 		return this;
+	}
+	public void setPetalWidth(double petalWidth) {
+		this.petalWidth = petalWidth;
+	}
+
+	public String getVariety() {
+		return variety;
+	}
+
+	public void setVariety(String variety) {
+		this.variety = variety;
+	}
+
+	@Override
+	public String toString() {
+		return "Iris{" +
+				"sepalLength=" + sepalLength +
+				", sepalWidth=" + sepalWidth +
+				", petalLength=" + petalLength +
+				", petalWidth=" + petalWidth +
+				", variety='" + variety + '\'' +
+				'}';
 	}
 }

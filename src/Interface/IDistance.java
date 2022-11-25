@@ -1,5 +1,4 @@
 package Interface;
-
 import java.util.List;
 
 import model.Column;

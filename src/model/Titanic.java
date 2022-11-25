@@ -1,9 +1,6 @@
 package model;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.opencsv.bean.CsvBindByName;
 
 import Interface.IPoint;
@@ -12,32 +9,32 @@ import Interface.IPoint;
 public class Titanic extends IPoint{
 	
 	    
-	@CsvBindByName(column = "PassengerId")
+	    @CsvBindByName(column = "PassengerId")
 	   public double PassengerId;
 	    @CsvBindByName(column = "Survived")
-	   public double Survived;
+	    int Survived;
 	    @CsvBindByName(column = "Pclass")
-	   public double Pclass;
-	   @CsvBindByName(column = "Name")
-	   public String Name;
-	   @CsvBindByName(column = "Sex")
-	   public String Sex;
-	   @CsvBindByName(column = "Age")
-	   public double Age;
-	   @CsvBindByName(column = "SibSp")
-	   public double SibSp;
-	   @CsvBindByName(column = "Parch")
-	   public double Parch;
-	   @CsvBindByName(column = "Ticket")
-	   public String Ticket;
-	   @CsvBindByName(column = "Fare")
-	   public double Fare;
-	   @CsvBindByName(column = "Cabin")
-	   public String Cabin;
-	   @CsvBindByName(column = "Embarked")
-	   public char Embarked;
+	    int Pclass;
+	    @CsvBindByName(column = "Name")
+	    String Name;
+	    @CsvBindByName(column = "Sex")
+	    String Sex;
+	    @CsvBindByName(column = "Age")
+	    int Age;
+	    @CsvBindByName(column = "SibSp")
+	    int SibSp;
+	    @CsvBindByName(column = "Parch")
+	    int Parch;
+	    @CsvBindByName(column = "Ticket")
+	    String Ticket;
+	    @CsvBindByName(column = "Fare")
+	    double Fare;
+	    @CsvBindByName(column = "Cabin")
+	    String Cabin;
+	    @CsvBindByName(column = "Embarked")
+	    char Embarked;
 	    
-	    /*public Titanic(int PassengerId, int Survived, int Pclass, 
+	    public Titanic(int PassengerId, int Survived, int Pclass, 
 	            String Name, String Sex, int Age, int SibSp, int Parch, 
 	            String Ticket, double Fare, String Cabin, char Embarked) {
 	        
@@ -97,38 +94,6 @@ public class Titanic extends IPoint{
 
 		public double getAge() {
 			return Age;
-		}
-
-		public void setAge(double age) {
-			Age = age;
-		}
-
-		public double getSibSp() {
-			return SibSp;
-		}
-
-		public void setSibSp(double sibSp) {
-			SibSp = sibSp;
-		}
-
-		public double getParch() {
-			return Parch;
-		}
-
-		public void setParch(double parch) {
-			Parch = parch;
-		}
-
-		public String getTicket() {
-			return Ticket;
-		}
-
-		public void setTicket(String ticket) {
-			Ticket = ticket;
-		}
-
-		public double getFare() {
-			return Fare;
 		}
 
 		public void setFare(double fare) {
@@ -196,7 +161,7 @@ public class Titanic extends IPoint{
 		Parch = Double.parseDouble(fields.get(7));
 		Ticket = fields.get(8);
 		Fare = Double.parseDouble(fields.get(9));
-		Cabin = fields.get(10);		
+		Cabin = fields.get(10);
 		return this;
 	}
 }

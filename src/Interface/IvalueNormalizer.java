@@ -18,7 +18,16 @@ public interface IvalueNormalizer {
 		 * </ul>
 		 */
 		public enum NormalizerTypes {
-			NUMBER_NORMALIZER, BOOLEAN_NORMALIZER, POKEMON_TYPE_NORMALIZER,ENUM_NORMALIZER;
+			Number_Normalizer("int"), Boolean_Normalizer("boolean"),Enum_Normalizer("enum");
+			protected String nom;
+			NormalizerTypes(String string) {
+				nom = string;
+				
+			}
+			public String getNom() {
+				return nom;
+			}
+
 		}
 		/**
 		 * Retourne la valeur en parametre normalisee (entre 0 et 1).

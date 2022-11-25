@@ -20,7 +20,7 @@ public  class Number_Normalizer implements IvalueNormalizer{
 
 	@Override
 	public Object denormalize(double value) {
-		return value*(max-min)+min;
+		return (double) Math.round((value*(max-min)+min)*100)/100;
 	}
 
 	public double getMin() {

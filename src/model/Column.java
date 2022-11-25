@@ -1,6 +1,4 @@
 package model;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +19,7 @@ public  class Column{
 	public boolean isNormalizable() {
 		return isNormalizable;
 	}
-	public String getNameColumn() {
-		return Name;
-	}
+
 	public Column(String name, String type,DataSet data) {
 		this.Name = name;
 		this.type=type;
@@ -31,24 +27,24 @@ public  class Column{
 		setNormaliser(type);
 		
 	}
-	
+
 	public double[] amplitude() {
 		double min =1000000;
 		double max=0;
-		
+
 		for(IPoint ip:data.lines) {
 
 					double value=(double) ip.getValue(this);
 					if(value>max) {
 						max=value;
-						
+
 					}if(value<min) {
 						min=value;
 					}
 				}
 		return new double[] {min,max};
-	}	
-	
+	}
+
 	/**
 	 * @return the name
 	 */
@@ -83,8 +79,8 @@ public  class Column{
 	}
 	@Override
 	public String toString() {
-		return "Column [Name=" + Name + ", type=" + type + ", Normalizer=" + Normalizer 
+		return "Column [Name=" + Name + ", type=" + type + ", Normalizer=" + Normalizer
 				+ ", isNormalizable=" + isNormalizable + "]";
 	}
-	
+
 }
