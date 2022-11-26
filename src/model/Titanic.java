@@ -153,7 +153,7 @@ public class Titanic extends IPoint{
 	}
 
 	@Override
-	public IPoint add(List<String> fields) {
+	public Titanic add(List<String> fields) {
 		PassengerId = Double.parseDouble(fields.get(0));
 		Survived = Double.parseDouble(fields.get(1));
 		Pclass = Double.parseDouble(fields.get(2));

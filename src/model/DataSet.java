@@ -85,9 +85,22 @@ public  class DataSet extends Subject {
 	public void clear() {
 		this.lines.clear(); this.data.clear();
 	}
-        public void addPoint(List<String> fields, IPoint point) {
-            lines.add(point.add(fields));
+        public void addIris(List<String> fields) {
+			Iris i = new Iris();
+            lines.add(i.add(fields));
+			notifyObservers();
         }
+	public void addPokemon(List<String> fields) {
+		Pokemon i = new Pokemon();
+		lines.add(i.add(fields));
+		notifyObservers();
+	}
+	public void addTitanic(List<String> fields) {
+		Titanic i = new Titanic();
+		lines.add(i.add(fields));
+		notifyObservers();
+	}
+
 
 	public Object getValue(int index, Column column) {
 		return this.lines.get(index).getValue(column);

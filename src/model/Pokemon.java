@@ -137,7 +137,7 @@ public class Pokemon extends IPoint {
 		}
 
 		@Override
-		public IPoint add(List<String> fields) {
+		public Pokemon add(List<String> fields) {
 			name = fields.get(0);
 			attack = Double.parseDouble(fields.get(1));
 			baseEggSteps = Double.parseDouble(fields.get(2));

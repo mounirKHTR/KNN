@@ -92,7 +92,7 @@ public class Iris extends IPoint{
 	}
 
 	@Override
-	public IPoint add(List<String> fields) {
+	public Iris add(List<String> fields) {
 		sepalLength = Double.parseDouble(fields.get(0));
 		sepalWidth = Double.parseDouble(fields.get(1));
 		petalLength = Double.parseDouble(fields.get(2));
