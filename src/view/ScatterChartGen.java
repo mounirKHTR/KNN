@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -33,7 +34,6 @@ public class ScatterChartGen extends Application implements Observer{
 	NumberAxis xAxis;
     NumberAxis yAxis;        
     ScatterChart<Number,Number> sc;
-    List<Column> cols;
     ChoiceBox<String> cbx;
     ChoiceBox<String> cby;
     Stage stage;
@@ -43,8 +43,8 @@ public class ScatterChartGen extends Application implements Observer{
     	dt = new DataSet();
     	dt.attach(this);
         stage.setTitle("Classification");
-        xAxis = new NumberAxis(0, 1, 0.1);
-        yAxis = new NumberAxis(0, 1, 0.1);
+        xAxis = new NumberAxis(-0.1, 1.1, 0.1);
+        yAxis = new NumberAxis(-0.1, 1.1, 0.1);
         sc = new ScatterChart<>(xAxis,yAxis);
         xAxis.setLabel("Attribut X");                
         yAxis.setLabel("Attribut Y");
@@ -279,10 +279,11 @@ public class ScatterChartGen extends Application implements Observer{
 			for (IPoint i : dt.getLines()) {
 				String valeur1 = ""+col1.getNormalizedValue(i);
 				String valeur2 = ""+col2.getNormalizedValue(i);
+				XYChart.Data<Number, Number> scPoint = new ScatterChart.Data<>(Double.valueOf(valeur1),Double.valueOf(valeur2));
 				if (Objects.equals(g, i.getGroup())) {
-		        	series.getData().add(new ScatterChart.Data<Number, Number>(Double.valueOf(valeur1),Double.valueOf(valeur2)));
+		        	series.getData().add(scPoint);
 				} else if (!i.getClassified()) {
-					unclassified.getData().add(new ScatterChart.Data<Number, Number>(Double.valueOf(valeur1),Double.valueOf(valeur2)));
+					unclassified.getData().add(scPoint);
 				}
 			}
 	        sc.getData().add(series);
