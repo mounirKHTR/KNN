@@ -36,6 +36,7 @@ public class Titanic extends IPoint{
 	    public String Cabin;
 	    @CsvBindByName(column = "Embarked")
 	    public String Embarked;
+		public boolean classified = true;
 	    
 	    /*public Titanic(int PassengerId, int Survived, int Pclass, 
 	            String Name, String Sex, int Age, int SibSp, int Parch, 

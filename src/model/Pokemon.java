@@ -35,6 +35,7 @@ public class Pokemon extends IPoint {
 	    public double speed;
 	    @CsvBindByName(column = "is_legendary")
 	    public boolean isLegendary;
+		public boolean classified = true;
 
 	    public Pokemon() {
 	    }
@@ -122,7 +123,9 @@ public class Pokemon extends IPoint {
 
 		@Override
 		public String getGroup() {
-			if (isLegendary()) {
+			if (!classified) {
+				return null;
+			}else if (isLegendary()) {
 				return "Legendary";
 			}
 			return "Common";

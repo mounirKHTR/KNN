@@ -87,16 +87,22 @@ public  class DataSet extends Subject {
 	}
         public void addIris(List<String> fields) {
 			Iris i = new Iris();
+			i = i.add(fields);
+			i.classified = false;
             lines.add(i.add(fields));
 			notifyObservers();
         }
 	public void addPokemon(List<String> fields) {
 		Pokemon i = new Pokemon();
+		i = i.add(fields);
+		i.classified = false;
 		lines.add(i.add(fields));
 		notifyObservers();
 	}
 	public void addTitanic(List<String> fields) {
 		Titanic i = new Titanic();
+		i = i.add(fields);
+		i.classified = false;
 		lines.add(i.add(fields));
 		notifyObservers();
 	}

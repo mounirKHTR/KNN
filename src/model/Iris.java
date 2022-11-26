@@ -19,6 +19,7 @@ public class Iris extends IPoint{
     public double petalWidth;
     @CsvBindByName(column = "variety")
     public String variety;
+	public boolean classified = true;
 	
     /*public Iris(double sepalLength, double sepalWidth, double petalLength, double petalWidth, String variety) {
 		super();
