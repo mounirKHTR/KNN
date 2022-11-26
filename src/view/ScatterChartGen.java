@@ -188,8 +188,14 @@ public class ScatterChartGen extends Application implements Observer{
 		VBox vboxCheck = new VBox(20);
 		List<Column> col = new ArrayList<Column>();
 		Slider slid = new Slider(1,5,1);
+		slid.setBlockIncrement(1);
+		slid.setMajorTickUnit(1);
+		slid.setMinorTickCount(0);
 		slid.setShowTickLabels(true);
+		slid.setSnapToTicks(true);
 		slid.setShowTickMarks(true);
+		slid.valueProperty().addListener((obs, oldval, newVal) ->
+				slid.setValue(Math.round(newVal.doubleValue())));
 		int cpt = 0;
 		for (Field f : dt.getLines().get(0).getClass().getFields()) {
 			if (cpt < dt.getLines().get(0).getClass().getFields().length-2) {
