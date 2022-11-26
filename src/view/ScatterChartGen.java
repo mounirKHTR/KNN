@@ -262,6 +262,8 @@ public class ScatterChartGen extends Application implements Observer{
     
     public void addData(Column col1,Column col2) {
     	sc.getData().clear();
+		xAxis.setLabel(col1.getName());
+		yAxis.setLabel(col2.getName());
 		ScatterChart.Series<Number, Number> unclassified = new ScatterChart.Series<>();
 		unclassified.setName("unclassified");
     	for (String g : dt.getLines().get(0).getAllGroup()) {
