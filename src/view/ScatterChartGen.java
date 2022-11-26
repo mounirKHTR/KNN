@@ -138,7 +138,7 @@ public class ScatterChartGen extends Application implements Observer{
         List<String> fields = new ArrayList<String>();
         int cpt = 0;
     	for (Field f : dt.getLines().get(0).getClass().getFields()) {
-    		if (cpt < dt.getLines().get(0).getClass().getFields().length-1) {
+    		if (cpt < dt.getLines().get(0).getClass().getFields().length-2) {
 	    		Label l = new Label(f.getName());
 	    		TextField tf = new TextField();
 	    		vboxL.getChildren().add(l);
@@ -192,7 +192,7 @@ public class ScatterChartGen extends Application implements Observer{
 		slid.setShowTickMarks(true);
 		int cpt = 0;
 		for (Field f : dt.getLines().get(0).getClass().getFields()) {
-			if (cpt < dt.getLines().get(0).getClass().getFields().length-1) {
+			if (cpt < dt.getLines().get(0).getClass().getFields().length-2) {
 				CheckBox check = new CheckBox(f.getName());
 				vboxCheck.getChildren().add(check);
 				cpt++;
@@ -214,10 +214,18 @@ public class ScatterChartGen extends Application implements Observer{
 				}
 			}
 			MethodeKnn knn = new MethodeKnn();
-			if (rb1.isSelected()) {
-				System.out.println(knn.getNearestNeigbhour(knn.sortEuclidian(dt.getLines().get(dt.getNbLines()-1),dt.getLines(),col),k));
-			} else if (rb2.isSelected()) {
-				System.out.println(knn.getNearestNeigbhour(knn.sortManhattan(dt.getLines().get(dt.getNbLines()-1),dt.getLines(),col),k));
+			for (IPoint i : dt.getLines()) {
+				if (!i.getClassified()) {
+					if (rb1.isSelected()) {
+						i.setGroup(knn.mostvalue(knn.getNearestNeigbhour(knn.sortEuclidian(i,dt.getLines(),col),k)));
+						i.setClassified(true);
+						update(dt);
+					} else if (rb2.isSelected()) {
+						i.setGroup(knn.mostvalue(knn.getNearestNeigbhour(knn.sortManhattan(i,dt.getLines(),col),k)));
+						i.setClassified(true);
+						update(dt);
+					}
+				}
 			}
 			dialog.close();
 		});
@@ -274,7 +282,7 @@ public class ScatterChartGen extends Application implements Observer{
 				String valeur2 = ""+col2.getNormalizedValue(i);
 				if (Objects.equals(g, i.getGroup())) {
 		        	series.getData().add(new ScatterChart.Data<Number, Number>(Double.valueOf(valeur1),Double.valueOf(valeur2)));
-				} else if (i.getGroup()==null && !unclassified.getData().contains(i)) {
+				} else if (!i.getClassified()) {
 					unclassified.getData().add(new ScatterChart.Data<Number, Number>(Double.valueOf(valeur1),Double.valueOf(valeur2)));
 				}
 			}

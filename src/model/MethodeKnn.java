@@ -52,4 +52,28 @@ public class MethodeKnn {
 
         return resultat;
     }
+
+    public String mostvalue(List<IPoint> nearest) {
+        String rslt="";
+        Map<String, Integer> groupCount = new HashMap<String, Integer>();
+
+        List<String> tamp = new ArrayList<>();
+        for (IPoint i : nearest
+        ) {
+            tamp.add(i.getGroup());
+        }
+        for (String word : tamp) {
+            Integer count = groupCount.get(word);
+            groupCount.put(word, (count == null) ? 1 : count + 1);
+        }
+        int max=0;
+        for (String groupe: groupCount.keySet()
+        ) {
+            if(groupCount.get(groupe)>max){
+                rslt=groupe;
+                max=groupCount.get(groupe);
+            }
+        }return rslt;
+    }
+
 }

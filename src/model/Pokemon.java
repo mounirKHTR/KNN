@@ -1,6 +1,7 @@
 package model;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.opencsv.bean.CsvBindByName;
 
@@ -131,7 +132,13 @@ public class Pokemon extends IPoint {
 			return "Common";
 		}
 
-		@Override
+	@Override
+	public void setGroup(String group) {
+		this.isLegendary = Objects.equals(group, "Legendary");
+
+	}
+
+	@Override
 		public List<String> getAllGroup() {
 			List<String> groups = new ArrayList<String>();
 			groups.add("Legendary");
@@ -156,5 +163,12 @@ public class Pokemon extends IPoint {
 			return this;
 		}
 
+	public void setClassified(boolean b) {
+		classified = b;
+	}
 
+	@Override
+	public boolean getClassified() {
+		return classified;
+	}
 }

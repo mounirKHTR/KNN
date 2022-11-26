@@ -84,6 +84,11 @@ public class Iris extends IPoint{
 	}
 
 	@Override
+	public void setGroup(String group) {
+		this.variety = group;
+	}
+
+	@Override
 	public List<String> getAllGroup() {
 		List<String> groups = new ArrayList<String>();
 		groups.add("Setosa");
@@ -102,6 +107,15 @@ public class Iris extends IPoint{
 	}
 	public void setPetalWidth(double petalWidth) {
 		this.petalWidth = petalWidth;
+	}
+
+	public void setClassified(boolean b) {
+		classified = b;
+	}
+
+	@Override
+	public boolean getClassified() {
+		return classified;
 	}
 
 }

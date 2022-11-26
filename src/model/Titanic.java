@@ -145,6 +145,11 @@ public class Titanic extends IPoint{
 	}
 
 	@Override
+	public void setGroup(String group) {
+		this.Embarked = group;
+	}
+
+	@Override
 	public List<String> getAllGroup() {
 		List<String> groups = new ArrayList<String>();
 		groups.add("S");
@@ -167,5 +172,14 @@ public class Titanic extends IPoint{
 		Fare = Double.parseDouble(fields.get(9));
 		Cabin = fields.get(10);
 		return this;
+	}
+
+	public void setClassified(boolean b) {
+		classified = b;
+	}
+
+	@Override
+	public boolean getClassified() {
+		return classified;
 	}
 }
