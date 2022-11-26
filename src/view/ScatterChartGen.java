@@ -1,13 +1,11 @@
 package view;
 
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import java.util.Scanner;
 
 import Interface.IPoint;
 import javafx.application.Application;
@@ -21,8 +19,6 @@ import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Path;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -135,7 +131,7 @@ public class ScatterChartGen extends Application implements Observer{
         dialog.initOwner(stage);
         VBox vboxL = new VBox(20);
         VBox vboxTF = new VBox(20);
-        List<String> fields = new ArrayList<String>();
+        List<String> fields = new ArrayList<>();
         int cpt = 0;
     	for (Field f : dt.getLines().get(0).getClass().getFields()) {
     		if (cpt < dt.getLines().get(0).getClass().getFields().length-2) {
@@ -161,13 +157,10 @@ public class ScatterChartGen extends Application implements Observer{
         		 fields.add(t.getText());
         	 }
             if (rb1.isSelected()) {
-            	Iris i = new Iris();
             	dt.addIris(fields);
             } else if (rb2.isSelected()) {
-            	Pokemon p = new Pokemon();
             	dt.addPokemon(fields);
             } else if (rb3.isSelected()) {
-            	Titanic t = new Titanic();
             	dt.addTitanic(fields);
             }
             dialog.close();
@@ -186,7 +179,7 @@ public class ScatterChartGen extends Application implements Observer{
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.initOwner(stage);
 		VBox vboxCheck = new VBox(20);
-		List<Column> col = new ArrayList<Column>();
+		List<Column> col = new ArrayList<>();
 		Slider slid = new Slider(1,5,1);
 		slid.setBlockIncrement(1);
 		slid.setMajorTickUnit(1);
@@ -246,8 +239,8 @@ public class ScatterChartGen extends Application implements Observer{
 	}
     
     public void getChoice() {
-    	Column colx = null;
-    	Column coly = null;
+    	Column colx = dt.getData().get(1);
+    	Column coly = dt.getData().get(2);
     	for (Column c : dt.getData()) {
     		if (c.isNormalizable()) {
     			if (cbx.getValue().equals(c.getName())) {
