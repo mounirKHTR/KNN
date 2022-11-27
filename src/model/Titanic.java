@@ -13,129 +13,111 @@ public class Titanic extends IPoint{
 	
 	    
 	    @CsvBindByName(column = "PassengerId")
-	    public double PassengerId;
+	    public double passengerId;
 	    @CsvBindByName(column = "Survived")
-	    public double Survived;
+	    public double survived;
 	    @CsvBindByName(column = "Pclass")
-	    public double Pclass;
+	    public double pClass;
 	    @CsvBindByName(column = "Name")
-	    public String Name;
+	    public String name;
 	    @CsvBindByName(column = "Sex")
-	    public String Sex;
+	    public String sex;
 	    @CsvBindByName(column = "Age")
-	    public double Age;
+	    public double age;
 	    @CsvBindByName(column = "SibSp")
-	    public double SibSp;
+	    public double sibSp;
 	    @CsvBindByName(column = "Parch")
-	    public double Parch;
+	    public double parch;
 	    @CsvBindByName(column = "Ticket")
-	    public String Ticket;
+	    public String ticket;
 	    @CsvBindByName(column = "Fare")
-	    public double Fare;
+	    public double fare;
 	    @CsvBindByName(column = "Cabin")
-	    public String Cabin;
+	    public String cabin;
 	    @CsvBindByName(column = "Embarked")
-	    public String Embarked;
+	    public String embarked;
 		public boolean classified = true;
-	    
-	    /*public Titanic(int PassengerId, int Survived, int Pclass, 
-	            String Name, String Sex, int Age, int SibSp, int Parch, 
-	            String Ticket, double Fare, String Cabin, char Embarked) {
-	        
-	        this.PassengerId = PassengerId;
-	        this.Survived = Survived;
-	        this.Pclass = Pclass;
-	        this.Name = Name;
-	        this.Sex= Sex;
-	        this.Age = Age;
-	        this.SibSp = SibSp;
-	        this.Parch = Parch;
-	        this.Ticket = Ticket;
-	        this.Fare = Fare;
-	        this.Cabin = Cabin;
-	        this.Embarked = Embarked; 
-	    }*/
 
 		public double getPassengerId() {
-			return PassengerId;
+			return passengerId;
 		}
 
 		public void setPassengerId(int passengerId) {
-			PassengerId = passengerId;
+			this.passengerId = passengerId;
 		}
 
 		public double getSurvived() {
-			return Survived;
+			return survived;
 		}
 
 		public void setSurvived(double survived) {
-			Survived = survived;
+			this.survived = survived;
 		}
 
 		public double getPclass() {
-			return Pclass;
+			return pClass;
 		}
 
 		public void setPclass(double pclass) {
-			Pclass = pclass;
+			pClass = pclass;
 		}
 
 		public String getName() {
-			return Name;
+			return name;
 		}
 
 		public void setName(String name) {
-			Name = name;
+			this.name = name;
 		}
 
 		public String getSex() {
-			return Sex;
+			return sex;
 		}
 
 		public void setSex(String sex) {
-			Sex = sex;
+			this.sex = sex;
 		}
 
 		public double getAge() {
-			return Age;
+			return age;
 		}
 
 		public void setFare(double fare) {
-			Fare = fare;
+			this.fare = fare;
 		}
 
 		public String getCabin() {
-			return Cabin;
+			return cabin;
 		}
 
 		public void setCabin(String cabin) {
-			Cabin = cabin;
+			this.cabin = cabin;
 		}
 
 		public String getEmbarked() {
-			return Embarked;
+			return embarked;
 		}
 
 		public void setEmbarked(String embarked) {
-			Embarked = embarked;
+			this.embarked = embarked;
 		}
 
 
 	@Override
 	public String toString() {
 		return "Titanic{" +
-				"PassengerId=" + PassengerId +
-				", Survived=" + Survived +
-				", Pclass=" + Pclass +
-				", Name='" + Name + '\'' +
-				", Sex='" + Sex + '\'' +
-				", Age=" + Age +
-				", SibSp=" + SibSp +
-				", Parch=" + Parch +
-				", Ticket='" + Ticket + '\'' +
-				", Fare=" + Fare +
-				", Cabin='" + Cabin + '\'' +
-				", Embarked=" + Embarked +
+				"PassengerId=" + passengerId +
+				", Survived=" + survived +
+				", Pclass=" + pClass +
+				", Name='" + name + '\'' +
+				", Sex='" + sex + '\'' +
+				", Age=" + age +
+				", SibSp=" + sibSp +
+				", Parch=" + parch +
+				", Ticket='" + ticket + '\'' +
+				", Fare=" + fare +
+				", Cabin='" + cabin + '\'' +
+				", Embarked=" + embarked +
 				'}';
 	}
 
@@ -146,12 +128,12 @@ public class Titanic extends IPoint{
 
 	@Override
 	public void setGroup(String group) {
-		this.Embarked = group;
+		this.embarked = group;
 	}
 
 	@Override
 	public List<String> getAllGroup() {
-		List<String> groups = new ArrayList<String>();
+		List<String> groups = new ArrayList<>();
 		groups.add("S");
 		groups.add("C");
 		groups.add("Q");
@@ -160,17 +142,17 @@ public class Titanic extends IPoint{
 
 	@Override
 	public Titanic add(List<String> fields) {
-		PassengerId = Double.parseDouble(fields.get(0));
-		Survived = Double.parseDouble(fields.get(1));
-		Pclass = Double.parseDouble(fields.get(2));
-		Name = fields.get(3);
-		Sex = fields.get(4);
-		Age = Double.parseDouble(fields.get(5));
-		SibSp = Double.parseDouble(fields.get(6));
-		Parch = Double.parseDouble(fields.get(7));
-		Ticket = fields.get(8);
-		Fare = Double.parseDouble(fields.get(9));
-		Cabin = fields.get(10);
+		passengerId = Double.parseDouble(fields.get(0));
+		survived = Double.parseDouble(fields.get(1));
+		pClass = Double.parseDouble(fields.get(2));
+		name = fields.get(3);
+		sex = fields.get(4);
+		age = Double.parseDouble(fields.get(5));
+		sibSp = Double.parseDouble(fields.get(6));
+		parch = Double.parseDouble(fields.get(7));
+		ticket = fields.get(8);
+		fare = Double.parseDouble(fields.get(9));
+		cabin = fields.get(10);
 		return this;
 	}
 
