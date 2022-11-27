@@ -36,8 +36,7 @@ public class Pokemon extends IPoint {
 	    @CsvBindByName(column = "is_legendary")
 	    public boolean isLegendary;
 
-	    public Pokemon() {
-	    }
+
 
 	    /*public Pokemon (String name,double attack, double baseEggSteps,double captureRate,double defense,double experienceGrowth,
 	            double hp,double spAttack, double spDefense, String type, String type2, double speed, boolean isLegendary) {
@@ -130,7 +129,7 @@ public class Pokemon extends IPoint {
 
 		@Override
 		public List<String> getAllGroup() {
-			List<String> groups = new ArrayList<String>();
+			List<String> groups = new ArrayList<>();
 			groups.add("Legendary");
 			groups.add("Common");
 			return groups;

@@ -12,18 +12,18 @@ public class Boolean_Normalizer implements IvalueNormalizer {
     @Override
     public Object denormalize(double value) {
         if(value==1.0)return true;
-        return false;
+        else return false;
     }
 
 	@Override
 	public double getMin() {
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
 
 	@Override
 	public double getMax() {
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
 

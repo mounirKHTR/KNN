@@ -16,7 +16,7 @@ public class Enum_Normalizer implements IvalueNormalizer {
 
     public Enum_Normalizer(Column colx) {
         brut=colx.getALLDataCol();
-        this.map = new HashMap<String, Double>();
+        this.map = new HashMap<>();
         this.getNormalizedMap();
     }
 
@@ -26,8 +26,10 @@ public class Enum_Normalizer implements IvalueNormalizer {
 
     public void getNormalizedMap() {
         for (int i = 0; i< this.brut.size(); i++) {
-            if(this.map.containsKey((String) this.brut.get(i))) i=i;
-            else this.map.put((String)this.brut.get(i), (double) i / (double) (this.brut.size()-1)); // exmple 1 / 3 = 0.33
+            if(this.map.containsKey((String) this.brut.get(i))) {
+            }else {
+                this.map.put((String) this.brut.get(i), (double) i / (double) (this.brut.size() - 1)); // exmple 1 / 3 = 0.33
+            }
         }
     }
 

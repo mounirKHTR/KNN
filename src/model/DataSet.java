@@ -4,17 +4,14 @@ import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
+
 import java.util.List;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import Interface.IPoint;
 import utils.Subject;
-import Interface.IvalueNormalizer.NormalizerTypes;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public  class DataSet extends Subject {
 	protected String name;

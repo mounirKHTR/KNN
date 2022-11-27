@@ -4,16 +4,16 @@ import java.util.List;
 
 import Interface.IPoint;
 import Interface.IvalueNormalizer;
-import Interface.IvalueNormalizer.NormalizerTypes;
+
 import Normalizer.Boolean_Normalizer;
 import Normalizer.Enum_Normalizer;
 import Normalizer.Number_Normalizer;
 
 
 public  class Column{
-	protected String Name;
+	protected String name;
 	protected String type;
-	protected IvalueNormalizer Normalizer;
+	protected IvalueNormalizer normalizer;
 	protected DataSet data;
 	protected boolean isNormalizable ;
 	
@@ -22,7 +22,7 @@ public  class Column{
 	}
 
 	public Column(String name, String type,DataSet data) {
-		this.Name = name;
+		this.name = name;
 		this.type=type;
 		this.data=data;
 		setNormaliser(type);
@@ -39,7 +39,7 @@ public  class Column{
 					if(value>max) {
 						max=value;
 
-					}if(value<min) {
+					}else if(value<min) {
 						min=value;
 					}
 				}
@@ -50,35 +50,35 @@ public  class Column{
 	 * @return the name
 	 */
 	public String getName() {
-		return Name;
+		return name;
 	}
 	/**
 	 * @return the normalizer
 	 */
 	public IvalueNormalizer getNormalizer() {
-		return Normalizer;
+		return normalizer;
 	}
 	public void setNormaliser(String type) {
 			if(type.equals("int")||type.equals("double")) {
-				this.Normalizer=new Number_Normalizer(this.amplitude());
+				this.normalizer =new Number_Normalizer(this.amplitude());
 				this.isNormalizable=true;
 			}
 			if(type.equals("boolean")) {
-				this.Normalizer=new Boolean_Normalizer();
+				this.normalizer =new Boolean_Normalizer();
 				this.isNormalizable=true;
 			}else if (type.equals("class java.lang.String")){
-				this.Normalizer=new Enum_Normalizer(this);
+				this.normalizer =new Enum_Normalizer(this);
 				this.isNormalizable=true;
 			}
 
 	}
 	public Object getNormalizedValue(IPoint iPoint) {
-		if(isNormalizable) return Normalizer.normalize(iPoint.getValue(this));
+		if(isNormalizable) return normalizer.normalize(iPoint.getValue(this));
 		return null;
 	}
 	public Object getDenormalizedValue(IPoint point) {
-		if(point.getValue(this).equals(null))return null;
-		if(isNormalizable) return Normalizer.denormalize((double)getNormalizedValue(point));
+		if(point.getValue(this)==(null))return null;
+		if(isNormalizable) return normalizer.denormalize((double)getNormalizedValue(point));
 		return null;
 	}
 	public List<Object>getALLDataCol(){
@@ -91,7 +91,7 @@ public  class Column{
 	}
 	@Override
 	public String toString() {
-		return "Column [Name=" + Name + ", type=" + type + ", Normalizer=" + Normalizer
+		return "Column [Name=" + name + ", type=" + type + ", Normalizer=" + normalizer
 				+ ", isNormalizable=" + isNormalizable + "]";
 	}
 

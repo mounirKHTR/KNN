@@ -56,7 +56,7 @@ public class MethodeKnn {
 
     public String mostvalue(List<IPoint> nearest) {
         String rslt="";
-        Map<String, Integer> groupCount = new HashMap<String, Integer>();
+        Map<String, Integer> groupCount = new HashMap<>();
 
         List<String> tamp = new ArrayList<>();
         for (IPoint i : nearest
@@ -68,12 +68,17 @@ public class MethodeKnn {
             groupCount.put(word, (count == null) ? 1 : count + 1);
         }
         int max=0;
-        for (String groupe: groupCount.keySet()
-             ) {
-                if(groupCount.get(groupe)>max){
+
+            for (Map.Entry<String,Integer> entry : groupCount.entrySet()) {
+                String groupe = entry.getKey();
+                Integer valeur = entry.getValue();
+                if(valeur>max){
                     rslt=groupe;
-                    max=groupCount.get(groupe);
+                    max=valeur;
                 }
-        }return rslt;
+
+            }
+        return rslt;
+        }
     }
-}
+

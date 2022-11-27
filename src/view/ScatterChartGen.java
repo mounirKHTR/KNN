@@ -1,13 +1,13 @@
 package view;
 
 import java.io.File;
-import java.io.IOException;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import java.util.Scanner;
+
 
 import Interface.IPoint;
 import javafx.application.Application;
@@ -21,8 +21,7 @@ import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Path;
-import javafx.scene.text.Text;
+
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -289,6 +288,6 @@ public class ScatterChartGen extends Application implements Observer{
 
 	@Override
 	public void update(Subject subj, Object data) {
-		// TODO document why this method is empty
+
 	}
 }
