@@ -53,18 +53,12 @@ public class ScatterChartGen extends Application implements Observer{
         cby = new ChoiceBox<>();
        
         final Button changeAxis = new Button("Change Axis");
-    	final Button remove = new Button("Remove Last");
     	final Button btn = new Button("Load File");
     	final Button add = new Button("Add Point");
 		final Button classifier = new Button("Classify");
         final VBox vbox = new VBox();
         final HBox hbox = new HBox();
-                         
-        remove.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-            	if (!sc.getData().isEmpty())
-            		sc.getData().remove((sc.getData().size()-1));
-            	}});
+
                 
         btn.setOnAction(e -> loadFile());
         changeAxis.setOnAction(e -> getChoice());
@@ -72,7 +66,7 @@ public class ScatterChartGen extends Application implements Observer{
 		classifier.setOnAction(e -> classify());
         
         hbox.setSpacing(10);
-        hbox.getChildren().addAll(changeAxis,cbx,btn,add,classifier,remove);
+        hbox.getChildren().addAll(changeAxis,cbx,btn,add,classifier);
         
         vbox.getChildren().addAll(sc,cby,hbox);
         hbox.setPadding(new Insets(10, 10, 10, 50));
