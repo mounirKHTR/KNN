@@ -9,8 +9,6 @@ import java.util.Objects;
 
 import Interface.IPoint;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -267,9 +265,9 @@ public class ScatterChartGen extends Application implements Observer{
     	sc.getData().clear();
 		xAxis.setLabel(col1.getName());
 		yAxis.setLabel(col2.getName());
-		ScatterChart.Series<Number, Number> unclassified = new ScatterChart.Series<>();
+		XYChart.Series<Number, Number> unclassified = new ScatterChart.Series<>();
     	for (String g : dt.getLines().get(0).getAllGroup()) {
-			ScatterChart.Series<Number, Number> series = new ScatterChart.Series<>();
+			XYChart.Series<Number, Number> series = new ScatterChart.Series<>();
 			for (IPoint i : dt.getLines()) {
 				String valeur1 = ""+col1.getNormalizedValue(i);
 				String valeur2 = ""+col2.getNormalizedValue(i);
