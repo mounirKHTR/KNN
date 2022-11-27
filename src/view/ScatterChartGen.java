@@ -72,9 +72,9 @@ public class ScatterChartGen extends Application implements Observer{
 		classifier.setOnAction(e -> classify());
         
         hbox.setSpacing(10);
-        hbox.getChildren().addAll(changeAxis,cby,btn,add,classifier,remove);
+        hbox.getChildren().addAll(changeAxis,cbx,btn,add,classifier,remove);
         
-        vbox.getChildren().addAll(sc,cbx,hbox);
+        vbox.getChildren().addAll(sc,cby,hbox);
         hbox.setPadding(new Insets(10, 10, 10, 50));
         
         Scene scene  = new Scene(vbox, 500, 400);
@@ -265,6 +265,8 @@ public class ScatterChartGen extends Application implements Observer{
     			cby.getItems().add(c.getName());
     		}
     	}
+		cbx.setValue(cbx.getItems().get(1));
+		cby.setValue(cby.getItems().get(2));
     }
     
     public void addData(Column col1,Column col2) {
@@ -272,10 +274,8 @@ public class ScatterChartGen extends Application implements Observer{
 		xAxis.setLabel(col1.getName());
 		yAxis.setLabel(col2.getName());
 		ScatterChart.Series<Number, Number> unclassified = new ScatterChart.Series<>();
-		unclassified.setName("unclassified");
     	for (String g : dt.getLines().get(0).getAllGroup()) {
 			ScatterChart.Series<Number, Number> series = new ScatterChart.Series<>();
-			series.setName(g);
 			for (IPoint i : dt.getLines()) {
 				String valeur1 = ""+col1.getNormalizedValue(i);
 				String valeur2 = ""+col2.getNormalizedValue(i);
@@ -286,8 +286,10 @@ public class ScatterChartGen extends Application implements Observer{
 					unclassified.getData().add(scPoint);
 				}
 			}
+			series.setName(g+"("+series.getData().size()+")");
 	        sc.getData().add(series);
 		}
+		unclassified.setName("unclassified("+unclassified.getData().size()+")");
 		sc.getData().add(unclassified);
     }
         
