@@ -23,6 +23,8 @@ public class IrisTest {
 
     @Test
     public void testIrisAdd() {
+
+
         Assert.assertEquals(iris.getValue(150, iris.data.get(0)), point.getSepalLength());
         Assert.assertEquals(iris.getValue(150, iris.data.get(1)), point.getSepalWidth());
         Assert.assertEquals(iris.getValue(150, iris.data.get(2)), point.getPetalLength());
@@ -43,7 +45,7 @@ public class IrisTest {
 
     @Test
     public void testIrisToString() {
-        String test = "Iris{sepalLength=23.4, sepalWidth=22.4, petalLength=56.1, petalWidth=30.0, variety='null'}";
+        String test = "Iris{sepalLength=23.4,\n sepalWidth=22.4,\n petalLength=56.1,\n petalWidth=30.0,\n variety='null'}";
         Assert.assertEquals(test, point.toString());
     }
 }
