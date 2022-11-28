@@ -106,6 +106,25 @@ public  class DataSet extends Subject {
 	public Object getValue(int index, Column column) {
 		return this.lines.get(index).getValue(column);
 	}
+	
+	public void classify(List<Column> col, int k,boolean choice) {
+		MethodeKnn knn = new MethodeKnn();
+		for (IPoint i : this.getLines()) {
+			if (!i.getClassified()) {
+				if (choice) {
+					i.setGroup(knn.mostvalue(knn.getNearestNeigbhour(knn.sortEuclidian(i,this.getLines(),col),k)));
+					i.setClassified(true);
+					notifyObservers();
+				} else if (!choice) {
+					i.setGroup(knn.mostvalue(knn.getNearestNeigbhour(knn.sortManhattan(i,this.getLines(),col),k)));
+					i.setClassified(true);
+					notifyObservers();
+				}
+			}
+		}
+		
+	}
+	
 	public static void main(String[] args) throws IllegalStateException  {
 		DataSet pk=new DataSet();
 		pk.loadFromFiles("./src/data/pokemon_suspect1.csv", Pokemon.class);

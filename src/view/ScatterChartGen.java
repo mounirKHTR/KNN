@@ -196,30 +196,8 @@ public class ScatterChartGen extends Application implements Observer{
 		rb1.setSelected(true);
 		RadioButton rb2 = new RadioButton("Manhattan");
 		rb2.setToggleGroup(group);
-		confirm.setOnAction(e -> {
-			int k = (int)slid.getValue();
-			for (int idx = 0; idx< vboxCheck.getChildren().size();idx++) {
-				CheckBox t = (CheckBox) vboxCheck.getChildren().get(idx);
-				if (t.isSelected()) {
-					col.add(dt.getData().get(idx));
-				}
-			}
-			MethodeKnn knn = new MethodeKnn();
-			for (IPoint i : dt.getLines()) {
-				if (!i.getClassified()) {
-					if (rb1.isSelected()) {
-						i.setGroup(knn.mostvalue(knn.getNearestNeigbhour(knn.sortEuclidian(i,dt.getLines(),col),k)));
-						i.setClassified(true);
-						update(dt);
-					} else if (rb2.isSelected()) {
-						i.setGroup(knn.mostvalue(knn.getNearestNeigbhour(knn.sortManhattan(i,dt.getLines(),col),k)));
-						i.setClassified(true);
-						update(dt);
-					}
-				}
-			}
-			dialog.close();
-		});
+		
+		confirm.setOnAction(e -> dt.classify(getSelectedCol(vboxCheck),(int)slid.getValue(),rb1.isSelected()));
 		HBox hb = new HBox(rb1,rb2);
 		VBox vbox2 = new VBox();
 		vbox2.getChildren().addAll(hb,slid,confirm);
@@ -228,6 +206,17 @@ public class ScatterChartGen extends Application implements Observer{
 		Scene dialogScene = new Scene(sp, 350, 300);
 		dialog.setScene(dialogScene);
 		dialog.show();
+	}
+	
+	public List<Column> getSelectedCol(VBox vbox) {
+		List<Column> col = new ArrayList<>();
+		for (int idx = 0; idx< vbox.getChildren().size();idx++) {
+			CheckBox t = (CheckBox) vbox.getChildren().get(idx);
+			if (t.isSelected()) {
+				col.add(dt.getData().get(idx));
+			}
+		}
+		return col;
 	}
     
     public void getChoice() {
