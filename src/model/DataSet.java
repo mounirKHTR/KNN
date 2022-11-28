@@ -4,17 +4,12 @@ import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import Interface.IPoint;
 import utils.Subject;
-import Interface.IvalueNormalizer.NormalizerTypes;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public  class DataSet extends Subject {
 	protected String name;
@@ -39,7 +34,7 @@ public  class DataSet extends Subject {
 		this.lines.addAll(elements);
 	}
 
-	public ArrayList<Object> getColumnData(Column colx){
+	public List<Object> getColumnData(Column colx){
 		ArrayList<Object>rslt=new ArrayList<>();
 		for(IPoint ip:lines) {
 		rslt.add(ip.getValue(colx));
@@ -111,7 +106,7 @@ public  class DataSet extends Subject {
 	public Object getValue(int index, Column column) {
 		return this.lines.get(index).getValue(column);
 	}
-	public static void main(String[] args) throws IllegalStateException, IOException  {
+	public static void main(String[] args) throws IllegalStateException  {
 		DataSet pk=new DataSet();
 		pk.loadFromFiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
 		System.out.println(""+pk.getLines()+pk.data);

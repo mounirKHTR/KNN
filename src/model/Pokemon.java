@@ -38,25 +38,6 @@ public class Pokemon extends IPoint {
 	    public boolean isLegendary;
 		public boolean classified = true;
 
-	    public Pokemon() {
-	    }
-
-	    /*public Pokemon (String name,double attack, double baseEggSteps,double captureRate,double defense,double experienceGrowth,
-	            double hp,double spAttack, double spDefense, String type, String type2, double speed, boolean isLegendary) {
-	        this.attack = attack;
-	        this.baseEggSteps = baseEggSteps;
-	        this.captureRate = captureRate;
-	        this.defense = defense;
-	        this.experienceGrowth = experienceGrowth;
-	        this.hp = hp;
-	        this.isLegendary = isLegendary;
-	        this.name = name;
-	        this.spAttack = spAttack;
-	        this.spDefense = spDefense;
-	        this.speed = speed;
-	        this.type = type;
-	        this.type2 = type2;
-	    }*/
 	    public String getName() {
 	        return name;
 	    }
@@ -140,7 +121,7 @@ public class Pokemon extends IPoint {
 
 	@Override
 		public List<String> getAllGroup() {
-			List<String> groups = new ArrayList<String>();
+			List<String> groups = new ArrayList<>();
 			groups.add("Legendary");
 			groups.add("Common");
 			return groups;

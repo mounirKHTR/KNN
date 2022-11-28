@@ -20,15 +20,6 @@ public class Iris extends IPoint{
     @CsvBindByName(column = "variety")
     public String variety;
 	public boolean classified = true;
-	
-    /*public Iris(double sepalLength, double sepalWidth, double petalLength, double petalWidth, String variety) {
-		super();
-		this.sepalLength = sepalLength;
-		this.sepalWidth = sepalWidth;
-		this.petalLength = petalLength;
-		this.petalWidth = petalWidth;
-		this.variety = variety;
-	}*/
 
 	public double getSepalLength() {
 		return sepalLength;
@@ -90,7 +81,7 @@ public class Iris extends IPoint{
 
 	@Override
 	public List<String> getAllGroup() {
-		List<String> groups = new ArrayList<String>();
+		List<String> groups = new ArrayList<>();
 		groups.add("Setosa");
 		groups.add("Virginica");
 		groups.add("Versicolor");
