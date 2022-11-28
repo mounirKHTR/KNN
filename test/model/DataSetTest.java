@@ -1,8 +1,5 @@
 package model;
-import Interface.IPoint;
 import org.junit.*;
-
-import java.io.IOException;
 
 public class DataSetTest {
 
@@ -11,7 +8,7 @@ public class DataSetTest {
     DataSet titanic = new DataSet();
 
     @Before
-    public void setup() throws IOException {
+    public void setup() {
         pokemon.loadFromFiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
         iris.loadFromFiles("./src/data/iris.csv", Iris.class);
         titanic.loadFromFiles("./src/data/titanic.csv", Titanic.class);
@@ -25,7 +22,7 @@ public class DataSetTest {
     }
 
     @Test
-    public void testDataSet() throws IOException {
+    public void testDataSet() {
         Assert.assertEquals(100, pokemon.getNbLines());
         Assert.assertEquals(150, iris.getNbLines());
         Assert.assertEquals(891, titanic.getNbLines());
@@ -46,7 +43,7 @@ public class DataSetTest {
     }
 
     @Test
-    public void testPokemon() throws IOException {
+    public void testPokemon() {
         Assert.assertEquals("Milotic", pokemon.getValue(54, pokemon.data.get(0)));
         Assert.assertEquals(85.0, pokemon.getValue(67, pokemon.data.get(1)));
         Assert.assertEquals(3840.0, pokemon.getValue(59, pokemon.data.get(2)));
@@ -63,7 +60,7 @@ public class DataSetTest {
     }
 
     @Test
-    public  void testIris() throws IOException {
+    public  void testIris()  {
         Assert.assertEquals(5.6, iris.getValue(69, iris.data.get(0)));
         Assert.assertEquals(2.7, iris.getValue(83, iris.data.get(1)));
         Assert.assertEquals(5.1, iris.getValue(149, iris.data.get(2)));
@@ -72,7 +69,7 @@ public class DataSetTest {
     }
 
     @Test
-    public void testTitanic() throws IOException {
+    public void testTitanic() {
         Assert.assertEquals(811.0, titanic.getValue(810, titanic.data.get(0)));
         Assert.assertEquals(0.0, titanic.getValue(734, titanic.data.get(1)));
         Assert.assertEquals(1.0, titanic.getValue(268, titanic.data.get(2)));

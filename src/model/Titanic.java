@@ -59,10 +59,6 @@ public class Titanic extends IPoint{
 			return PassengerId;
 		}
 
-		public void setPassengerId(int passengerId) {
-			PassengerId = passengerId;
-		}
-
 		public double getSurvived() {
 			return Survived;
 		}
@@ -111,14 +107,25 @@ public class Titanic extends IPoint{
 			Cabin = cabin;
 		}
 
-		public String getEmbarked() {
-			return Embarked;
-		}
-
 		public void setEmbarked(String embarked) {
 			Embarked = embarked;
 		}
 
+	public double getFare() {
+		return Fare;
+	}
+
+	public double getParch() {
+		return Parch;
+	}
+
+	public String getTicket() {
+		return Ticket;
+	}
+
+	public double getSibSp() {
+		return SibSp;
+	}
 
 	@Override
 	public String toString() {

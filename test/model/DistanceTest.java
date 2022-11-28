@@ -5,8 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
-
 public class DistanceTest {
     DataSet pokemon = new DataSet();
     DataSet iris = new DataSet();
@@ -14,7 +12,7 @@ public class DistanceTest {
     Distance distance = new Distance();
 
     @Before
-    public void setup() throws IOException {
+    public void setup() {
         pokemon.loadFromFiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
         iris.loadFromFiles("./src/data/iris.csv", Iris.class);
         titanic.loadFromFiles("./src/data/titanic.csv", Titanic.class);
