@@ -8,6 +8,7 @@ import Interface.IPoint;
 import Interface.IvalueNormalizer;
 import Interface.IvalueNormalizer.NormalizerTypes;
 import Normalizer.Boolean_Normalizer;
+import Normalizer.Enum_Normalizer;
 import Normalizer.Number_Normalizer;
 
 
@@ -49,7 +50,9 @@ public  class Column{
 		return new double[] {min,max};
 	}
 
-
+	/*public String typestring() {
+		return null;
+	}*/
 	
 	
 	public void setNormaliser(String type) {
@@ -61,6 +64,11 @@ public  class Column{
 				this.Normalizer=new Boolean_Normalizer();
 				this.isNormalizable=true;
 			}
+			/*if(type.equals("String")) {
+				this.Normalizer=new Enum_Normalizer(type);
+				this.isNormalizable=true;
+			}*/
+			
 
 	}
 	public Object getNormalizedValue(IPoint iPoint) {
