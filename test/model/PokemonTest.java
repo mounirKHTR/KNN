@@ -38,7 +38,7 @@ public class PokemonTest {
     }
 
     @Test
-    public void testGetGroups() {
+    public void testPokemonGroups() {
         List<String> testGroup = point.getAllGroup();
 
         Assert.assertEquals("Legendary", testGroup.get(0));
@@ -54,7 +54,7 @@ public class PokemonTest {
     }
 
     @Test
-    public void testToString() {
+    public void testPokemonToString() {
         String test = "Pokemon [nom=Poney, attack=23.0, baseEggSteps=120.0, captureRate=12.23, defense=34.3, experienceGrowth=23.3, hp=23.9, spAttack=13.4, spDefense=23.5, type=feu, type2=eau, speed=239.0, isLegendary=false]";
         Assert.assertEquals(test, point.toString());
     }

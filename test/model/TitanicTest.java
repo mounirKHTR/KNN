@@ -38,7 +38,7 @@ public class TitanicTest {
     }
 
     @Test
-    public void testGetAllGroup() {
+    public void testTitanicGroups() {
         Titanic point = new Titanic();
         List<String> groups = point.getAllGroup();
 
@@ -50,7 +50,7 @@ public class TitanicTest {
     }
 
     @Test
-    public void testToString() {
+    public void testTitanicToString() {
         String test = "Titanic{PassengerId=3.0, Survived=1.0, Pclass=3.2, Name='Jean', Sex='Male', Age=24.0, SibSp=3.0, Parch=2.0, Ticket='ticket', Fare=23.0, Cabin='5.0', Embarked=null}";
         Assert.assertEquals(test, point.toString());
     }
