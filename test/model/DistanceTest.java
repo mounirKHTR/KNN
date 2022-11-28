@@ -15,9 +15,9 @@ public class DistanceTest {
 
     @Before
     public void setup() throws IOException {
-        pokemon.loadFromfiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
-        iris.loadFromfiles("./src/data/iris.csv", Iris.class);
-        titanic.loadFromfiles("./src/data/titanic.csv", Titanic.class);
+        pokemon.loadFromFiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
+        iris.loadFromFiles("./src/data/iris.csv", Iris.class);
+        titanic.loadFromFiles("./src/data/titanic.csv", Titanic.class);
     }
 
     @After
@@ -29,11 +29,11 @@ public class DistanceTest {
 
     @Test
     public void testEuclidian() {
-        Assert.assertEquals(0.0, distance.EuclidianDistanceBetween(pokemon.lines.get(2), pokemon.lines.get(34), pokemon.Data), 0.0);
+        Assert.assertEquals(1.3533333333333335, distance.EuclidianDistanceBetween(pokemon.lines.get(2), pokemon.lines.get(34), pokemon.data), 0.0);
     }
 
     @Test
     public void testManhattan() {
-        Assert.assertEquals(0.0, distance.ManhattanDistanceBetween(pokemon.lines.get(2), pokemon.lines.get(34), pokemon.Data), 0.0);
+        Assert.assertEquals(1.3533333333333335, distance.ManhattanDistanceBetween(pokemon.lines.get(2), pokemon.lines.get(34), pokemon.data), 0.0);
     }
 }
