@@ -45,8 +45,7 @@ public class MethodeKnn {
     public List<IPoint> getNearestNeigbhour(Map<Double, IPoint> listeNearestNeigbhour, int nearestNeigbhour) {
         List<IPoint> resultat = new ArrayList<>();
 
-        LinkedList<IPoint> tampon = (LinkedList<IPoint>) listeNearestNeigbhour.values();
-
+        LinkedList<IPoint> tampon = new LinkedList<>(listeNearestNeigbhour.values());
         for(int i = 0; i < nearestNeigbhour; ++i) {
             resultat.add(tampon.get(i));
         }
