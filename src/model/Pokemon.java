@@ -35,25 +35,8 @@ public class Pokemon extends IPoint {
 	    public double speed;
 	    @CsvBindByName(column = "is_legendary")
 	    public boolean isLegendary;
+		public boolean classified = true;
 
-
-
-	    /*public Pokemon (String name,double attack, double baseEggSteps,double captureRate,double defense,double experienceGrowth,
-	            double hp,double spAttack, double spDefense, String type, String type2, double speed, boolean isLegendary) {
-	        this.attack = attack;
-	        this.baseEggSteps = baseEggSteps;
-	        this.captureRate = captureRate;
-	        this.defense = defense;
-	        this.experienceGrowth = experienceGrowth;
-	        this.hp = hp;
-	        this.isLegendary = isLegendary;
-	        this.name = name;
-	        this.spAttack = spAttack;
-	        this.spDefense = spDefense;
-	        this.speed = speed;
-	        this.type = type;
-	        this.type2 = type2;
-	    }*/
 	    public String getName() {
 	        return name;
 	    }
@@ -112,22 +95,30 @@ public class Pokemon extends IPoint {
 
 	    @Override
 	    public String toString() {
-	        return "Pokemon [nom=" + name + ", attack=" + attack + ", baseEggSteps=" + baseEggSteps + ", captureRate="
-	                + captureRate + ", defense=" + defense + ", experienceGrowth=" + experienceGrowth + ", hp=" + hp
-	                + ", spAttack=" + spAttack + ", spDefense=" + spDefense + ", type=" + type + ", type2=" + type2
-	                + ", speed=" + speed + ", isLegendary=" + isLegendary + "]";
+	        return "Pokemon [nom=" + name + ",\n attack=" + attack + ",\n baseEggSteps=" + baseEggSteps + ",\n captureRate="
+	                + captureRate + ",\n defense=" + defense + ",\n experienceGrowth=" + experienceGrowth + ",\n hp=" + hp
+	                + ",\n spAttack=" + spAttack + ",\n spDefense=" + spDefense + ",\n type=" + type + ",\n type2=" + type2
+	                + ",\n speed=" + speed + ",\n isLegendary=" + isLegendary + "]";
 
 	    }
 
 		@Override
 		public String getGroup() {
-			if (isLegendary()) {
+			if (!classified) {
+				return null;
+			}else if (isLegendary()) {
 				return "Legendary";
 			}
 			return "Common";
 		}
 
-		@Override
+	@Override
+	public void setGroup(String group) {
+		this.isLegendary = Objects.equals(group, "Legendary");
+
+	}
+
+	@Override
 		public List<String> getAllGroup() {
 			List<String> groups = new ArrayList<>();
 			groups.add("Legendary");
@@ -152,5 +143,12 @@ public class Pokemon extends IPoint {
 			return this;
 		}
 
+	public void setClassified(boolean b) {
+		classified = b;
+	}
 
+	@Override
+	public boolean getClassified() {
+		return classified;
+	}
 }

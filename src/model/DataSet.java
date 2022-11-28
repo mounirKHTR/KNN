@@ -12,7 +12,6 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import Interface.IPoint;
 import utils.Subject;
 
-
 public  class DataSet extends Subject {
 	protected String name;
 	protected List<Column> data = new ArrayList<>();
@@ -36,7 +35,7 @@ public  class DataSet extends Subject {
 		this.lines.addAll(elements);
 	}
 
-	public ArrayList<Object> getColumnData(Column colx){
+	public List<Object> getColumnData(Column colx){
 		ArrayList<Object>rslt=new ArrayList<>();
 		for(IPoint ip:lines) {
 		rslt.add(ip.getValue(colx));
@@ -84,16 +83,22 @@ public  class DataSet extends Subject {
 	}
         public void addIris(List<String> fields) {
 			Iris i = new Iris();
+			i = i.add(fields);
+			i.classified = false;
             lines.add(i.add(fields));
 			notifyObservers();
         }
 	public void addPokemon(List<String> fields) {
 		Pokemon i = new Pokemon();
+		i = i.add(fields);
+		i.classified = false;
 		lines.add(i.add(fields));
 		notifyObservers();
 	}
 	public void addTitanic(List<String> fields) {
 		Titanic i = new Titanic();
+		i = i.add(fields);
+		i.classified = false;
 		lines.add(i.add(fields));
 		notifyObservers();
 	}
@@ -102,7 +107,26 @@ public  class DataSet extends Subject {
 	public Object getValue(int index, Column column) {
 		return this.lines.get(index).getValue(column);
 	}
-	public static void main(String[] args) throws IllegalStateException, IOException  {
+
+	public void classify(List<Column> col, int k,boolean choice) {
+		MethodeKnn knn = new MethodeKnn();
+		for (IPoint i : this.getLines()) {
+			if (!i.getClassified()) {
+				if (choice) {
+					i.setGroup(knn.mostvalue(knn.getNearestNeigbhour(knn.sortEuclidian(i,this.getLines(),col),k)));
+					i.setClassified(true);
+					notifyObservers();
+				} else if (!choice) {
+					i.setGroup(knn.mostvalue(knn.getNearestNeigbhour(knn.sortManhattan(i,this.getLines(),col),k)));
+					i.setClassified(true);
+					notifyObservers();
+				}
+			}
+		}
+
+	}
+
+	public static void main(String[] args) throws IllegalStateException  {
 		DataSet pk=new DataSet();
 		pk.loadFromFiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
 		System.out.println(""+pk.getLines()+pk.data);

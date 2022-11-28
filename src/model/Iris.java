@@ -19,15 +19,7 @@ public class Iris extends IPoint{
     public double petalWidth;
     @CsvBindByName(column = "variety")
     public String variety;
-	
-    /*public Iris(double sepalLength, double sepalWidth, double petalLength, double petalWidth, String variety) {
-		super();
-		this.sepalLength = sepalLength;
-		this.sepalWidth = sepalWidth;
-		this.petalLength = petalLength;
-		this.petalWidth = petalWidth;
-		this.variety = variety;
-	}*/
+	public boolean classified = true;
 
 	public double getSepalLength() {
 		return sepalLength;
@@ -70,10 +62,10 @@ public class Iris extends IPoint{
 	public String toString() {
 		return "Iris{" +
 				"sepalLength=" + sepalLength +
-				", sepalWidth=" + sepalWidth +
-				", petalLength=" + petalLength +
-				", petalWidth=" + petalWidth +
-				", variety='" + variety + '\'' +
+				",\n sepalWidth=" + sepalWidth +
+				",\n petalLength=" + petalLength +
+				",\n petalWidth=" + petalWidth +
+				",\n variety='" + variety + '\'' +
 				'}';
 	}
 
@@ -83,8 +75,13 @@ public class Iris extends IPoint{
 	}
 
 	@Override
+	public void setGroup(String group) {
+		this.variety = group;
+	}
+
+	@Override
 	public List<String> getAllGroup() {
-		List<String> groups = new ArrayList<String>();
+		List<String> groups = new ArrayList<>();
 		groups.add("Setosa");
 		groups.add("Virginica");
 		groups.add("Versicolor");
@@ -101,6 +98,15 @@ public class Iris extends IPoint{
 	}
 	public void setPetalWidth(double petalWidth) {
 		this.petalWidth = petalWidth;
+	}
+
+	public void setClassified(boolean b) {
+		classified = b;
+	}
+
+	@Override
+	public boolean getClassified() {
+		return classified;
 	}
 
 }

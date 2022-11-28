@@ -4,7 +4,7 @@ import java.util.List;
 
 import Interface.IPoint;
 import Interface.IvalueNormalizer;
-
+import Interface.IvalueNormalizer.NormalizerTypes;
 import Normalizer.Boolean_Normalizer;
 import Normalizer.Enum_Normalizer;
 import Normalizer.Number_Normalizer;
@@ -39,7 +39,7 @@ public  class Column{
 					if(value>max) {
 						max=value;
 
-					}else if(value<min) {
+					} else if(value<min) {
 						min=value;
 					}
 				}
@@ -60,14 +60,14 @@ public  class Column{
 	}
 	public void setNormaliser(String type) {
 			if(type.equals("int")||type.equals("double")) {
-				this.normalizer =new Number_Normalizer(this.amplitude());
+				this.normalizer=new Number_Normalizer(this.amplitude());
 				this.isNormalizable=true;
 			}
 			if(type.equals("boolean")) {
-				this.normalizer =new Boolean_Normalizer();
+				this.normalizer=new Boolean_Normalizer();
 				this.isNormalizable=true;
 			}else if (type.equals("class java.lang.String")){
-				this.normalizer =new Enum_Normalizer(this);
+				this.normalizer=new Enum_Normalizer(this);
 				this.isNormalizable=true;
 			}
 
@@ -77,7 +77,7 @@ public  class Column{
 		return null;
 	}
 	public Object getDenormalizedValue(IPoint point) {
-		if(point.getValue(this)==(null))return null;
+		if(point.getValue(this)==null)return null;
 		if(isNormalizable) return normalizer.denormalize((double)getNormalizedValue(point));
 		return null;
 	}

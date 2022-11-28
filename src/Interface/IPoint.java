@@ -26,6 +26,11 @@ public abstract class IPoint {
 	}
 
 	public abstract String getGroup();
+
+	public abstract void setGroup(String group);
+
 	public abstract List<String> getAllGroup();
 	public abstract IPoint add(List<String> fields);
+	public abstract void setClassified(boolean b);
+	public abstract boolean getClassified();
 }
