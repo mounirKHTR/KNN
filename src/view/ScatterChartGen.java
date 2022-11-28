@@ -171,7 +171,6 @@ public class ScatterChartGen extends Application implements Observer{
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.initOwner(stage);
 		VBox vboxCheck = new VBox(20);
-		List<Column> col = new ArrayList<>();
 		Slider slid = new Slider(1,5,1);
 		slid.setBlockIncrement(1);
 		slid.setMajorTickUnit(1);
@@ -282,6 +281,6 @@ public class ScatterChartGen extends Application implements Observer{
 
 	@Override
 	public void update(Subject subj, Object data) {
-		// TODO document why this method is empty
+		// unused
 	}
 }
