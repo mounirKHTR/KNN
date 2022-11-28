@@ -69,7 +69,7 @@ public class ScatterChartGen extends Application implements Observer{
         vbox.getChildren().addAll(sc,cby,hbox);
         hbox.setPadding(new Insets(10, 10, 10, 50));
         
-        Scene scene  = new Scene(vbox, 500, 400);
+        Scene scene  = new Scene(vbox, 700, 500);
         
         stage.setScene(scene);
         stage.show();
@@ -260,6 +260,7 @@ public class ScatterChartGen extends Application implements Observer{
 				String valeur1 = ""+col1.getNormalizedValue(i);
 				String valeur2 = ""+col2.getNormalizedValue(i);
 				XYChart.Data<Number, Number> scPoint = new ScatterChart.Data<>(Double.valueOf(valeur1),Double.valueOf(valeur2));
+				scPoint.setNode(new HoveredThresholdNodea(i.toString(), i,stage));
 				if (Objects.equals(g, i.getGroup())) {
 		        	series.getData().add(scPoint);
 				} else if (!i.getClassified()) {

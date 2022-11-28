@@ -96,10 +96,10 @@ public class Pokemon extends IPoint {
 
 	    @Override
 	    public String toString() {
-	        return "Pokemon [nom=" + name + ", attack=" + attack + ", baseEggSteps=" + baseEggSteps + ", captureRate="
-	                + captureRate + ", defense=" + defense + ", experienceGrowth=" + experienceGrowth + ", hp=" + hp
-	                + ", spAttack=" + spAttack + ", spDefense=" + spDefense + ", type=" + type + ", type2=" + type2
-	                + ", speed=" + speed + ", isLegendary=" + isLegendary + "]";
+	        return "Pokemon [nom=" + name + ",\n attack=" + attack + ",\n baseEggSteps=" + baseEggSteps + ",\n captureRate="
+	                + captureRate + ",\n defense=" + defense + ",\n experienceGrowth=" + experienceGrowth + ",\n hp=" + hp
+	                + ",\n spAttack=" + spAttack + ",\n spDefense=" + spDefense + ",\n type=" + type + ",\n type2=" + type2
+	                + ",\n speed=" + speed + ",\n isLegendary=" + isLegendary + "]";
 
 	    }
 

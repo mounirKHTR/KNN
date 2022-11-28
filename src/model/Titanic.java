@@ -107,17 +107,17 @@ public class Titanic extends IPoint{
 	public String toString() {
 		return "Titanic{" +
 				"PassengerId=" + passengerId +
-				", Survived=" + survived +
-				", Pclass=" + pClass +
-				", Name='" + name + '\'' +
-				", Sex='" + sex + '\'' +
-				", Age=" + age +
-				", SibSp=" + sibSp +
-				", Parch=" + parch +
-				", Ticket='" + ticket + '\'' +
-				", Fare=" + fare +
-				", Cabin='" + cabin + '\'' +
-				", Embarked=" + embarked +
+				",\n Survived=" + survived +
+				",\n Pclass=" + pClass +
+				",\n Name='" + name + '\'' +
+				",\n Sex='" + sex + '\'' +
+				",\n Age=" + age +
+				",\n SibSp=" + sibSp +
+				",\n Parch=" + parch +
+				",\n Ticket='" + ticket + '\'' +
+				",\n Fare=" + fare +
+				",\n Cabin='" + cabin + '\'' +
+				",\n Embarked=" + embarked +
 				'}';
 	}
 

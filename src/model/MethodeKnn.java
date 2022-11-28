@@ -55,7 +55,7 @@ public class MethodeKnn {
 
     public String mostvalue(List<IPoint> nearest) {
         String rslt="";
-        Map<String, Integer> groupCount = new HashMap<String, Integer>();
+        Map<String, Integer> groupCount = new HashMap<>();
 
         List<String> tamp = new ArrayList<>();
         for (IPoint i : nearest
