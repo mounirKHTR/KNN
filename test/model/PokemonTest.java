@@ -18,7 +18,7 @@ public class PokemonTest {
         String[] tampon = new String[]{"Poney", "23.0", "120.0", "12.23", "34.3", "23.3", "23.9", "13.4", "23.5", "feu", "eau", "239.0"};
         List<String> data = new ArrayList<>(List.of(tampon));
 
-        pokemon.addPoint(data, point);
+        pokemon.addPokemon(data);
     }
 
     @Test

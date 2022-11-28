@@ -18,7 +18,7 @@ public class IrisTest {
         String[] tampon = new String[]{"23.4", "22.4", "56.1", "30.0"};
         List<String> data = new ArrayList<>(List.of(tampon));
 
-        iris.addPoint(data, point);
+        iris.addIris(data);
     }
 
     @Test

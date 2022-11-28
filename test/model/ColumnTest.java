@@ -21,9 +21,10 @@ public class ColumnTest {
     public void setup(){
         titanic.loadFromFiles("./src/data/titanic.csv", Titanic.class);
         String[] tampon = new String[]{"3.0", "1.0", "3.2", "Jean", "Male", "24.0", "3.0", "2.0", "ticket", "23.0", "5.0"};
+
         List<String> data = new ArrayList<>(List.of(tampon));
 
-        titanic.addPoint(data, point);
+        titanic.addTitanic(data);
 
     }
 

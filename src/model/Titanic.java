@@ -102,6 +102,29 @@ public class Titanic extends IPoint{
 			this.embarked = embarked;
 		}
 
+	public double getpClass() {
+		return this.pClass;
+	}
+
+	public double getSibSp() {
+		return this.sibSp;
+	}
+
+	public double getParch() {
+		return this.parch;
+	}
+
+	public String getTicket() {
+		return this.ticket;
+	}
+
+	public double getFare() {
+		return this.fare;
+	}
+
+	public boolean isClassified() {
+		return this.classified;
+	}
 
 	@Override
 	public String toString() {
