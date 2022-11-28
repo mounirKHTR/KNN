@@ -1,6 +1,8 @@
 package model;
 import org.junit.*;
 
+import java.util.ArrayList;
+
 public class DataSetTest {
 
     DataSet pokemon = new DataSet();
@@ -40,6 +42,11 @@ public class DataSetTest {
 
         pokemon.setLines(iris.lines);
         Assert.assertEquals(pokemon.lines, iris.lines);
+
+        Assert.assertEquals(Pokemon.class, pokemon.getCategory());
+        Assert.assertEquals(Titanic.class, titanic.getCategory());
+        Assert.assertEquals(Iris.class, iris.getCategory());
+
     }
 
     @Test

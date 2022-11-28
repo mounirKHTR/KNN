@@ -4,17 +4,13 @@ import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import Interface.IPoint;
 import utils.Subject;
-import Interface.IvalueNormalizer.NormalizerTypes;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public  class DataSet extends Subject {
 	protected String name;
@@ -39,10 +35,10 @@ public  class DataSet extends Subject {
 		this.lines.addAll(elements);
 	}
 
-	public ArrayList<Object> getColumnData(Column colx){
+	public List<Object> getColumnData(Column colx){
 		ArrayList<Object>rslt=new ArrayList<>();
 		for(IPoint ip:lines) {
-		rslt.add(ip.getValue(colx));
+			rslt.add(ip.getValue(colx));
 		}
 		return rslt;
 	}
@@ -91,26 +87,6 @@ public  class DataSet extends Subject {
 	public Object getValue(int index, Column column) {
 		return this.lines.get(index).getValue(column);
 	}
-	public static void main(String[] args) throws IllegalStateException, IOException  {
-		DataSet pk=new DataSet();
-		pk.loadFromFiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
-		System.out.println(""+pk.getLines()+pk.data);
-		DataSet ir=new DataSet();
-		ir.loadFromFiles("./src/data/iris.csv", Iris.class);
-		System.out.println(""+ir.getNbLines()+ir.data);
-		DataSet ti=new DataSet();
-		ti.loadFromFiles("./src/data/titanic.csv", Titanic.class);
-		System.out.println(""+ti.getNbLines()+ti.data);
-		System.out.println(ir.lines.get(8).getValue(ir.data.get(0)));
-		System.out.println(ir.data.get(0).getNormalizedValue(ir.lines.get(8)));
-		System.out.println(ir.data.get(0).getDenormalizedValue(ir.lines.get(8)));
-		double[] ampli=ir.data.get(2).amplitude();
-		System.out.println(""+ampli[0]+" "+ampli[1]);
-		System.out.println(ir.lines.get(8).getValue(ir.data.get(1)).getClass().toString());
-
-	}
-
-
 	}
 
 
