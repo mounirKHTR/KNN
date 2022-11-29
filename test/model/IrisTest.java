@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IrisTest {
-    DataSet iris = new DataSet();
+    protected DataSet iris = new DataSet();
 
     Iris point = new Iris();
 
     @Before
     public void setup(){
         iris.loadFromFiles("./src/data/iris.csv", Iris.class);
-        String[] tampon = new String[]{"23.4", "22.4", "56.1", "30.0"};
+         String[] tampon ={"23.4", "22.4", "56.1", "30.0"};
         List<String> data = new ArrayList<>(List.of(tampon));
 
         iris.addIris(data);
