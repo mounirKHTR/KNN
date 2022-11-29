@@ -23,18 +23,18 @@ public class PokemonTest {
 
     @Test
     public void testAddPokemon() {
-        Assert.assertEquals(pokemon.getValue(100, pokemon.data.get(0)), point.getName());
-        Assert.assertEquals(pokemon.getValue(100, pokemon.data.get(1)), point.getAttack());
-        Assert.assertEquals(pokemon.getValue(100, pokemon.data.get(2)), point.getBaseEggSteps());
-        Assert.assertEquals(pokemon.getValue(100, pokemon.data.get(3)), point.getCaptureRate());
-        Assert.assertEquals(pokemon.getValue(100, pokemon.data.get(4)), point.getDefense());
-        Assert.assertEquals(pokemon.getValue(100, pokemon.data.get(5)), point.getExperienceGrowth());
-        Assert.assertEquals(pokemon.getValue(100, pokemon.data.get(6)), point.getHp());
-        Assert.assertEquals(pokemon.getValue(100, pokemon.data.get(7)), point.getSpAttack());
-        Assert.assertEquals(pokemon.getValue(100, pokemon.data.get(8)), point.getSpDefense());
-        Assert.assertEquals(pokemon.getValue(100, pokemon.data.get(9)), point.getType());
-        Assert.assertEquals(pokemon.getValue(100, pokemon.data.get(10)), point.getType2());
-        Assert.assertEquals(pokemon.getValue(100, pokemon.data.get(11)), point.getSpeed());
+        Assert.assertEquals("Poney", pokemon.getValue(100, pokemon.data.get(0)));
+        Assert.assertEquals(23.0, pokemon.getValue(100, pokemon.data.get(1)));
+        Assert.assertEquals(120.0, pokemon.getValue(100, pokemon.data.get(2)));
+        Assert.assertEquals(12.23, pokemon.getValue(100, pokemon.data.get(3)));
+        Assert.assertEquals(34.3, pokemon.getValue(100, pokemon.data.get(4)));
+        Assert.assertEquals(23.3, pokemon.getValue(100, pokemon.data.get(5)));
+        Assert.assertEquals(23.9, pokemon.getValue(100, pokemon.data.get(6)));
+        Assert.assertEquals(13.4, pokemon.getValue(100, pokemon.data.get(7)));
+        Assert.assertEquals(23.5, pokemon.getValue(100, pokemon.data.get(8)));
+        Assert.assertEquals("feu", pokemon.getValue(100, pokemon.data.get(9)));
+        Assert.assertEquals("eau", pokemon.getValue(100, pokemon.data.get(10)));
+        Assert.assertEquals(239.0, pokemon.getValue(100, pokemon.data.get(11)));
     }
 
     @Test
@@ -55,7 +55,19 @@ public class PokemonTest {
 
     @Test
     public void testPokemonToString() {
-        String test = "Pokemon [nom=Poney, attack=23.0, baseEggSteps=120.0, captureRate=12.23, defense=34.3, experienceGrowth=23.3, hp=23.9, spAttack=13.4, spDefense=23.5, type=feu, type2=eau, speed=239.0, isLegendary=false]";
-        Assert.assertEquals(test, point.toString());
+        String test = "Pokemon [nom=Poney,\n" +
+                " attack=23.0,\n" +
+                " baseEggSteps=120.0,\n" +
+                " captureRate=12.23,\n" +
+                " defense=34.3,\n" +
+                " experienceGrowth=23.3,\n" +
+                " hp=23.9,\n" +
+                " spAttack=13.4,\n" +
+                " spDefense=23.5,\n" +
+                " type=feu,\n" +
+                " type2=eau,\n" +
+                " speed=239.0,\n" +
+                " isLegendary=false]";
+        Assert.assertEquals(pokemon.getLines().get(100).toString(), test);
     }
 }
