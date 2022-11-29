@@ -42,9 +42,6 @@ public class Titanic extends IPoint{
 			return passengerId;
 		}
 
-		public void setPassengerId(int passengerId) {
-			this.passengerId = passengerId;
-		}
 
 		public double getSurvived() {
 			return survived;
@@ -58,9 +55,6 @@ public class Titanic extends IPoint{
 			return pClass;
 		}
 
-		public void setPclass(double pclass) {
-			pClass = pclass;
-		}
 
 		public String getName() {
 			return name;
@@ -102,9 +96,6 @@ public class Titanic extends IPoint{
 			this.embarked = embarked;
 		}
 
-	public double getpClass() {
-		return this.pClass;
-	}
 
 	public double getSibSp() {
 		return this.sibSp;
@@ -122,9 +113,6 @@ public class Titanic extends IPoint{
 		return this.fare;
 	}
 
-	public boolean isClassified() {
-		return this.classified;
-	}
 
 	@Override
 	public String toString() {

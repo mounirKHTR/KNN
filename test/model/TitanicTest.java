@@ -11,7 +11,7 @@ public class TitanicTest {
 
     DataSet titanic = new DataSet();
 
-    Titanic point = new Titanic();
+    Titanic point;
 
     @Before
     public void setup(){
@@ -20,21 +20,22 @@ public class TitanicTest {
         List<String> data = new ArrayList<>(List.of(tampon));
 
         titanic.addTitanic(data);
+        point = (Titanic) titanic.getLines().get(891);
     }
 
     @Test
     public void testAddTitanicPoint() {
-        Assert.assertEquals(3.0,titanic.getValue(891,titanic.data.get(0)));
-        Assert.assertEquals(1.0,titanic.getValue(891,titanic.data.get(1)));
-        Assert.assertEquals(3.2,titanic.getValue(891,titanic.data.get(2)));
-        Assert.assertEquals("Jean",titanic.getValue(891,titanic.data.get(3)));
-        Assert.assertEquals("Male",titanic.getValue(891,titanic.data.get(4)));
-        Assert.assertEquals(24.0,titanic.getValue(891,titanic.data.get(5)));
-        Assert.assertEquals(3.0,titanic.getValue(891,titanic.data.get(6)));
-        Assert.assertEquals(2.0,titanic.getValue(891,titanic.data.get(7)));
-        Assert.assertEquals("ticket",titanic.getValue(891,titanic.data.get(8)));
-        Assert.assertEquals(23.0,titanic.getValue(891,titanic.data.get(9)));
-        Assert.assertEquals("C 23",titanic.getValue(891,titanic.data.get(10)));
+        Assert.assertEquals(titanic.getValue(891, titanic.data.get(0)), point.getPassengerId());
+        Assert.assertEquals(titanic.getValue(891, titanic.data.get(1)), point.getSurvived());
+        Assert.assertEquals(titanic.getValue(891, titanic.data.get(2)), point.getPclass());
+        Assert.assertEquals(titanic.getValue(891, titanic.data.get(3)), point.getName());
+        Assert.assertEquals(titanic.getValue(891, titanic.data.get(4)), point.getSex());
+        Assert.assertEquals(titanic.getValue(891, titanic.data.get(5)), point.getAge());
+        Assert.assertEquals(titanic.getValue(891, titanic.data.get(6)), point.getSibSp());
+        Assert.assertEquals(titanic.getValue(891, titanic.data.get(7)), point.getParch());
+        Assert.assertEquals(titanic.getValue(891, titanic.data.get(8)), point.getTicket());
+        Assert.assertEquals(titanic.getValue(891, titanic.data.get(9)), point.getFare());
+        Assert.assertEquals(titanic.getValue(891, titanic.data.get(10)), point.getCabin());
     }
 
     @Test

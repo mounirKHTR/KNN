@@ -13,8 +13,8 @@ public class ColumnTest {
     DataSet dataTest = new DataSet();
     Column col = new Column("colTest", "typeTest", dataTest);
     DataSet titanic = new DataSet();
+    Titanic point;
 
-    Titanic point = new Titanic();
     String test = "Column [Name=colTest, type=typeTest, Normalizer=null, isNormalizable=false]";
 
     @Before
@@ -25,6 +25,7 @@ public class ColumnTest {
         List<String> data = new ArrayList<>(List.of(tampon));
 
         titanic.addTitanic(data);
+        point = (Titanic) titanic.getLines().get(891);
 
     }
 

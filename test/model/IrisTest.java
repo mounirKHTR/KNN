@@ -10,7 +10,7 @@ import java.util.List;
 public class IrisTest {
     protected DataSet iris = new DataSet();
 
-    Iris point = new Iris();
+    Iris point;
 
     @Before
     public void setup(){
@@ -19,14 +19,16 @@ public class IrisTest {
         List<String> data = new ArrayList<>(List.of(tampon));
 
         iris.addIris(data);
+        point = (Iris) iris.getLines().get(150);
     }
 
     @Test
     public void testIrisAdd() {
-        Assert.assertEquals(23.4, iris.getValue(150, iris.data.get(0)));
-        Assert.assertEquals(22.4, iris.getValue(150, iris.data.get(1)));
-        Assert.assertEquals(56.1, iris.getValue(150, iris.data.get(2)));
-        Assert.assertEquals(30.0, iris.getValue(150, iris.data.get(3)));
+        Assert.assertEquals(iris.getValue(150, iris.data.get(0)), point.getSepalLength());
+        Assert.assertEquals(iris.getValue(150, iris.data.get(1)), point.getSepalWidth());
+        Assert.assertEquals(iris.getValue(150, iris.data.get(2)), point.getPetalLength());
+        Assert.assertEquals(iris.getValue(150, iris.data.get(3)), point.getPetalWidth());
+        Assert.assertNull(point.getVariety());
     }
 
     @Test
