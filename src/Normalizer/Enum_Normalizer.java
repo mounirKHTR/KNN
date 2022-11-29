@@ -1,6 +1,5 @@
 package Normalizer;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,16 +41,6 @@ public class Enum_Normalizer implements IvalueNormalizer {
     @Override
     public Object denormalize(double value) {
         return this.brut.get((int) (value *  (this.brut.size()-1)));  //on veut recup l'indice (exemple -> 0.33 * 3 = 1)
-    }
-
-    @Override
-    public double getMin() {
-        return 0;
-    }
-
-    @Override
-    public double getMax() {
-        return 0;
     }
 
 }

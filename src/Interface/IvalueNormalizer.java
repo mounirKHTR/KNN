@@ -39,7 +39,5 @@ public interface IvalueNormalizer {
 		 * associee au normaliseur
 		 */
 		public Object denormalize(double value);
-	
-		public double getMin();
-		public double getMax();
+
 }
