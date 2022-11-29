@@ -46,12 +46,23 @@ public class TitanicTest {
         Assert.assertEquals("C", groups.get(1));
         Assert.assertEquals("Q", groups.get(2));
 
-        Assert.assertEquals(""+null, point.getGroup());
+        Assert.assertNull(point.getGroup());
     }
 
     @Test
     public void testTitanicToString() {
-        String test = "Titanic{PassengerId=3.0, Survived=1.0, Pclass=3.2, Name='Jean', Sex='Male', Age=24.0, SibSp=3.0, Parch=2.0, Ticket='ticket', Fare=23.0, Cabin='5.0', Embarked=null}";
-        Assert.assertEquals(test, point.toString());
+        String test = "Titanic{PassengerId=3.0,\n" +
+                " Survived=1.0,\n" +
+                " Pclass=3.2,\n" +
+                " Name='Jean',\n" +
+                " Sex='Male',\n" +
+                " Age=24.0,\n" +
+                " SibSp=3.0,\n" +
+                " Parch=2.0,\n" +
+                " Ticket='ticket',\n" +
+                " Fare=23.0,\n" +
+                " Cabin='C 23',\n" +
+                " Embarked=null}";
+        Assert.assertEquals(titanic.getLines().get(891).toString(), test);
     }
 }
