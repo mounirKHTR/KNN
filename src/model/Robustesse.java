@@ -8,8 +8,9 @@ public class Robustesse<E> {
     protected DataSet dataSet;
     protected int numberNeighboors;
     protected MethodeKnn knn;
+    protected boolean euclidian;
 
-    public Robustesse(DataSet dataSet, int numberNeighboors) {
+    public Robustesse(DataSet dataSet, int numberNeighboors,boolean euclidian) {
         this.dataSet = dataSet;
         this.numberNeighboors = numberNeighboors;
         this.knn = new MethodeKnn();
@@ -23,7 +24,7 @@ public class Robustesse<E> {
         String rslt;
         for (int i = 0; i < size / 2; i++) {
             test.remove(i);
-            rslt = knn.executeKnn(this.dataSet.getLines().get(i), "M", this.numberNeighboors, test, this.dataSet.getData());
+            rslt = knn.executeKnn(this.dataSet.getLines().get(i), euclidian, this.numberNeighboors, test, this.dataSet.getData());
             if (rslt.equals(this.dataSet.getLines().get(i).getGroup())) ++hit;
 
         }
@@ -32,7 +33,7 @@ public class Robustesse<E> {
     }
 
 
-    /*public static void main(String[] args) throws IOException, NoSuchFieldException, IllegalAccessException {
+    public static void main(String[] args) throws IOException, NoSuchFieldException, IllegalAccessException {
         DataSet ir = new DataSet();
         ir.loadFromFiles("./src/data/iris.csv", Iris.class);
         Robustesse robustesseIR=new Robustesse(ir,3);
@@ -45,6 +46,6 @@ public class Robustesse<E> {
         tit.loadFromFiles("./src/data/titanic.csv", Titanic.class);
         Robustesse robustesseTit = new Robustesse(tit, 3);
         System.out.println(""+robustesseTit.robustesse());
-    }*/
+    }
 
 }
