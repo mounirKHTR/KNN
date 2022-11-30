@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import Interface.IPoint;
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -35,6 +36,9 @@ public class ScatterChartGen extends Application implements Observer{
     ChoiceBox<String> cbx;
     ChoiceBox<String> cby;
     Stage stage;
+    Button add;
+    Button classifier;
+    Label infoPoint;
     @Override 
     public void start(Stage stage) {
     	this.stage = stage;
@@ -49,15 +53,17 @@ public class ScatterChartGen extends Application implements Observer{
         sc.setTitle("Aucun type chargé");
         cbx = new ChoiceBox<>();
         cby = new ChoiceBox<>();
+        infoPoint = new Label("");
        
         final Button changeAxis = new Button("Change Axis");
-    	final Button btn = new Button("Load File");
-    	final Button add = new Button("Add Point");
-		final Button classifier = new Button("Classify");
+    	Button btn = new Button("Load File");
+    	add = new Button("Add Point");
+		classifier = new Button("Classify");
         final VBox vbox = new VBox();
         final HBox hbox = new HBox();
+        add.setVisible(false);
+        classifier.setVisible(false);
 
-                
         btn.setOnAction(e -> loadFile());
         changeAxis.setOnAction(e -> getChoice());
         add.setOnAction(e -> addPoint());
@@ -66,7 +72,7 @@ public class ScatterChartGen extends Application implements Observer{
         hbox.setSpacing(10);
         hbox.getChildren().addAll(changeAxis,cbx,btn,add,classifier);
         
-        vbox.getChildren().addAll(sc,cby,hbox);
+        vbox.getChildren().addAll(sc,cby,hbox,infoPoint);
         hbox.setPadding(new Insets(10, 10, 10, 50));
         
         Scene scene  = new Scene(vbox, 700, 500);
@@ -103,6 +109,8 @@ public class ScatterChartGen extends Application implements Observer{
             } else if (rb3.isSelected()) {
             	dt.loadFromFiles(path,Titanic.class);
             }
+            add.setVisible(true);
+            classifier.setVisible(true);
             dialog.close();
          });
         
@@ -156,12 +164,13 @@ public class ScatterChartGen extends Application implements Observer{
             	dt.addTitanic(fields);
             }
             dialog.close();
+            
          });
 		HBox hb = new HBox(rb1,rb2,rb3);
 		vboxL.getChildren().addAll(hb,confirm);
     	HBox hbox = new HBox(vboxL,vboxTF);
 		ScrollPane sp = new ScrollPane(hbox);
-        Scene dialogScene = new Scene(sp, 350, 250);
+        Scene dialogScene = new Scene(sp, 400, 500);
         dialog.setScene(dialogScene);
         dialog.show();
     }
@@ -260,7 +269,7 @@ public class ScatterChartGen extends Application implements Observer{
 				String valeur1 = ""+col1.getNormalizedValue(i);
 				String valeur2 = ""+col2.getNormalizedValue(i);
 				XYChart.Data<Number, Number> scPoint = new ScatterChart.Data<>(Double.valueOf(valeur1),Double.valueOf(valeur2));
-				scPoint.setNode(new HoveredThresholdNodea(i.toString(), i,stage));
+				scPoint.setNode(new HoveredThresholdNodea(i.toString(),infoPoint));
 				if (Objects.equals(g, i.getGroup())) {
 		        	series.getData().add(scPoint);
 				} else if (!i.getClassified()) {

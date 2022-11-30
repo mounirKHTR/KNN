@@ -12,7 +12,9 @@ public class MethodeKnn {
         Map<Double, IPoint> tampon = new HashMap<>();
 
         for(IPoint points: listePoint){
-            tampon.put(distance.EuclidianDistanceBetween(pointDonne, points, listColumn), points);
+        	if(pointDonne != points) {
+        		tampon.put(distance.EuclidianDistanceBetween(pointDonne, points, listColumn), points);
+        	}
         }
 
         return getIPointDoubleMap(resultat, tampon);
@@ -25,7 +27,9 @@ public class MethodeKnn {
         Map<Double, IPoint> tampon = new HashMap<>();
 
         for(IPoint points: listePoint){
-            tampon.put(distance.ManhattanDistanceBetween(pointDonne, points, listColumn), points);
+        	if(pointDonne != points) {
+        		tampon.put(distance.ManhattanDistanceBetween(pointDonne, points, listColumn), points);
+        	}
         }
 
         return getIPointDoubleMap(resultat, tampon);
