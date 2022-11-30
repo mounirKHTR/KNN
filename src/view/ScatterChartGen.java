@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import Interface.IPoint;
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -26,8 +27,8 @@ import javafx.stage.Stage;
 import model.*;
 import utils.Observer;
 import utils.Subject;
- 
- 
+
+
 public class ScatterChartGen extends Application implements Observer{
 
 	DataSet dt;

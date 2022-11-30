@@ -12,7 +12,9 @@ public class MethodeKnn {
         Map<Double, IPoint> tampon = new HashMap<>();
 
         for (IPoint points : listePoint) {
-            tampon.put(distance.EuclidianDistanceBetween(pointDonne, points, listColumn), points);
+            if(pointDonne != points) {
+                tampon.put(distance.EuclidianDistanceBetween(pointDonne, points, listColumn), points);
+            }
         }
 
         return getIPointDoubleMap(resultat, tampon);
@@ -25,7 +27,9 @@ public class MethodeKnn {
         Map<Double, IPoint> tampon = new HashMap<>();
 
         for (IPoint points : listePoint) {
-            tampon.put(distance.ManhattanDistanceBetween(pointDonne, points, listColumn), points);
+            if(pointDonne != points) {
+                tampon.put(distance.ManhattanDistanceBetween(pointDonne, points, listColumn), points);
+            }
         }
 
         return getIPointDoubleMap(resultat, tampon);
@@ -80,5 +84,16 @@ public class MethodeKnn {
             }
         return rslt;
         }
+
+        public String executeKnn(IPoint point,String method,int voisin,List<IPoint> listePoint, List<Column> listColumn){
+        if(method.equals("E")||method.equals("Euclidian")) {
+            return mostvalue(getNearestNeigbhour(this.sortEuclidian(point, listePoint, listColumn), voisin));
+        }
+        else if(method.equals("M")||method.equals("Mannathan")){
+            return mostvalue(getNearestNeigbhour(this.sortManhattan(point,listePoint,listColumn),voisin));
+        }
+        else return null; //faire un null object
+
     }
+}
 

@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -143,6 +144,9 @@ public  class DataSet extends Subject {
 		System.out.println(""+ampli[0]+" "+ampli[1]);
 		System.out.println(ir.lines.get(8).getValue(ir.data.get(1)).getClass().toString());
 
+		System.out.println(pk.getLines());
+		Collections.shuffle(pk.getLines());
+		System.out.println(pk.getLines());
 	}
 
 
