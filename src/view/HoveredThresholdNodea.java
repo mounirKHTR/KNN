@@ -23,14 +23,12 @@ class HoveredThresholdNodea extends StackPane {
         setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-            	//label.setText(string);
             	setStyle("-fx-background-color: black");
             }
         });
         setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-            	//label.setText("");
             	setStyle(color);
             }
         });
