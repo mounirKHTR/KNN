@@ -38,7 +38,7 @@ public class ScatterChartGen extends Application implements Observer{
     Stage stage;
     Button add;
     Button classifier;
-    Label infoPoint;
+    Label robustesse;
     @Override 
     public void start(Stage stage) {
     	this.stage = stage;
@@ -53,7 +53,7 @@ public class ScatterChartGen extends Application implements Observer{
         sc.setTitle("Aucun type chargé");
         cbx = new ChoiceBox<>();
         cby = new ChoiceBox<>();
-        infoPoint = new Label("");
+        robustesse = new Label("");
        
         final Button changeAxis = new Button("Change Axis");
     	Button btn = new Button("Load File");
@@ -72,7 +72,7 @@ public class ScatterChartGen extends Application implements Observer{
         hbox.setSpacing(10);
         hbox.getChildren().addAll(changeAxis,cbx,btn,add,classifier);
         
-        vbox.getChildren().addAll(sc,cby,hbox,infoPoint);
+        vbox.getChildren().addAll(sc,cby,hbox,robustesse);
         hbox.setPadding(new Insets(10, 10, 10, 50));
         
         Scene scene  = new Scene(vbox, 700, 500);
@@ -198,17 +198,20 @@ public class ScatterChartGen extends Application implements Observer{
 			}
 		}
 		Button confirm = new Button("Confirm");
+		Button rob = new Button("Afficher robustesse");
 		final ToggleGroup group = new ToggleGroup();
 		RadioButton rb1 = new RadioButton("Euclidian");
 		rb1.setToggleGroup(group);
 		rb1.setSelected(true);
 		RadioButton rb2 = new RadioButton("Manhattan");
 		rb2.setToggleGroup(group);
+		Robustesse rb = new Robustesse(dt, (int)slid.getValue(),rb1.isSelected());
 		
 		confirm.setOnAction(e -> dt.classify(getSelectedCol(vboxCheck),(int)slid.getValue(),rb1.isSelected()));
+		rob.setOnAction(e -> robustesse.setText(""+rb.robustesse()));
 		HBox hb = new HBox(rb1,rb2);
 		VBox vbox2 = new VBox();
-		vbox2.getChildren().addAll(hb,slid,confirm);
+		vbox2.getChildren().addAll(hb,slid,confirm,rob);
 		VBox vbox = new VBox(vboxCheck,vbox2);
 		ScrollPane sp = new ScrollPane(vbox);
 		Scene dialogScene = new Scene(sp, 350, 300);
@@ -269,7 +272,7 @@ public class ScatterChartGen extends Application implements Observer{
 				String valeur1 = ""+col1.getNormalizedValue(i);
 				String valeur2 = ""+col2.getNormalizedValue(i);
 				XYChart.Data<Number, Number> scPoint = new ScatterChart.Data<>(Double.valueOf(valeur1),Double.valueOf(valeur2));
-				scPoint.setNode(new HoveredThresholdNodea(i.toString(),infoPoint));
+				scPoint.setNode(new HoveredThresholdNodea(i.toString()));
 				if (Objects.equals(g, i.getGroup())) {
 		        	series.getData().add(scPoint);
 				} else if (!i.getClassified()) {

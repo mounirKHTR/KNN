@@ -13,7 +13,7 @@ import javafx.util.Duration;
 
 class HoveredThresholdNodea extends StackPane {
 
-    public HoveredThresholdNodea(String string,Label label) {
+    public HoveredThresholdNodea(String string) {
         setPrefSize(15, 15);
         String color = getStyle();
         Tooltip tool = new Tooltip(string);

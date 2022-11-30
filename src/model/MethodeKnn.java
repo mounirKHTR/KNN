@@ -85,14 +85,14 @@ public class MethodeKnn {
         return rslt;
         }
 
-        public String executeKnn(IPoint point,String method,int voisin,List<IPoint> listePoint, List<Column> listColumn){
-        if(method.equals("E")||method.equals("Euclidian")) {
+        public String executeKnn(IPoint point,boolean method,int voisin,List<IPoint> listePoint, List<Column> listColumn){
+        if(method) {
             return mostvalue(getNearestNeigbhour(this.sortEuclidian(point, listePoint, listColumn), voisin));
         }
-        else if(method.equals("M")||method.equals("Mannathan")){
+        else {
             return mostvalue(getNearestNeigbhour(this.sortManhattan(point,listePoint,listColumn),voisin));
         }
-        else return null; //faire un null object
+        //else return null; //faire un null object
 
     }
 }
