@@ -270,7 +270,7 @@ public class ScatterChartGen extends Application implements Observer{
 			series.setName(g+"("+series.getData().size()+")");
 	        sc.getData().add(series);
 		}
-		unclassified.setName("unclassified("+unclassified.getData().size()+")");
+		unclassified.setName("unclassified("+unclassified.getData().size()/dt.getLines().get(0).getAllGroup().size()+")");
 		sc.getData().add(unclassified);
     }
         
