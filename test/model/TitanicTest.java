@@ -48,6 +48,10 @@ public class TitanicTest {
         Assert.assertEquals("Q", groups.get(2));
 
         Assert.assertNull(point.getGroup());
+
+        point.setGroup("S");
+
+        Assert.assertEquals("S", point.getGroup());
     }
 
     @Test
@@ -65,5 +69,12 @@ public class TitanicTest {
                 " Cabin='C 23',\n" +
                 " Embarked=null}";
         Assert.assertEquals(titanic.getLines().get(891).toString(), test);
+    }
+
+    @Test
+    public void testTitanicClassified() {
+        Assert.assertFalse(point.getClassified());
+        point.setClassified(true);
+        Assert.assertTrue(point.getClassified());
     }
 }

@@ -52,6 +52,11 @@ public class PokemonTest {
 
         Assert.assertNull(point.getGroup());
         Assert.assertTrue(point.isLegendary());
+
+        point.setGroup("Common");
+        point.classified = true;
+
+        Assert.assertEquals("Common", point.getGroup());
     }
 
     @Test
@@ -70,5 +75,12 @@ public class PokemonTest {
                 " speed=239.0,\n" +
                 " isLegendary=false]";
         Assert.assertEquals(pokemon.getLines().get(100).toString(), test);
+    }
+
+    @Test
+    public void testPokemonClassified() {
+        Assert.assertFalse(point.getClassified());
+        point.setClassified(true);
+        Assert.assertTrue(point.getClassified());
     }
 }

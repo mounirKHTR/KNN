@@ -40,11 +40,22 @@ public class IrisTest {
         Assert.assertEquals("Versicolor", test.get(2));
 
         Assert.assertNull(point.getGroup());
+
+        point.setGroup("Setosa");
+
+        Assert.assertEquals("Setosa", point.getGroup());
     }
 
     @Test
     public void testIrisToString() {
         String test = "Iris{sepalLength=23.4,\n sepalWidth=22.4,\n petalLength=56.1,\n petalWidth=30.0,\n variety='null'}";
         Assert.assertEquals(iris.getLines().get(150).toString(), test);
+    }
+
+    @Test
+    public void testIrisClassified() {
+        Assert.assertFalse(point.getClassified());
+        point.setClassified(true);
+        Assert.assertTrue(point.getClassified());
     }
 }

@@ -25,13 +25,13 @@ public class KnnTest {
     @Test
     public void testMethodeKnnEuclidian() {
         Map<Double, IPoint> test = knn.sortEuclidian(iris.getLines().get(0), iris.getLines(), iris.getData());
-        Assert.assertEquals(124, test.size());
+        Assert.assertEquals(123, test.size());
 
         List<IPoint> testNN = knn.getNearestNeigbhour(test, 3);
 
-        Assert.assertEquals(iris.getLines().get(0), testNN.get(0));
-        Assert.assertEquals(iris.getLines().get(27), testNN.get(1));
-        Assert.assertEquals(iris.getLines().get(17), testNN.get(2));
+        Assert.assertEquals(iris.getLines().get(27), testNN.get(0));
+        Assert.assertEquals(iris.getLines().get(17), testNN.get(1));
+        Assert.assertEquals(iris.getLines().get(39), testNN.get(2));
 
         Assert.assertEquals(3, testNN.size());
     }
@@ -39,13 +39,13 @@ public class KnnTest {
     @Test
     public void testMethodeKnnManhattan() {
         Map<Double, IPoint> test = knn.sortManhattan(iris.getLines().get(0), iris.getLines(), iris.getData());
-        Assert.assertEquals(124, test.size());
+        Assert.assertEquals(123, test.size());
 
         List<IPoint> testNN = knn.getNearestNeigbhour(test, 3);
 
-        Assert.assertEquals(iris.getLines().get(0), testNN.get(0));
-        Assert.assertEquals(iris.getLines().get(27), testNN.get(1));
-        Assert.assertEquals(iris.getLines().get(17), testNN.get(2));
+        Assert.assertEquals(iris.getLines().get(27), testNN.get(0));
+        Assert.assertEquals(iris.getLines().get(17), testNN.get(1));
+        Assert.assertEquals(iris.getLines().get(39), testNN.get(2));
 
         Assert.assertEquals(3, testNN.size());
     }
