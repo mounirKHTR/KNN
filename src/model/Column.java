@@ -4,6 +4,7 @@ import java.util.List;
 
 import Interface.IPoint;
 import Interface.IvalueNormalizer;
+import Interface.IvalueNormalizer.NormalizerTypes;
 import Normalizer.Boolean_Normalizer;
 import Normalizer.Enum_Normalizer;
 import Normalizer.Number_Normalizer;

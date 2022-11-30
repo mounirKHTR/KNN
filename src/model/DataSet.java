@@ -4,6 +4,8 @@ import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+
+import java.util.Collections;
 import java.util.List;
 
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -106,7 +108,7 @@ public  class DataSet extends Subject {
 	public Object getValue(int index, Column column) {
 		return this.lines.get(index).getValue(column);
 	}
-	
+
 	public void classify(List<Column> col, int k,boolean choice) {
 		MethodeKnn knn = new MethodeKnn();
 		for (IPoint i : this.getLines()) {
@@ -122,9 +124,9 @@ public  class DataSet extends Subject {
 				}
 			}
 		}
-		
+
 	}
-	
+
 	public static void main(String[] args) throws IllegalStateException  {
 		DataSet pk=new DataSet();
 		pk.loadFromFiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
@@ -152,6 +154,9 @@ public  class DataSet extends Subject {
 		pk.classify(col,1,true);
 		//System.out.println(pk.getLines().get(pk.getNbLines()-1));
 
+		System.out.println(pk.getLines());
+		Collections.shuffle(pk.getLines());
+		System.out.println(pk.getLines());
 	}
 
 

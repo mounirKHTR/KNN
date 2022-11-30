@@ -23,13 +23,7 @@ public  class Number_Normalizer implements IvalueNormalizer{
 		return (double) Math.round((value*(max-min)+min)*100)/100;
 	}
 
-	public double getMin() {
-		return min;
-	}
 
-	public double getMax() {
-		return max;
-	}
 	
 
 }

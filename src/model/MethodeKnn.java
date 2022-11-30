@@ -11,10 +11,10 @@ public class MethodeKnn {
         Map<Double, IPoint> resultat = new LinkedHashMap<>();
         Map<Double, IPoint> tampon = new HashMap<>();
 
-        for(IPoint points: listePoint){
-        	if(pointDonne != points) {
-        		tampon.put(distance.EuclidianDistanceBetween(pointDonne, points, listColumn), points);
-        	}
+        for (IPoint points : listePoint) {
+            if(pointDonne != points) {
+                tampon.put(distance.EuclidianDistanceBetween(pointDonne, points, listColumn), points);
+            }
         }
 
         return getIPointDoubleMap(resultat, tampon);
@@ -26,10 +26,10 @@ public class MethodeKnn {
         Map<Double, IPoint> resultat = new LinkedHashMap<>();
         Map<Double, IPoint> tampon = new HashMap<>();
 
-        for(IPoint points: listePoint){
-        	if(pointDonne != points) {
-        		tampon.put(distance.ManhattanDistanceBetween(pointDonne, points, listColumn), points);
-        	}
+        for (IPoint points : listePoint) {
+            if(pointDonne != points) {
+                tampon.put(distance.ManhattanDistanceBetween(pointDonne, points, listColumn), points);
+            }
         }
 
         return getIPointDoubleMap(resultat, tampon);
@@ -46,11 +46,12 @@ public class MethodeKnn {
         return resultat;
     }
 
-    public List<IPoint> getNearestNeigbhour(Map<Double, IPoint> listeNearestNeigbhour, int nearestNeigbhour) {
+    public List<IPoint> getNearestNeigbhour(Map<Double, IPoint> listNeigbhour, int nearestNeigbhour) {
         List<IPoint> resultat = new ArrayList<>();
 
-        LinkedList<IPoint> tampon = new LinkedList<>(listeNearestNeigbhour.values());
-        for(int i = 0; i < nearestNeigbhour; ++i) {
+        LinkedList<IPoint> tampon = new LinkedList<>(listNeigbhour.values());
+
+        for (int i = 0; i < nearestNeigbhour; ++i) {
             resultat.add(tampon.get(i));
         }
 
@@ -71,13 +72,28 @@ public class MethodeKnn {
             groupCount.put(word, (count == null) ? 1 : count + 1);
         }
         int max=0;
-        for (String groupe: groupCount.keySet()
-        ) {
-            if(groupCount.get(groupe)>max){
-                rslt=groupe;
-                max=groupCount.get(groupe);
-            }
-        }return rslt;
-    }
 
+            for (Map.Entry<String,Integer> entry : groupCount.entrySet()) {
+                String groupe = entry.getKey();
+                Integer valeur = entry.getValue();
+                if(valeur>max){
+                    rslt=groupe;
+                    max=valeur;
+                }
+
+            }
+        return rslt;
+        }
+
+        public String executeKnn(IPoint point,String method,int voisin,List<IPoint> listePoint, List<Column> listColumn){
+        if(method.equals("E")||method.equals("Euclidian")) {
+            return mostvalue(getNearestNeigbhour(this.sortEuclidian(point, listePoint, listColumn), voisin));
+        }
+        else if(method.equals("M")||method.equals("Mannathan")){
+            return mostvalue(getNearestNeigbhour(this.sortManhattan(point,listePoint,listColumn),voisin));
+        }
+        else return null; //faire un null object
+
+    }
 }
+

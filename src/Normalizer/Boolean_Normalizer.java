@@ -14,14 +14,4 @@ public class Boolean_Normalizer implements IvalueNormalizer {
         return value==1.0;
     }
 
-	@Override
-	public double getMin() {
-		return 0;
-	}
-
-	@Override
-	public double getMax() {
-		return 1;
-	}
-
 }
