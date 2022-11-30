@@ -12,7 +12,7 @@ public class RobustesseTest {
     @Before
     public void setup() {
         titanic.loadFromFiles("./src/data/titanic.csv", Titanic.class);
-        robustesse = new Robustesse<>(titanic, 3);
+        robustesse = new Robustesse<>(titanic, 3,true);
     }
 
     @Test
