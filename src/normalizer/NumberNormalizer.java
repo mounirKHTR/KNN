@@ -1,12 +1,12 @@
-package Normalizer;
+package normalizer;
 import Interface.IvalueNormalizer;
 
-public  class Number_Normalizer implements IvalueNormalizer{
-	double min;
-	double max;
+public  class NumberNormalizer implements IvalueNormalizer{
+	protected double min;
+	protected double max;
 	
 	
-	public Number_Normalizer(double [] ampli) {
+	public NumberNormalizer(double [] ampli) {
 		
 		this.min = ampli[0];
 		this.max = ampli[1];

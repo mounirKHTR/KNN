@@ -13,7 +13,7 @@ public class MethodeKnn {
 
         for (IPoint points : listePoint) {
             if(pointDonne != points) {
-                tampon.put(distance.EuclidianDistanceBetween(pointDonne, points, listColumn), points);
+                tampon.put(distance.euclidianDistanceBetween(pointDonne, points, listColumn), points);
             }
         }
 
@@ -28,7 +28,7 @@ public class MethodeKnn {
 
         for (IPoint points : listePoint) {
             if(pointDonne != points) {
-                tampon.put(distance.ManhattanDistanceBetween(pointDonne, points, listColumn), points);
+                tampon.put(distance.manhattanDistanceBetween(pointDonne, points, listColumn), points);
             }
         }
 

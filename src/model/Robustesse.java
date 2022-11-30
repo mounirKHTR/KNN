@@ -32,7 +32,7 @@ public class Robustesse<E> {
     }
 
 
-    public static void main(String[] args) throws IOException, NoSuchFieldException, IllegalAccessException {
+    /*public static void main(String[] args) throws IOException, NoSuchFieldException, IllegalAccessException {
         DataSet ir = new DataSet();
         ir.loadFromFiles("./src/data/iris.csv", Iris.class);
         Robustesse robustesseIR=new Robustesse(ir,3);
@@ -45,6 +45,6 @@ public class Robustesse<E> {
         tit.loadFromFiles("./src/data/titanic.csv", Titanic.class);
         Robustesse robustesseTit = new Robustesse(tit, 3);
         System.out.println(""+robustesseTit.robustesse());
-    }
+    }*/
 
 }

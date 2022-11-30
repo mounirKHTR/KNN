@@ -9,9 +9,7 @@ import java.util.Objects;
 
 import Interface.IPoint;
 import javafx.application.Application;
-import javafx.beans.binding.Bindings;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;

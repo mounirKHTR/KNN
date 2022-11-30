@@ -27,11 +27,11 @@ public class DistanceTest {
 
     @Test
     public void testEuclidian() {
-        Assert.assertEquals(1.3533333333333335, distance.EuclidianDistanceBetween(pokemon.lines.get(2), pokemon.lines.get(34), pokemon.data), 0.0);
+        Assert.assertEquals(1.3533333333333335, distance.euclidianDistanceBetween(pokemon.lines.get(2), pokemon.lines.get(34), pokemon.data), 0.0);
     }
 
     @Test
     public void testManhattan() {
-        Assert.assertEquals(1.3533333333333335, distance.ManhattanDistanceBetween(pokemon.lines.get(2), pokemon.lines.get(34), pokemon.data), 0.0);
+        Assert.assertEquals(1.3533333333333335, distance.manhattanDistanceBetween(pokemon.lines.get(2), pokemon.lines.get(34), pokemon.data), 0.0);
     }
 }

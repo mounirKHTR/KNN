@@ -4,10 +4,9 @@ import java.util.List;
 
 import Interface.IPoint;
 import Interface.IvalueNormalizer;
-import Interface.IvalueNormalizer.NormalizerTypes;
-import Normalizer.Boolean_Normalizer;
-import Normalizer.Enum_Normalizer;
-import Normalizer.Number_Normalizer;
+import normalizer.BooleanNormalizer;
+import normalizer.EnumNormalizer;
+import normalizer.NumberNormalizer;
 
 
 public  class Column{
@@ -29,7 +28,7 @@ public  class Column{
 		
 	}
 
-	public double[] amplitude() {
+	private double[] amplitude() {
 		double min =1000000.0;
 		double max=0.0;
 
@@ -58,16 +57,16 @@ public  class Column{
 	public IvalueNormalizer getNormalizer() {
 		return normalizer;
 	}
-	public void setNormaliser(String type) {
+	private void setNormaliser(String type) {
 			if(type.equals("int")||type.equals("double")) {
-				this.normalizer=new Number_Normalizer(this.amplitude());
+				this.normalizer=new NumberNormalizer(this.amplitude());
 				this.isNormalizable=true;
 			}
 			if(type.equals("boolean")) {
-				this.normalizer=new Boolean_Normalizer();
+				this.normalizer=new BooleanNormalizer();
 				this.isNormalizable=true;
 			}else if (type.equals("class java.lang.String")){
-				this.normalizer=new Enum_Normalizer(this);
+				this.normalizer=new EnumNormalizer(this);
 				this.isNormalizable=true;
 			}
 

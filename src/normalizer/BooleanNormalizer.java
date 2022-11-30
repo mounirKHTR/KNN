@@ -1,7 +1,7 @@
-package Normalizer;
+package normalizer;
 import Interface.IvalueNormalizer;
 
-public class Boolean_Normalizer implements IvalueNormalizer {
+public class BooleanNormalizer implements IvalueNormalizer {
 
     @Override
     public double normalize(Object value) {

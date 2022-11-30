@@ -17,18 +17,7 @@ public interface IvalueNormalizer {
 		 * constante associee et un <i>normaliseur</i></li>
 		 * </ul>
 		 */
-		public enum NormalizerTypes {
-			Number_Normalizer("int"), Boolean_Normalizer("boolean"),Enum_Normalizer("enum");
-			protected String nom;
-			NormalizerTypes(String string) {
-				nom = string;
-				
-			}
-			public String getNom() {
-				return nom;
-			}
 
-		}
 		/**
 		 * Retourne la valeur en parametre normalisee (entre 0 et 1).
 		 */

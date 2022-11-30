@@ -1,4 +1,4 @@
-package Normalizer;
+package normalizer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,13 +7,13 @@ import java.util.Map;
 import Interface.IvalueNormalizer;
 import model.Column;
 
-public class Enum_Normalizer implements IvalueNormalizer {
+public class EnumNormalizer implements IvalueNormalizer {
 
     protected List<Object> brut=new ArrayList<>();
     protected Map<String, Double> map;
 
 
-    public Enum_Normalizer(Column colx) {
+    public EnumNormalizer(Column colx) {
         brut=colx.getALLDataCol();
         this.map = new HashMap<>();
         this.getNormalizedMap();
@@ -23,7 +23,7 @@ public class Enum_Normalizer implements IvalueNormalizer {
         return this.map;
     }
 
-    public void getNormalizedMap() {
+    private void getNormalizedMap() {
         for (int i = 0; i< this.brut.size(); i++) {
             if(this.map.containsKey(this.brut.get(i))) i=i;
             else this.map.put((String)this.brut.get(i), (double) i / (double) (this.brut.size()-1)); // exmple 1 / 3 = 0.33

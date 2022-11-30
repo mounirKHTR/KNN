@@ -5,13 +5,15 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-import java.util.Collections;
+
 import java.util.List;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import Interface.IPoint;
 import utils.Subject;
+
+
 
 public  class DataSet extends Subject {
 	protected String name;
@@ -127,7 +129,7 @@ public  class DataSet extends Subject {
 
 	}
 
-	public static void main(String[] args) throws IllegalStateException  {
+	/*public static void main(String[] args) throws IllegalStateException  {
 		DataSet pk=new DataSet();
 		pk.loadFromFiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
 		System.out.println(""+pk.getLines()+pk.data);
@@ -140,15 +142,15 @@ public  class DataSet extends Subject {
 		System.out.println(ir.lines.get(8).getValue(ir.data.get(0)));
 		System.out.println(ir.data.get(0).getNormalizedValue(ir.lines.get(8)));
 		System.out.println(ir.data.get(0).getDenormalizedValue(ir.lines.get(8)));
-		double[] ampli=ir.data.get(2).amplitude();
-		System.out.println(""+ampli[0]+" "+ampli[1]);
+
+
 		System.out.println(ir.lines.get(8).getValue(ir.data.get(1)).getClass().toString());
 
 		System.out.println(pk.getLines());
 		Collections.shuffle(pk.getLines());
 		System.out.println(pk.getLines());
 	}
-
+*/
 
 	}
 
