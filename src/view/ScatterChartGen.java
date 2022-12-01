@@ -160,13 +160,17 @@ public class ScatterChartGen extends Application implements Observer{
         		 TextField t = (TextField) n;
         		 fields.add(t.getText());
         	 }
-            if (rb1.isSelected()) {
-            	dt.addIris(fields);
-            } else if (rb2.isSelected()) {
-            	dt.addPokemon(fields);
-            } else if (rb3.isSelected()) {
-            	dt.addTitanic(fields);
-            }
+			 try {
+				 if (rb1.isSelected()) {
+					 dt.addIris(fields);
+				 } else if (rb2.isSelected()) {
+					 dt.addPokemon(fields);
+				 } else if (rb3.isSelected()) {
+					 dt.addTitanic(fields);
+				 }
+			 } catch (Exception e1) {
+				 System.out.println(e1.getMessage());
+			 }
             dialog.close();
          });
 		HBox hb = new HBox(rb1,rb2,rb3);
@@ -208,10 +212,13 @@ public class ScatterChartGen extends Application implements Observer{
 		rb1.setSelected(true);
 		RadioButton rb2 = new RadioButton("Manhattan");
 		rb2.setToggleGroup(group);
-		Robustesse rb = new Robustesse(dt, (int)slid.getValue(),rb1.isSelected());
-
-		confirm.setOnAction(e -> dt.classify(getSelectedCol(vboxCheck),(int)slid.getValue(),rb1.isSelected()));
-		rob.setOnAction(e -> robustesse.setText(""+rb.robustesse()));
+		try {
+			Robustesse rb = new Robustesse(dt, (int) slid.getValue(), rb1.isSelected());
+			confirm.setOnAction(e -> dt.classify(getSelectedCol(vboxCheck), (int) slid.getValue(), rb1.isSelected()));
+			rob.setOnAction(e -> robustesse.setText("" + rb.robustesse()));
+		} catch (Exception e2) {
+			System.out.println(e2.getMessage());
+		}
 		HBox hb = new HBox(rb1,rb2);
 		VBox vbox2 = new VBox();
 		vbox2.getChildren().addAll(hb,slid,confirm,rob);

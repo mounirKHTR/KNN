@@ -129,29 +129,6 @@ public  class DataSet extends Subject {
 
 	}
 
-	/*public static void main(String[] args) throws IllegalStateException  {
-		DataSet pk=new DataSet();
-		pk.loadFromFiles("./src/data/pokemon_suspect1.csv", Pokemon.class);
-		System.out.println(""+pk.getLines()+pk.data);
-		DataSet ir=new DataSet();
-		ir.loadFromFiles("./src/data/iris.csv", Iris.class);
-		System.out.println(""+ir.getNbLines()+ir.data);
-		DataSet ti=new DataSet();
-		ti.loadFromFiles("./src/data/titanic.csv", Titanic.class);
-		System.out.println(""+ti.getNbLines()+ti.data);
-		System.out.println(ir.lines.get(8).getValue(ir.data.get(0)));
-		System.out.println(ir.data.get(0).getNormalizedValue(ir.lines.get(8)));
-		System.out.println(ir.data.get(0).getDenormalizedValue(ir.lines.get(8)));
-
-
-		System.out.println(ir.lines.get(8).getValue(ir.data.get(1)).getClass().toString());
-
-		System.out.println(pk.getLines());
-		Collections.shuffle(pk.getLines());
-		System.out.println(pk.getLines());
-	}
-*/
-
 	}
 
 
